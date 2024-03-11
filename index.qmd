@@ -15,4 +15,4 @@ about:
 
 ---
 
-My mission is to unravel the mysteries hidden within the vast data landscape. I wear my metaphorical detective attire, ask questions and search for clues buried deep in the cryptic data sets. Armed with my laptop, my trusty companions (R and Stata), and the power of data analytics, I conjure insights to reveal the world of variables and distributions. Lets ask questions, make assumptions and illuminate the shadows to understand the world of data.    
+I am a researcher. I try to unravel the mysteries hidden within the vast data landscape. I  ask questions and search for clues buried deep in the cryptic data sets. Armed with my laptop, my trusty companions (R and Stata), and the power of data analytics, I conjure insights to reveal the world of variables and distributions. 
