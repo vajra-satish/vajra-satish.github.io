@@ -1,1 +1,1 @@
-This is a website template for my portfolio. test
+This is a website template for my portfolio.
