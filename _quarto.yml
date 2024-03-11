@@ -10,6 +10,8 @@ website:
       [Contact Satish Bajracharya](mailto:vajrasatis@gmail.com)
     left: |
       Made with [Posit Quarto](https://quarto.org/)
+    right: |
+      [Github Code Repo](https://github.com/vajra-satish/vajra-satish.github.io)
     background: "#2c3e50"
   search: 
    location: navbar
