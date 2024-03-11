@@ -1,0 +1,25 @@
+[
+  {
+    "listing": "/publications.html",
+    "items": [
+      "/reports/Transitioning from informality to formality - Perspectives on formalization of informal enterprises/index.html",
+      "/reports/Breaking down the culture of change/index.html"
+    ]
+  },
+  {
+    "listing": "/data analytics.html",
+    "items": [
+      "/posts/post-with-code/index.html",
+      "/posts/Postwithplot/index.html",
+      "/posts/welcome/index.html"
+    ]
+  },
+  {
+    "listing": "/blogs.html",
+    "items": [
+      "/blogs/post-with-code/index.html",
+      "/blogs/Postwithplot/index.html",
+      "/blogs/welcome/index.html"
+    ]
+  }
+]

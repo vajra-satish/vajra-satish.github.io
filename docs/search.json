@@ -16,8 +16,85 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "About Me",
+    "title": "Satish Bajracharya",
     "section": "",
-    "text": "Thanks for checking out my web site!"
+    "text": "My mission is to unravel the mysteries hidden within the vast data landscape. I wear my metaphorical detective attire, ask questions and search for clues buried deep in the cryptic data sets. Armed with my laptop, my trusty companions (R and Stata), and the power of data analytics, I conjure insights to reveal the world of variables and distributions. Lets ask questions, make assumptions and illuminate the shadows to understand the world of data."
+  },
+  {
+    "objectID": "reports/Transitioning from informality to formality - Perspectives on formalization of informal enterprises/index.html",
+    "href": "reports/Transitioning from informality to formality - Perspectives on formalization of informal enterprises/index.html",
+    "title": "Transitioning from informality to formality: Perspectives on formalization of informal enterprises",
+    "section": "",
+    "text": "Abstract: The informal economy is a common feature of developing countries and Nepal is no exception to it. Addressing the issue of heterogeneity is imperative to understanding informal enterprises, as one policy solution that works for some informal enterprises might not work for other informal enterprises. In a similar vein, the impact of the Covid-19 on informal enterprises is also an important issue that needs to be addressed. Additionally, the workers in the informal economy face rights, social protection, and representational deficits. Literature suggests three important policy implications to deal with informality: reduction of tax rates and entry costs, strict law enforcement, and improved business environment. In essence, it is crucial to understand if these policy implications are applicable in the context of Nepal. In this study, primary and secondary sources of data have been used. Inferential statistical analysis is done from the World Bank Enterprise Survey data and the World Bank Informal Survey data to make generalizations about the population of informal enterprises in Nepal. Likewise, qualitative content analysis is done from the personal interview survey data to understand enterprises from a closer perspective. The research provides some important insights on informality in the context of Nepal: a) registration depends upon important factors such as the age of the owner, sales, market speculation, business maturity, level of law enforcement, business environment, strategic behavior of competitors, and market conditions, b) the associated costs of registration is higher than its benefits, c) informal enterprises are flexible and they tend to depend on informal sources of finance, d) informal enterprises are vulnerable to external shocks like the Covid-19 pandemic. The research concludes on the need to adopt a synergistic policy approach, whereby emphasis should be laid on building a centralized database for informal workers, better access to finance, distinguished policy options for informal enterprises, information campaigns on registration procedures and benefits to registration, long-term policy on economic growth and accessible education, flexible and market-oriented training programs, identification of intermediaries, working through intermediaries to provide selective benefits and a mechanism to provide a safety net for informal workers and own-account informal workers."
+  },
+  {
+    "objectID": "publications.html",
+    "href": "publications.html",
+    "title": "Satish Bajracharya",
+    "section": "",
+    "text": "Transitioning from informality to formality: Perspectives on formalization of informal enterprises\n\n\n\n\n\n\n\npublished report\n\n\n\n\n\n\n\n\n\n\n\nDec 22, 2021\n\n\nSatish Bajracharya, Daayitwa Nepal Public Policy Fellow\n\n\n\n\n\n\n  \n\n\n\n\nBreaking down the culture of change\n\n\n\n\n\n\n\npublished blog\n\n\n\n\n\n\n\n\n\n\n\nNov 10, 2021\n\n\nSatish Bajracharya, Daayitwa Nepal Public Policy Fellow\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/Postwithplot/index.html",
+    "href": "posts/Postwithplot/index.html",
+    "title": "Post With Plot",
+    "section": "",
+    "text": "This is a post with plot.\n\nplot(mtcars$mpg)"
+  },
+  {
+    "objectID": "data analytics.html",
+    "href": "data analytics.html",
+    "title": "Data Analysis Projects",
+    "section": "",
+    "text": "Post With Code\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nNov 7, 2023\n\n\nHarlow Malloc\n\n\n\n\n\n\n  \n\n\n\n\nPost With Plot\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nNov 7, 2023\n\n\nHarlow Malloc\n\n\n\n\n\n\n  \n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 4, 2023\n\n\nTristan O’Malley\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "blogs/welcome/index.html",
+    "href": "blogs/welcome/index.html",
+    "title": "Welcome To My Blog",
+    "section": "",
+    "text": "This is the first post in a Quarto blog. Welcome!\n\nSince this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
+  },
+  {
+    "objectID": "blogs/post-with-code/index.html",
+    "href": "blogs/post-with-code/index.html",
+    "title": "Post With Code",
+    "section": "",
+    "text": "This is a post with executable code.\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "blogs/Postwithplot/index.html",
+    "href": "blogs/Postwithplot/index.html",
+    "title": "Post With Plot",
+    "section": "",
+    "text": "This is a post with plot.\n\nplot(mtcars$mpg)"
+  },
+  {
+    "objectID": "blogs.html",
+    "href": "blogs.html",
+    "title": "Blog Posts",
+    "section": "",
+    "text": "Post With Code\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\nHarlow Malloc\n\n\nNov 7, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPost With Plot\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\nHarlow Malloc\n\n\nNov 7, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\nnews\n\n\n\n\n\n\n\nTristan O’Malley\n\n\nNov 4, 2023\n\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/post-with-code/index.html",
+    "href": "posts/post-with-code/index.html",
+    "title": "Post With Code",
+    "section": "",
+    "text": "This is a post with executable code.\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "posts/welcome/index.html",
+    "href": "posts/welcome/index.html",
+    "title": "Welcome To My Blog",
+    "section": "",
+    "text": "This is the first post in a Quarto blog. Welcome!\n\nSince this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
+  },
+  {
+    "objectID": "reports/Breaking down the culture of change/index.html",
+    "href": "reports/Breaking down the culture of change/index.html",
+    "title": "Breaking down the culture of change",
+    "section": "",
+    "text": "Throughout history, change has been difficult. Breaking the shackles of normalcy and going against the well-established norm has always been a continuous struggle. Despite the presence of these antecedent conditions in history, our culture, values, and norms have continuously evolved. We have to agree that change is difficult but it is a process of making things better, not for oneself but for the betterment of the society in itself. In Adam Smith’s words, the progress of society has been made by the ingenuity of philosophers or people of speculation. In other words, change is necessary for the amelioration of human conditions and is often attributed to those who observe and speculate. However, there have been instances in history where change has deteriorated the status quo and made things worse off rather than better off. Why is it so? This again leads to the question of whether change is good or bad. We will delve into these aspects in the following sections.\nUnderstanding Individuals\nBefore understanding the culture of change, we need to understand the individuals who will bring or will be affected by the change. Borrowing from economics, the very fundamental notion of individuals is driven by wants, desires, and choices based on rationality. Although, I do not agree on rationality as sometimes we tend to make irrational decisions based on feelings and instincts…\nPlease visit the Daayitwa website to read the full article."
   }
 ]

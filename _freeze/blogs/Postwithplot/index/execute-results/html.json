@@ -1,0 +1,16 @@
+{
+  "hash": "f9c8a1954cfb0f6402de2b775d5a674c",
+  "result": {
+    "markdown": "---\ntitle: \"Post With Plot\"\nauthor: \"Harlow Malloc\"\ndate: \"2023-11-07\"\ncategories: [news, code, analysis]\nimage: \"image.jpg\"\n---\n\n\nThis is a post with plot.\n\n\n::: {.cell}\n\n```{.r .cell-code}\nplot(mtcars$mpg)\n```\n\n::: {.cell-output-display}\n![](index_files/figure-html/unnamed-chunk-1-1.png){width=672}\n:::\n:::\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

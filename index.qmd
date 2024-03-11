@@ -1,19 +1,18 @@
 ---
-title: "About Me"
+title: "Satish Bajracharya"
+image: "img/Satish.jpg"
 about:
-  id: me
-  template: broadside
-  image: img/profile.png
+  template: jolla
+  image-width: 20em
+  image-shape: round
+  links:
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/in/vajrasatis
+    - icon: envelope
+      text: Contact Me
+      href: mailto:vajrasatis@gmail.com
+
 ---
 
-:::{#me}
-
-## Goals
-
-## Education
-
-## Experience
-
-:::
-
-Thanks for checking out my web site!
+My mission is to unravel the mysteries hidden within the vast data landscape. I wear my metaphorical detective attire, ask questions and search for clues buried deep in the cryptic data sets. Armed with my laptop, my trusty companions (R and Stata), and the power of data analytics, I conjure insights to reveal the world of variables and distributions. Lets ask questions, make assumptions and illuminate the shadows to understand the world of data.    

@@ -1,0 +1,24 @@
+---
+title: "Transitioning from informality to formality: Perspectives on formalization of informal enterprises"
+author: "Satish Bajracharya, Daayitwa Nepal Public Policy Fellow"
+date: "2021-12-22"
+categories: [published report]
+image: "image.jpg"
+engine: "knitr"
+---
+
+```{css, echo = FALSE}
+p {
+  text-align: justify
+}
+```
+
+**Abstract**: The informal economy is a common feature of developing countries and Nepal is no exception to it. Addressing the issue of heterogeneity is imperative to understanding informal enterprises, as one policy solution that works for some informal enterprises might not work for other informal enterprises. In a similar vein, the impact of the Covid-19 on informal enterprises is also an important issue that needs to be addressed. Additionally, the workers in the informal economy face rights, social protection, and representational deficits. Literature suggests three important policy implications to deal with informality: reduction of tax rates and entry costs, strict law enforcement, and improved business environment. In essence, it is crucial to understand if these policy implications are applicable in the context of Nepal. In this study, primary and secondary sources of data have been used. Inferential statistical analysis is done from the World Bank Enterprise Survey data and the World Bank Informal Survey data to make generalizations about the population of informal enterprises in Nepal. Likewise, qualitative content analysis is done from the personal interview survey data to understand enterprises from a closer perspective. The research provides some important insights on informality in the context of Nepal: a) registration depends upon important factors such as the age of the owner, sales, market speculation, business maturity, level of law enforcement, business environment, strategic behavior of competitors, and market conditions, b) the associated costs of registration is higher than its benefits, c) informal enterprises are flexible and they tend to depend on informal sources of finance, d) informal enterprises are vulnerable to external shocks like the Covid-19 pandemic. The research concludes on the need to adopt a synergistic policy approach, whereby emphasis should be laid on building a centralized database for informal workers, better access to finance, distinguished policy options for informal enterprises, information campaigns on registration procedures and benefits to registration, long-term policy on economic growth and accessible education, flexible and market-oriented training programs, identification of intermediaries, working through intermediaries to provide selective benefits and a mechanism to provide a safety net for informal workers and own-account informal workers.
+
+---
+<iframe 
+  width="800" 
+  height="800" 
+  src="DNPPF Report.pdf">
+</iframe>
+

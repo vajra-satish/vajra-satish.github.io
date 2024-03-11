@@ -1,0 +1,14 @@
+{
+  "hash": "a439286cd96e5416158dd31604fbcb34",
+  "result": {
+    "markdown": "---\ntitle: \"Breaking down the culture of change\"\nauthor: \"Satish Bajracharya, Daayitwa Nepal Public Policy Fellow\"\ndate: \"2021-11-10\"\ncategories: [published blog]\nimage: \"image.jpg\"\nengine: \"knitr\"\n---\n\n::: {.cell}\n<style type=\"text/css\">\np {\n  text-align: justify\n}\n</style>\n:::\n\n\nThroughout history, change has been difficult. Breaking the shackles of normalcy and going against the well-established norm has always been a continuous struggle. Despite the presence of these antecedent conditions in history, our culture, values, and norms have continuously evolved. We have to agree that change is difficult but it is a process of making things better, not for oneself but for the betterment of the society in itself. In Adam Smith's words, the progress of society has been made by the ingenuity of philosophers or people of speculation. In other words, change is necessary for the amelioration of human conditions and is often attributed to those who observe and speculate. However, there have been instances in history where change has deteriorated the status quo and made things worse off rather than better off. Why is it so? This again leads to the question of whether change is good or bad. We will delve into these aspects in the following sections.\n\n**Understanding Individuals**\n\nBefore understanding the culture of change, we need to understand the individuals who will bring or will be affected by the change. Borrowing from economics, the very fundamental notion of individuals is driven by wants, desires, and choices based on rationality. Although, I do not agree on rationality as sometimes we tend to make irrational decisions based on feelings and instincts...\n\nPlease visit the [Daayitwa website](https://www.daayitwa.org/faces-of-change/breaking-down-the-culture-of-change) to read the full article.\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
