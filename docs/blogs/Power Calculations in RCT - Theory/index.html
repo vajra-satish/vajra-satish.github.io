@@ -229,7 +229,7 @@ Note
 </section>
 <section id="statistical-power" class="level1">
 <h1>Statistical power</h1>
-<p>By understanding the type 1 and type 2 errors, we can calibrate the power of a statistical test. Power of a statistical test is the probability of rejecting a null hypothesis <span class="math inline">\(H_0\)</span> when it is false.In general, it is the likelihood of not making a type 2 error. <span class="math display">\[Power (\kappa): 0&lt;\kappa&lt;1\]</span></p>
+<p>By understanding the type 1 and type 2 errors, we can calibrate the power of a statistical test. Power of a statistical test is the probability of rejecting a null hypothesis <span class="math inline">\(H_0\)</span> when it is false. In general, it is the likelihood of not making a type 2 error. <span class="math display">\[Power (\kappa): 0&lt;\kappa&lt;1\]</span></p>
 <p>The level of significance determines how conservative or cautious we want to be in jumping to conclusion about the effectiveness of an intervention. The significance level determines the chance of making type 1 error. It is also referred as the size of a test denoted by <span class="math inline">\(\alpha\)</span>. We would like to make sure we reject <span class="math inline">\(H_0\)</span> when there is an effect. More power means we have a better chance to do so.</p>
 </section>
 <section id="what-determines-power" class="level1">
@@ -239,7 +239,7 @@ Note
 </li>
 <li>Sample size (<span class="math inline">\(n\)</span>): Increasing the sample size increases the power of a statistical test. Suppose we have an outcome variable <span class="math inline">\(X\)</span>. Variance of the estimated difference in means is related to the variance of underlying variable <span class="math inline">\(X\)</span> and the sample size. As sample size increases, the variance of the estimated difference in meanse reduces thereby increasing power. A reduction in variance of <span class="math inline">\(X\)</span> also reduces the variance of the estimated difference in means (control and treatment group).</li>
 </ul>
-<p>For instance, in evaluating an education project, we can work with sample or individuals whose outcomes we expect to be relatively homogeneous. To do so, we can focus on kids in a single grade of primary school or work with a narrow age range instead of working with children in all grades.</p>
+<p>For instance, in evaluating an education project, we can work with sample of individuals whose outcomes we expect to be relatively homogeneous. To do so, we can focus on kids in a single grade of primary school or work with a narrow age range instead of working with children in all grades.</p>
 <div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -280,7 +280,7 @@ Note
 <p>The minimum detectable effect size is the smallest effect that can be detected with a given probability by a statistical test at a certain significance level.</p>
 </div>
 </div>
-<p>The power formula for a sample split into two groups with equal proportions to treatment and control group is: <span class="math display">\[\beta=2*(z_{1-\kappa}+z_{\alpha/2})*\sigma/\sqrt n\]</span> Dividing both sides by <span class="math inline">\(\sigma\)</span>, we get: <span class="math display">\[\beta/\sigma=2*(z_{1-\kappa}+z_{\alpha/2})*1/\sqrt n\]</span> Here, <span class="math inline">\(\beta/\sigma\)</span> is the minimum detectable effect size for a sample split in two groups with equal proportion.</p>
+<p>The power formula for a sample split into two groups in equal proportion in treatment and control group is: <span class="math display">\[\beta=2*(z_{1-\kappa}+z_{\alpha/2})*\sigma/\sqrt n\]</span> Dividing both sides by <span class="math inline">\(\sigma\)</span>, we get: <span class="math display">\[\beta/\sigma=2*(z_{1-\kappa}+z_{\alpha/2})*1/\sqrt n\]</span> Here, <span class="math inline">\(\beta/\sigma\)</span> is the minimum detectable effect size for a sample split into two groups in equal proportion.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -294,7 +294,7 @@ Note
 <p>Visit this <a href="https://learning.edx.org/course/course-v1:WBGx+IEM01x+1T2022/block-v1:WBGx+IEM01x+1T2022+type@sequential+block@555c2de4acbc48dbb2985e21215a399c/block-v1:WBGx+IEM01x+1T2022+type@vertical+block@2ec5098576774bf9b778824e10ce3502">site</a> to know more about the power formula.</p>
 </div>
 </div>
-<p>We can invert the power formula to estimate the sample size required for a given minimum detectable effect. The formula is two groups split into equal proportions.</p>
+<p>We can invert the power formula to estimate the sample size required for a given minimum detectable effect. The formula is for two groups split into equal proportions.</p>
 <p><span class="math display">\[n=4*(z_{1-\kappa}+z_{\alpha/2})^2*(\sigma/\beta)^2\]</span></p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -306,7 +306,7 @@ Setting power and minimum detectable effect
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Researchers usually use a power size of 0.8 or higher. In may situations we expect to have a minimum detectable effect size of 0.2 standard deviations.</p>
+<p>Researchers usually use a power size of 0.8 or higher. In many situations we expect to have a minimum detectable effect size of 0.2 standard deviations.</p>
 </div>
 </div>
 <p>Here, we assume that the underlying variable follows a normal distribution with a known variance. But in practice, such assumption do not hold. In such cases we use a modified version of the power formula using the t statistic.</p>
