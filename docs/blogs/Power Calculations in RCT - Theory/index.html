@@ -164,7 +164,8 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="introduction-to-power-calculations" class="level1">
 <h1>Introduction to power calculations</h1>
-<p>Power calculations play a critical role in determining the number of people or households to include in a Randomized Control Trial (RCT). Statistical tests are prone to type 1 and type 2 errors. We can reduce the probability of such errors by increasing the sample size. However, in practice, sample size is determined by the amount of resources at hand. There is a trade off between the sample size and the cost of data collection. We might also use clusters in RCT to tackle treatment spillovers.</p>
+<p>Power calculations play a critical role in determining the number of people or households to include in a Randomized Control Trial (RCT). Further, statistical tests are prone to type 1 and type 2 errors. We can reduce the probability of such errors by increasing the sample size. However, in practice, sample size is determined by the amount of resources at hand since there is a trade off between the sample size and the cost of data collection.</p>
+<p>Spillovers in RCTs are also a cause of concern for researchers. As a result, we might also use clusters in RCT to tackle spillovers effects. However, clustering often requires a larger sample size as we are stratifying the sample into different clusters.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -180,10 +181,10 @@ Note
 </div>
 </section>
 <section id="type-1-and-type-2-errors" class="level1">
-<h1>Type 1 and Type 2 errors</h1>
-<p>When conducting RCTs, we are guided by the principle of conservatism. We do not want to promote costly policy changes without evidence. We stack the deck against ourselves by making an assumption that there is no impact. Given this assumption, we check whether our data is consistent with this assumption.This is the assumption that we test, which is called the null hypothesis denoted by <span class="math inline">\(H_0\)</span>. While making inference, we are prone to these two types of errors shown below.</p>
+<h1>Type 1 and type 2 errors</h1>
+<p>When conducting RCTs, we are guided by the principle of conservatism. We do not want to promote costly policy changes without evidence. We stack the deck against ourselves by making an assumption that there is no impact made by the intervention. Given this assumption, we check whether our data is consistent with this assumption.This assumption is called the null hypothesis, which denoted by <span class="math inline">\(H_0\)</span>. While making inference, we are prone to these two types of errors which are shown below.</p>
 <table class="table">
-<caption>Demonstration of pipe table syntax</caption>
+<caption>Type 1 and type 2 errors</caption>
 <thead>
 <tr class="header">
 <th>Test Statistic</th>
@@ -204,6 +205,49 @@ Note
 </tr>
 </tbody>
 </table>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Type 1 error occurs when we incorrectly reject the null hypothesis <span class="math inline">\(H_0\)</span> when it is actually true. Type 2 error occurs when we fail to reject the <span class="math inline">\(H_0\)</span> when it is actually false.</p>
+</div>
+</div>
+</section>
+<section id="statistical-power" class="level1">
+<h1>Statistical power</h1>
+<p>By understanding the type 1 and type 2 errors, we can calibrate the power of a statistical test. Power of a statistical test is the probability of rejecting a null hypothesis <span class="math inline">\(H_0\)</span> when it is false.In general, it is the likelihood of not making a type 2 error. <span class="math display">\[Power (\kappa): 0&lt;\kappa&lt;1\]</span></p>
+<p>The level of significance determines how conservative or cautious we want to be in jumping to conclusion about the effectiveness of an intervention. The significance level determines the chance of making type 1 error. It is also referred as the size of a test denoted by <span class="math inline">\(\alpha\)</span>. We would like to make sure we reject <span class="math inline">\(H_0\)</span> when there is an effect. More power means we have a better chance to do so.</p>
+</section>
+<section id="what-determines-power" class="level1">
+<h1>What determines power?</h1>
+<ul>
+<li>Effect size (<span class="math inline">\(\beta\)</span>): When running a RCT, the effect size is the difference between the average outcome of the control and treatment group. A large effect size increases the power of a statistical test.<br>
+</li>
+<li>Sample size (<span class="math inline">\(n\)</span>): Increasing the sample size increases the power of a statistical test. Variance of the estimated difference in means is related to the variance of underlying variable <span class="math inline">\(X\)</span> and the sample size. As sample size increases, the variance of the estimated difference in meanse reduces thereby increasing power. A reduction in variance of <span class="math inline">\(X\)</span> also reduces the variance of the estimated difference in means (control and treatment group).</li>
+</ul>
+<p>For instance, in evaluating an education project, we can work with sample or individuals whose outcomes we expect to be relatively homogeneous. To do so, we can focus on kids in a single grade of primary school or work with a narrow age range instead of working with children in all grades.</p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Caution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>What you gain in terms of power you loose in terms of external validity.</p>
+</div>
+</div>
+</div>
 
 
 </section>
