@@ -127,6 +127,7 @@ ul.task-list li input[type="checkbox"] {
       <h1 class="title">Power Calculation in RCT: Theory</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">Survey design and framework</div>
+                <div class="quarto-category">RCT</div>
               </div>
                   </div>
   </div>
@@ -215,7 +216,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Type 1 error occurs when we incorrectly reject the null hypothesis <span class="math inline">\(H_0\)</span> when it is actually true. Type 2 error occurs when we fail to reject the <span class="math inline">\(H_0\)</span> when it is actually false.</p>
+<p>Here, the test statistic measures the difference in average outcomes between the treatment and control group as a result of the intervention. Type 1 error occurs when we incorrectly reject the null hypothesis <span class="math inline">\(H_0\)</span> when it is actually true. Type 2 error occurs when we fail to reject the <span class="math inline">\(H_0\)</span> when it is actually false.</p>
 </div>
 </div>
 </section>
@@ -229,7 +230,7 @@ Note
 <ul>
 <li>Effect size (<span class="math inline">\(\beta\)</span>): When running a RCT, the effect size is the difference between the average outcome of the control and treatment group. A large effect size increases the power of a statistical test.<br>
 </li>
-<li>Sample size (<span class="math inline">\(n\)</span>): Increasing the sample size increases the power of a statistical test. Variance of the estimated difference in means is related to the variance of underlying variable <span class="math inline">\(X\)</span> and the sample size. As sample size increases, the variance of the estimated difference in meanse reduces thereby increasing power. A reduction in variance of <span class="math inline">\(X\)</span> also reduces the variance of the estimated difference in means (control and treatment group).</li>
+<li>Sample size (<span class="math inline">\(n\)</span>): Increasing the sample size increases the power of a statistical test. Suppose we have an outcome variable <span class="math inline">\(X\)</span>. Variance of the estimated difference in means is related to the variance of underlying variable <span class="math inline">\(X\)</span> and the sample size. As sample size increases, the variance of the estimated difference in meanse reduces thereby increasing power. A reduction in variance of <span class="math inline">\(X\)</span> also reduces the variance of the estimated difference in means (control and treatment group).</li>
 </ul>
 <p>For instance, in evaluating an education project, we can work with sample or individuals whose outcomes we expect to be relatively homogeneous. To do so, we can focus on kids in a single grade of primary school or work with a narrow age range instead of working with children in all grades.</p>
 <div class="callout callout-style-default callout-caution callout-titled">
@@ -244,10 +245,76 @@ Caution
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>What you gain in terms of power you loose in terms of external validity.</p>
+<p>What you gain in terms of power you lose in terms of external validity.</p>
 </div>
 </div>
 </div>
+</section>
+<section id="the-power-formula" class="level1">
+<h1>The power formula</h1>
+<p>When we talk about power (<span class="math inline">\(\kappa\)</span>), we need to consider these elements:</p>
+<ul>
+<li>Size of a test: <span class="math inline">\(\alpha\)</span></li>
+<li>Effect size: <span class="math inline">\(\beta\)</span> (<span class="math inline">\(b\)</span> is the estimated treatment effect from the sample: <span class="math inline">\(\bar{X_T}-\bar{X_C}\)</span>, where T and C corresponds to treatment and control group)</li>
+<li>Variance of the underlying outcome data: <span class="math inline">\(\sigma^2\)</span></li>
+<li>Sample size: <span class="math inline">\(n\)</span></li>
+</ul>
+<p>In practice, we fix <span class="math inline">\(\alpha\)</span>, <span class="math inline">\(n\)</span> and <span class="math inline">\(\kappa\)</span> given any <span class="math inline">\(\sigma^2\)</span> and reduce the five way relationship into a two way relationship between <span class="math inline">\(\beta\)</span> and <span class="math inline">\(n\)</span>. Doing so, we can either input an expected effect size (<span class="math inline">\(\beta\)</span>) to get the sample size (<span class="math inline">\(n\)</span>) or input sample size (<span class="math inline">\(n\)</span>) to get a minimum detectable effect size.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The minimum detectable effect size is the smallest effect that can be detected with a given probability by a statistical test at a certain significance level.</p>
+</div>
+</div>
+<p>The power formula for a sample split into two groups with equal proportions to treatment and control group is: <span class="math display">\[\beta=2*(z_{1-\kappa}+z_{\alpha/2})*\sigma/\sqrt n\]</span> Dividing both sides by <span class="math inline">\(\sigma\)</span>, we get: <span class="math display">\[\beta/\sigma=2*(z_{1-\kappa}+z_{\alpha/2})*1/\sqrt n\]</span> Here, <span class="math inline">\(\beta/\sigma\)</span> is the minimum detectable effect size for a sample split in two groups with equal proportion.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Visit this <a href="https://learning.edx.org/course/course-v1:WBGx+IEM01x+1T2022/block-v1:WBGx+IEM01x+1T2022+type@sequential+block@555c2de4acbc48dbb2985e21215a399c/block-v1:WBGx+IEM01x+1T2022+type@vertical+block@2ec5098576774bf9b778824e10ce3502">site</a> to know more about the power formula.</p>
+</div>
+</div>
+<p>We can invert the power formula to estimate the sample size required for a given minimum detectable effect. The formula is two groups split into equal proportions.</p>
+<p><span class="math display">\[n=4*(z_{1-\kappa}+z_{\alpha/2})^2*(\sigma/\beta)^2\]</span></p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Setting power and minimum detectable effect
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Researchers usually use a power size of 0.8 or higher. In may situations we expect to have a minimum detectable effect size of 0.2 standard deviations.</p>
+</div>
+</div>
+<p><img src="image.jpg" class="img-fluid"></p>
+<p>Targeting a smaller and smaller effect size results in a sample size that rises at a steeper and steeper rate.</p>
+<p>Here, we assume that the underlying variable follows a normal distribution with a known variance. But in practice, such assumption do not hold. In such cases we use a modified version of the power formula using the t statistic.</p>
+<p><span class="math display">\[\beta=2*(t_{1-\alpha}+t_{\alpha/2})*S/\sqrt n\]</span></p>
+<p>where,</p>
+<ul>
+<li>t statistic corresponds to the critical values of t distribution with <span class="math inline">\(n-2\)</span> degrees of freedom.</li>
+<li>S is the square root of the estimated sample variance.</li>
+</ul>
+</section>
+<section id="references" class="level1">
+<h1>References</h1>
+<p><a href="https://learning.edx.org/course/course-v1:WBGx+IEM01x+1T2022/block-v1:WBGx+IEM01x+1T2022+type@sequential+block@555c2de4acbc48dbb2985e21215a399c/block-v1:WBGx+IEM01x+1T2022+type@vertical+block@2ec5098576774bf9b778824e10ce3502">Impact evaluation Methods with Applications in Low- and Middle-Income Countries, World Bank</a></p>
 
 
 </section>
