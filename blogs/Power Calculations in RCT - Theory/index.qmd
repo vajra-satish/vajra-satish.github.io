@@ -1,5 +1,5 @@
 ---
-title: "Power Calculation in RCT: Theory"
+title: "Power Calculations in RCT: Without Clusters (Theory)"
 author: "Satish Bajracharrya"
 date: "2024-03-12"
 categories: [Survey design, RCT]
@@ -47,7 +47,7 @@ The level of significance determines how conservative or cautious we want to be 
 # What determines power?
 
 -   Effect size ($\beta$): When running a RCT, the effect size is the difference between the average outcome of the control and treatment group. A large effect size increases the power of a statistical test.\
--   Sample size ($n$): Increasing the sample size increases the power of a statistical test. Suppose we have an outcome variable $X$. Variance of the estimated difference in means is related to the variance of underlying variable $X$ and the sample size. As sample size increases, the variance of the estimated difference in meanse reduces thereby increasing power. A reduction in variance of $X$ also reduces the variance of the estimated difference in means (control and treatment group).
+-   Sample size ($n$): Increasing the sample size increases the power of a statistical test. Suppose we have an outcome variable $X$. Variance of the estimated difference in means is related to the variance of underlying variable $X$ and the sample size. As sample size increases, the variance of the estimated difference in means reduces thereby increasing power. A reduction in variance of $X$ also reduces the variance of the estimated difference in means (control and treatment group).
 
 For instance, in evaluating an education project, we can work with sample of individuals whose outcomes we expect to be relatively homogeneous. To do so, we can focus on kids in a single grade of primary school or work with a narrow age range instead of working with children in all grades.
 
@@ -83,7 +83,7 @@ $$n=4*(z_{1-\kappa}+z_{\alpha/2})^2*(\sigma/\beta)^2$$
 ::: callout-tip
 ## Setting power and minimum detectable effect
 
-Researchers usually use a power size of 0.8 or higher. In many situations we expect to have a minimum detectable effect size of 0.2 standard deviations.
+Researchers usually use a power size of 0.8 or higher. In many situations the minimum detectable effect is based on policy objectives or benchmark values.
 :::
 
 Here, we assume that the underlying variable follows a normal distribution with a known variance. But in practice, such assumption do not hold. In such cases we use a modified version of the power formula using the t statistic.

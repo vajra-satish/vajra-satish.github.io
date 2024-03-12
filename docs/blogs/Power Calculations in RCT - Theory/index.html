@@ -9,7 +9,7 @@
 <meta name="author" content="Satish Bajracharrya">
 <meta name="dcterms.date" content="2024-03-12">
 
-<title>Satish Bajracharya - Power Calculation in RCT: Theory</title>
+<title>Satish Bajracharya - Power Calculations in RCT: Without Clusters (Theory)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -124,7 +124,7 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Power Calculation in RCT: Theory</h1>
+      <h1 class="title">Power Calculations in RCT: Without Clusters (Theory)</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">Survey design</div>
                 <div class="quarto-category">RCT</div>
@@ -237,7 +237,7 @@ Note
 <ul>
 <li>Effect size (<span class="math inline">\(\beta\)</span>): When running a RCT, the effect size is the difference between the average outcome of the control and treatment group. A large effect size increases the power of a statistical test.<br>
 </li>
-<li>Sample size (<span class="math inline">\(n\)</span>): Increasing the sample size increases the power of a statistical test. Suppose we have an outcome variable <span class="math inline">\(X\)</span>. Variance of the estimated difference in means is related to the variance of underlying variable <span class="math inline">\(X\)</span> and the sample size. As sample size increases, the variance of the estimated difference in meanse reduces thereby increasing power. A reduction in variance of <span class="math inline">\(X\)</span> also reduces the variance of the estimated difference in means (control and treatment group).</li>
+<li>Sample size (<span class="math inline">\(n\)</span>): Increasing the sample size increases the power of a statistical test. Suppose we have an outcome variable <span class="math inline">\(X\)</span>. Variance of the estimated difference in means is related to the variance of underlying variable <span class="math inline">\(X\)</span> and the sample size. As sample size increases, the variance of the estimated difference in means reduces thereby increasing power. A reduction in variance of <span class="math inline">\(X\)</span> also reduces the variance of the estimated difference in means (control and treatment group).</li>
 </ul>
 <p>For instance, in evaluating an education project, we can work with sample of individuals whose outcomes we expect to be relatively homogeneous. To do so, we can focus on kids in a single grade of primary school or work with a narrow age range instead of working with children in all grades.</p>
 <div class="callout callout-style-default callout-caution callout-titled">
@@ -306,7 +306,7 @@ Setting power and minimum detectable effect
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Researchers usually use a power size of 0.8 or higher. In many situations we expect to have a minimum detectable effect size of 0.2 standard deviations.</p>
+<p>Researchers usually use a power size of 0.8 or higher. In many situations the minimum detectable effect is based on policy objectives or benchmark values.</p>
 </div>
 </div>
 <p>Here, we assume that the underlying variable follows a normal distribution with a known variance. But in practice, such assumption do not hold. In such cases we use a modified version of the power formula using the t statistic.</p>
