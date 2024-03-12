@@ -2,7 +2,7 @@
 title: "Power Calculation in RCT: Theory"
 author: "Satish Bajracharrya"
 date: "2024-03-12"
-categories: [Survey design and framework, RCT]
+categories: [Survey design, RCT]
 image: "image.jpg"
 engine: "knitr"
 ---
