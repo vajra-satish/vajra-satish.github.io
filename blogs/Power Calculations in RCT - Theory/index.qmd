@@ -81,7 +81,7 @@ Researchers usually use a power size of 0.8 or higher. In may situations we expe
 
 Here, we assume that the underlying variable follows a normal distribution with a known variance. But in practice, such assumption do not hold. In such cases we use a modified version of the power formula using the t statistic.
 
-$$\beta=2*(t_{1-\alpha}+t_{\alpha/2})*S/\sqrt n$$
+$$\beta=2*(t_{1-\kappa}+t_{\alpha/2})*S/\sqrt n$$
 
 where,  
 
@@ -90,7 +90,7 @@ where,
 
 ![](image.jpg)
 
-Targeting a smaller and smaller effect size results in a sample size that rises at a steeper and steeper rate.
+Targeting a smaller and smaller effect size results in a sample size that rises at a steeper and steeper rate. Here, $1-\beta$ corresponds to the power of a test.
 
 # References
 [Impact evaluation Methods with Applications in Low- and Middle-Income Countries, World Bank](https://learning.edx.org/course/course-v1:WBGx+IEM01x+1T2022/block-v1:WBGx+IEM01x+1T2022+type@sequential+block@555c2de4acbc48dbb2985e21215a399c/block-v1:WBGx+IEM01x+1T2022+type@vertical+block@2ec5098576774bf9b778824e10ce3502)
