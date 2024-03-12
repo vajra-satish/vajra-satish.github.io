@@ -1,13 +1,17 @@
 ---
-title: "Post With Code"
-author: "Harlow Malloc"
-date: "2023-11-07"
-categories: [news, code, analysis]
+title: "Power Calculation in RCT: Theory"
+author: "Satish Bajracharrya"
+date: "2024-03-12"
+categories: [Survey design and framework]
 image: "image.jpg"
 ---
 
-This is a post with executable code.
+# Introduction to power calculations
 
-```{r}
-1 + 1
-```
+Power calculations play a critical role in determining the number of people or households to include in a Randomized Control Trial (RCT). Statistical tests are prone to type 1 and type 2 errors. We can reduce the probability of such errors by increasing the sample size. However, in practice, sample size is determined by the amount of resources at hand. There is a trade off between the sample size and the cost of data collection.We might also use clusters in RCT to tackle treatment spillovers.
+
+::: callout-note
+Clustered RCTs are more prone to type 1 and type 2 errors than an unclustered RCT design with the same number of individuals or households. The way we assign individuals to different experimental groups can also reduce the incidence of type 1 and type 2 errors. For instance, using characteristics such as gender to stratify the randomization.
+:::
+
+# Statistical Power of a test
