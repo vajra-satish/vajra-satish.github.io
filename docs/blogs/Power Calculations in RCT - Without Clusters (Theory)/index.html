@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Satish Bajracharrya">
+<meta name="dcterms.date" content="2024-03-12">
 
-<title>Satish Bajracharya - Blog Posts</title>
+<title>Satish Bajracharya - Power Calculations in RCT: Without Clusters (Theory)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,25 +25,23 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./img/person.svg" rel="icon" type="image/svg+xml">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../img/person.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -62,35 +62,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-title','listing-author','listing-date','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -98,14 +69,14 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Satish Bajracharya</span>
     </a>
   </div>
@@ -116,23 +87,23 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html" rel="" target="">
+    <a class="nav-link" href="../../index.html" rel="" target="">
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./data analytics.html" rel="" target="">
+    <a class="nav-link" href="../../data analytics.html" rel="" target="">
  <span class="menu-text">Data Analytics</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./blogs.html" rel="" target="" aria-current="page">
+    <a class="nav-link" href="../../blogs.html" rel="" target="">
  <span class="menu-text">Blogs</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./publications.html" rel="" target="">
+    <a class="nav-link" href="../../publications.html" rel="" target="">
  <span class="menu-text">Publications</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./cv.html" rel="" target="">
+    <a class="nav-link" href="../../cv.html" rel="" target="">
  <span class="menu-text">CV</span></a>
   </li>  
 </ul>
@@ -152,32 +123,57 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page-left">
-      <h1 class="title">Blog Posts</h1>
-                      </div>
+    <div class="quarto-title column-body">
+      <h1 class="title">Power Calculations in RCT: Without Clusters (Theory)</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">Survey design</div>
+                <div class="quarto-category">RCT</div>
+              </div>
+                  </div>
   </div>
     
   
   <div class="quarto-title-meta">
 
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Satish Bajracharrya </p>
+            </div>
+    </div>
       
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">March 12, 2024</p>
+      </div>
+    </div>
     
       
     </div>
     
   
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(3)</span></div><div class="category" data-category="RCT">RCT <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Survey design">Survey design <span class="quarto-category-count">(1)</span></div><div class="category" data-category="analysis">analysis <span class="quarto-category-count">(1)</span></div><div class="category" data-category="code">code <span class="quarto-category-count">(1)</span></div><div class="category" data-category="news">news <span class="quarto-category-count">(2)</span></div></div></div>
+    
 <!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
 
+<div class="cell">
+<style type="text/css">
+p {
+  text-align: justify
+}
+</style>
+</div>
+<section id="introduction-to-power-calculations" class="level1">
+<h1>Introduction to power calculations</h1>
+<p>Power calculations play a critical role in determining the number of people or households to include in a Randomized Control Trial (RCT). Further, statistical tests are prone to type 1 and type 2 errors. We can reduce the probability of such errors by increasing the sample size. However, in practice, sample size is determined by the amount of resources at hand since there is a trade off between the sample size and the cost of data collection.</p>
+<p>Spillovers in RCTs are also a cause of concern for researchers. As a result, we might also use clusters in RCT to tackle spillovers effects. However, clustering often requires a larger sample size as we are stratifying the sample into different clusters.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -188,146 +184,149 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Note that there are five types of callouts, including: <code>note</code>, <code>warning</code>, <code>important</code>, <code>tip</code>, and <code>caution</code>.</p>
+<p>Clustered RCTs are more prone to type 1 and type 2 errors than an unclustered RCT design with the same number of individuals or households. The way we assign individuals to different experimental groups can also reduce the incidence of type 1 and type 2 errors. For instance, using characteristics such as gender to stratify the randomization.</p>
 </div>
 </div>
-<div class="callout callout-style-default callout-tip callout-titled">
+</section>
+<section id="type-1-and-type-2-errors" class="level1">
+<h1>Type 1 and type 2 errors</h1>
+<p>When conducting RCTs, we are guided by the principle of conservatism. We do not want to promote costly policy changes without evidence. We stack the deck against ourselves by making an assumption that there is no impact made by the intervention. Given this assumption, we check whether our data is consistent with this assumption, which is called the null hypothesis. It is denoted by <span class="math inline">\(H_0\)</span>. While making inference, we are prone to these two types of errors which are shown below.</p>
+<table class="table">
+<caption>Type 1 and type 2 errors</caption>
+<thead>
+<tr class="header">
+<th>Test Statistic</th>
+<th style="text-align: left;"><span class="math inline">\(H_0=T\)</span></th>
+<th style="text-align: left;"><span class="math inline">\(H_0=F\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(t&lt;=2\)</span></td>
+<td style="text-align: left;">Correct Inference</td>
+<td style="text-align: left;">Type 2 error</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(t&gt;=2\)</span></td>
+<td style="text-align: left;">Type 1 error</td>
+<td style="text-align: left;">Correct inference</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Tip with Title
+Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>This is an example of a callout with a title.</p>
+<p>Here, the test statistic measures the difference in average outcomes between the treatment and control group as a result of the intervention. Type 1 error occurs when we incorrectly reject the null hypothesis <span class="math inline">\(H_0\)</span> when it is actually true. Type 2 error occurs when we fail to reject the <span class="math inline">\(H_0\)</span> when it is actually false.</p>
 </div>
 </div>
+</section>
+<section id="statistical-power" class="level1">
+<h1>Statistical power</h1>
+<p>By understanding the type 1 and type 2 errors, we can calibrate the power of a statistical test. Power of a statistical test is the probability of rejecting a null hypothesis <span class="math inline">\(H_0\)</span> when it is false. In general, it is the likelihood of not making a type 2 error. <span class="math display">\[Power (\kappa): 0&lt;\kappa&lt;1\]</span></p>
+<p>The level of significance determines how conservative or cautious we want to be in jumping to conclusion about the effectiveness of an intervention. The significance level determines the chance of making type 1 error. It is also referred as the size of a test denoted by <span class="math inline">\(\alpha\)</span>. We would like to make sure we reject <span class="math inline">\(H_0\)</span> when there is an effect. More power means we have a better chance to do so.</p>
+</section>
+<section id="what-determines-power" class="level1">
+<h1>What determines power?</h1>
+<ul>
+<li>Effect size (<span class="math inline">\(\beta\)</span>): When running a RCT, the effect size is the difference between the average outcome of the control and treatment group. A large effect size increases the power of a statistical test.<br>
+</li>
+<li>Sample size (<span class="math inline">\(n\)</span>): Increasing the sample size increases the power of a statistical test. Suppose we have an outcome variable <span class="math inline">\(X\)</span>. Variance of the estimated difference in means is related to the variance of underlying variable <span class="math inline">\(X\)</span> and the sample size. As sample size increases, the variance of the estimated difference in means reduces thereby increasing power. A reduction in variance of <span class="math inline">\(X\)</span> also reduces the variance of the estimated difference in means (control and treatment group).</li>
+</ul>
+<p>For instance, in evaluating an education project, we can work with sample of individuals whose outcomes we expect to be relatively homogeneous. To do so, we can focus on kids in a single grade of primary school or work with a narrow age range instead of working with children in all grades.</p>
 <div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Expand To Learn About Collapse
+Caution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>This is an example of a ‘folded’ caution callout that can be expanded by the user. You can use <code>collapse="true"</code> to collapse it by default or <code>collapse="false"</code> to make a collapsible callout that is expanded by default.</p>
+<p>What you gain in terms of power you lose in terms of external validity.</p>
 </div>
 </div>
 </div>
+</section>
+<section id="the-power-formula" class="level1">
+<h1>The power formula</h1>
+<p>When we talk about power (<span class="math inline">\(\kappa\)</span>), we need to consider these elements:</p>
+<ul>
+<li>Size of a test: <span class="math inline">\(\alpha\)</span></li>
+<li>Effect size: <span class="math inline">\(\beta\)</span> (<span class="math inline">\(b\)</span> is the estimated treatment effect from the sample: <span class="math inline">\(\bar{X_T}-\bar{X_C}\)</span>, where T and C corresponds to treatment and control group)</li>
+<li>Variance of the underlying outcome data: <span class="math inline">\(\sigma^2\)</span></li>
+<li>Sample size: <span class="math inline">\(n\)</span></li>
+</ul>
+<p>In practice, we fix <span class="math inline">\(\alpha\)</span>, <span class="math inline">\(n\)</span> and <span class="math inline">\(\kappa\)</span> given any <span class="math inline">\(\sigma^2\)</span> and reduce the five way relationship into a two way relationship between <span class="math inline">\(\beta\)</span> and <span class="math inline">\(n\)</span>. Doing so, we can either input an expected effect size (<span class="math inline">\(\beta\)</span>) to get the sample size (<span class="math inline">\(n\)</span>) or input sample size (<span class="math inline">\(n\)</span>) to get a minimum detectable effect size.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The minimum detectable effect size is the smallest effect that can be detected with a given probability by a statistical test at a certain significance level.</p>
+</div>
+</div>
+<p>The power formula for a sample split into two groups in equal proportion in treatment and control group is: <span class="math display">\[\beta=2*(z_{1-\kappa}+z_{\alpha/2})*\sigma/\sqrt n\]</span> Dividing both sides by <span class="math inline">\(\sigma\)</span>, we get: <span class="math display">\[\beta/\sigma=2*(z_{1-\kappa}+z_{\alpha/2})*1/\sqrt n\]</span> Here, <span class="math inline">\(\beta/\sigma\)</span> is the minimum detectable effect size for a sample split into two groups in equal proportion.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Visit this <a href="https://learning.edx.org/course/course-v1:WBGx+IEM01x+1T2022/block-v1:WBGx+IEM01x+1T2022+type@sequential+block@555c2de4acbc48dbb2985e21215a399c/block-v1:WBGx+IEM01x+1T2022+type@vertical+block@2ec5098576774bf9b778824e10ce3502">site</a> to know more about the power formula.</p>
+</div>
+</div>
+<p>We can invert the power formula to estimate the sample size required for a given minimum detectable effect. The formula is for two groups split into equal proportions.</p>
+<p><span class="math display">\[n=4*(z_{1-\kappa}+z_{\alpha/2})^2*(\sigma/\beta)^2\]</span></p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Setting power and minimum detectable effect
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Researchers usually use a power size of 0.8 or higher. In many situations the minimum detectable effect is based on policy objectives or benchmark values.</p>
+</div>
+</div>
+<p>Here, we assume that the underlying variable follows a normal distribution with a known variance. But in practice, such assumption do not hold. In such cases we use a modified version of the power formula using the t statistic.</p>
+<p><span class="math display">\[\beta=2*(t_{1-\kappa}+t_{\alpha/2})*S/\sqrt n\]</span></p>
+<p>where,</p>
+<ul>
+<li>t statistic corresponds to the critical values of t distribution with <span class="math inline">\(n-2\)</span> degrees of freedom.</li>
+<li>S is the square root of the estimated sample variance.</li>
+</ul>
+<p><img src="image.jpg" class="img-fluid"></p>
+<p>Targeting a smaller and smaller effect size results in a sample size that rises at a steeper and steeper rate. Here, <span class="math inline">\(1-\beta\)</span> corresponds to the power of a test.</p>
+</section>
+<section id="references" class="level1">
+<h1>References</h1>
+<p><a href="https://learning.edx.org/course/course-v1:WBGx+IEM01x+1T2022/block-v1:WBGx+IEM01x+1T2022+type@sequential+block@555c2de4acbc48dbb2985e21215a399c/block-v1:WBGx+IEM01x+1T2022+type@vertical+block@2ec5098576774bf9b778824e10ce3502">Impact evaluation Methods with Applications in Low- and Middle-Income Countries, World Bank</a></p>
 
 
+</section>
 
-
-<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
-<div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-categories="Survey design,RCT" data-listing-date-sort="1710180900000" data-listing-file-modified-sort="1710265082371" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6">
-<a href="./blogs/Power Calculations in RCT - Without Clusters (Theory)/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img src="./blogs/Power Calculations in RCT - Without Clusters (Theory)/image.jpg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Power Calculations in RCT: Without Clusters (Theory)
-</h5>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('Survey design'); return false;">
-Survey design
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('RCT'); return false;">
-RCT
-</div>
-</div>
-<div class="card-text listing-description">
-Power calculations play a critical role in determining the number of people or households to include in a Randomized Control Trial (RCT). Further, statistical tests are…
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Satish Bajracharrya
-</div>
-<div class="listing-date">
-Mar 12, 2024
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="1" data-categories="news,code,analysis" data-listing-date-sort="1699294500000" data-listing-file-modified-sort="1710005435026" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
-<a href="./blogs/Postwithplot/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img src="./blogs/Postwithplot/image.jpg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Post With Plot
-</h5>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('news'); return false;">
-news
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('code'); return false;">
-code
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('analysis'); return false;">
-analysis
-</div>
-</div>
-<div class="card-text listing-description">
-This is a post with plot.
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Harlow Malloc
-</div>
-<div class="listing-date">
-Nov 7, 2023
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="2" data-categories="news" data-listing-date-sort="1699035300000" data-listing-file-modified-sort="1699359282859" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
-<a href="./blogs/welcome/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="blogs\welcome\thumbnail.jpg" style="height: 150px;"  class="thumbnail-image card-img"/></p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Welcome To My Blog
-</h5>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('news'); return false;">
-news
-</div>
-</div>
-<div class="card-text listing-description">
-This is the first post in a Quarto blog. Welcome!
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Tristan O’Malley
-</div>
-<div class="listing-date">
-Nov 4, 2023
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
