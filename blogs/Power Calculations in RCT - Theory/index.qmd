@@ -18,7 +18,7 @@ Clustered RCTs are more prone to type 1 and type 2 errors than an unclustered RC
 
 # Type 1 and type 2 errors
 
-When conducting RCTs, we are guided by the principle of conservatism. We do not want to promote costly policy changes without evidence. We stack the deck against ourselves by making an assumption that there is no impact made by the intervention. Given this assumption, we check whether our data is consistent with this assumption.This assumption is called the null hypothesis, which denoted by $H_0$. While making inference, we are prone to these two types of errors which are shown below.
+When conducting RCTs, we are guided by the principle of conservatism. We do not want to promote costly policy changes without evidence. We stack the deck against ourselves by making an assumption that there is no impact made by the intervention. Given this assumption, we check whether our data is consistent with this assumption, which is called the null hypothesis. It is denoted by $H_0$. While making inference, we are prone to these two types of errors which are shown below.
 
 | Test Statistic | $H_0=T$           | $H_0=F$           |
 |----------------|:------------------|:------------------|
