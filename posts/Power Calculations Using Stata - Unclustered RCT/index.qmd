@@ -4,57 +4,13 @@ author: "Satish Bajracharya"
 date: "2023-11-07"
 categories: [Power Calculations, Survey]
 image: "image.jpg"
+engine: "knitr"
 ---
 
 In this section,, we calculate the power for individually randomized experiments. Suppose we want to calculate the sample size required for a randomized control trial for a program intervention. The team plans to assign equal number of people to the treatment and control group.  
 
+```{stata, engine.path="C:/Stata15/Stata-64.exe"}
+power twomeans 0 0.01
 ```
-. power twomeans 23.7 20.3, sd(17)
-
-Performing iteration ...
-
-Estimated sample sizes for a two-sample means test
-t test assuming sd1 = sd2 = sd
-Ho: m2 = m1  versus  Ha: m2 != m1
-
-Study parameters:
-
-        alpha =    0.0500
-        power =    0.8000
-        delta =   -3.4000
-           m1 =   23.7000
-           m2 =   20.3000
-           sd =   17.0000
-
-Estimated sample sizes:
-
-            N =       788
-  N per group =       394
-
-. dis -3.4/17
--.2
-
-. power twomeans 0 -.2
-
-Performing iteration ...
-
-Estimated sample sizes for a two-sample means test
-t test assuming sd1 = sd2 = sd
-Ho: m2 = m1  versus  Ha: m2 != m1
-
-Study parameters:
-
-        alpha =    0.0500
-        power =    0.8000
-        delta =   -0.2000
-           m1 =    0.0000
-           m2 =   -0.2000
-           sd =    1.0000
-
-Estimated sample sizes:
-
-            N =       788
-  N per group =       394
 
 
-```

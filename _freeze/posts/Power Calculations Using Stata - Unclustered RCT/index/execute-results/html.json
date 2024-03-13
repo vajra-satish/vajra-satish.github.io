@@ -1,0 +1,14 @@
+{
+  "hash": "c455fcd4cbfacceb1317a8b812611bd9",
+  "result": {
+    "markdown": "---\ntitle: \"Power Calculations Using Stata: Unclustered RCT\"\nauthor: \"Satish Bajracharya\"\ndate: \"2023-11-07\"\ncategories: [Power Calculations, Survey]\nimage: \"image.jpg\"\nengine: \"knitr\"\n---\n\n\nIn this section,, we calculate the power for individually randomized experiments. Suppose we want to calculate the sample size required for a randomized control trial for a program intervention. The team plans to assign equal number of people to the treatment and control group.  \n\n\n::: {.cell engine.path='C:/Stata15/Stata-64.exe'}\n\n```{.stata .cell-code}\npower twomeans 0 0.01\n```\n\n\n::: {.cell-output .cell-output-stdout}\n```\n\n\n. power twomeans 0 0.01\n\nPerforming iteration Estimated sample sizes for a two-sample means test\nt test assuming sd1 = sd2 = sd\nHo: m2 = m1  versus  Ha: m2 != m1\n\nStudy parameters:\n\n        alpha =    0.0500\n        power =    0.8000\n        delta =    0.0100\n           m1 =    0.0000\n           m2 =    0.0100\n           sd =    1.0000\n\nEstimated sample sizes:\n\n            N =   313,958\n  N per group =   156,979\n```\n:::\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
