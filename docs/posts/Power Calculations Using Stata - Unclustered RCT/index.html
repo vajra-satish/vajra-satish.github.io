@@ -268,7 +268,8 @@ Estimated sample sizes:
 </div>
 </div>
 <p>We would need a total sample size of 3,142 individuals who are randomly assigned to either treatment or control group, with 1,571 individuals in each, to detect a minimum detectable effect of 0.1 standard deviations.</p>
-</section><section id="calculating-sample-sizes-needed-to-detect-a-0.01-0.025-0.05-0.1-and-0.2-standard-deviation-effect" class="level2"><h2 class="anchored" data-anchor-id="calculating-sample-sizes-needed-to-detect-a-0.01-0.025-0.05-0.1-and-0.2-standard-deviation-effect">Calculating sample sizes needed to detect a 0.01, 0.025, 0.05, 0.1 and 0.2 standard deviation effect</h2>
+</section><section id="calculating-sample-sizes-needed-to-detect-a-0.01-0.025-0.05-0.1-and-0.2-standard-deviation-effect" class="level4"><h4 class="anchored" data-anchor-id="calculating-sample-sizes-needed-to-detect-a-0.01-0.025-0.05-0.1-and-0.2-standard-deviation-effect">Calculating sample sizes needed to detect a 0.01, 0.025, 0.05, 0.1 and 0.2 standard deviation effect</h4>
+<section id="execution-in-r-1" class="level5"><h5 class="anchored" data-anchor-id="execution-in-r-1">Execution in R</h5>
 <p>To calculate the sample size required for the treatment effects (0.01, 0.025, 0.05, 0.1, 0.2), we can use the <strong>for</strong> function to iterate the <strong>effect sizes</strong> and use the <strong>pwr.t.test</strong> function to calculate the corresponding sample size.</p>
 <div class="cell">
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Create variable effect_sizes and assign the treatment effects</span></span>
@@ -336,9 +337,10 @@ Estimated sample sizes:
 5  0.05   0.8    786.8114    786.8114    786.8114 0.200  0 0.200       1</code></pre>
 </div>
 </div>
+</section><section id="execution-in-stata-1" class="level5"><h5 class="anchored" data-anchor-id="execution-in-stata-1">Execution in Stata</h5>
 
 
-</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");

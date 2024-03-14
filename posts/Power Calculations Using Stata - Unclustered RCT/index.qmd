@@ -51,7 +51,9 @@ power twomeans 0 0.1
 
 We would need a total sample size of 3,142 individuals who are randomly assigned to either treatment or control group, with 1,571 individuals in each, to detect a minimum detectable effect of 0.1 standard deviations.
 
-## Calculating sample sizes needed to detect a 0.01, 0.025, 0.05, 0.1 and 0.2 standard deviation effect
+#### Calculating sample sizes needed to detect a 0.01, 0.025, 0.05, 0.1 and 0.2 standard deviation effect
+
+##### Execution in R
 
 To calculate the sample size required for the treatment effects (0.01, 0.025, 0.05, 0.1, 0.2), we can use the **for** function to iterate the **effect sizes** and use the **pwr.t.test** function to calculate the corresponding sample size. 
 
@@ -113,3 +115,5 @@ colnames(result_table) <- c("Alpha",
 # Print the result table
 print(result_table)
 ```
+
+##### Execution in Stata
