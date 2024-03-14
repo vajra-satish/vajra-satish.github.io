@@ -374,6 +374,7 @@ Ho: m2 = m1  versus  Ha: m2 != m1
 </div>
 <p>We can see that the required sample size increases exponentially as the effect size approaches 0. Instead of a table calculations might be easier to interpret in a graph.</p>
 </section></section><section id="plotting-the-relationship" class="level2"><h2 class="anchored" data-anchor-id="plotting-the-relationship">Plotting the relationship</h2>
+<section id="execution-in-r-2" class="level5"><h5 class="anchored" data-anchor-id="execution-in-r-2">Execution in R</h5>
 <div class="cell">
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Load the grammar of graphics package to plot the graph</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
@@ -392,9 +393,18 @@ Ho: m2 = m1  versus  Ha: m2 != m1
 <p><img src="index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
+</section><section id="execution-in-stata-2" class="level5"><h5 class="anchored" data-anchor-id="execution-in-stata-2">Execution in Stata</h5>
+<div class="cell" data-engine.path="C:/Stata15/Stata-64.exe">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>power twomeans 0 (0.01 0.025 0.05 0.1 0.2), <span class="kw">graph</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+
+. power twomeans 0 (0.01 0.025 0.05 0.1 0.2), graph</code></pre>
+</div>
+</div>
 
 
-</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section></section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");

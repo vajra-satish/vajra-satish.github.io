@@ -130,6 +130,8 @@ We can see that the required sample size increases exponentially as the effect s
 
 ## Plotting the relationship
 
+##### Execution in R
+
 ```{r message = FALSE, warning = FALSE}
 # Load the grammar of graphics package to plot the graph
 library(ggplot2)
@@ -144,4 +146,10 @@ result_table |> # select variables Delta and Sample size from the data frame
   labs (title = "Estimated total sample size for two-sample means test",
         x = "Experimental-group mean",
         y = "Total sample size") # add labels
+```
+
+##### Execution in Stata
+
+```{stata, engine.path="C:/Stata15/Stata-64.exe"}
+power twomeans 0 (0.01 0.025 0.05 0.1 0.2), graph
 ```
