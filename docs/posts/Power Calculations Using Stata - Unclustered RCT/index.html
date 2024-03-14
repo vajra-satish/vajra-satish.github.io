@@ -175,7 +175,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content"><section id="individual-level-randomization" class="level1"><h1>Individual level randomization</h1>
+<main class="content quarto-banner-title-block" id="quarto-document-content"><div class="cell">
+<style type="text/css">
+p {
+  text-align: justify
+}
+</style>
+</div>
+<section id="individual-level-randomization" class="level1"><h1>Individual level randomization</h1>
 <p>In this section, we calculate the power for individually randomized experiments. Suppose we want to calculate the sample size required for a randomized control trial(RCT) for a program intervention, where equal number of people are assigned to the treatment and control groups. We fix a test size (<span class="math inline">\(\alpha\)</span>) of 0.5 to calculate the sample size required to detect a 0.1 standard deviation effect size with 80% power. We use a standard deviation value of 1.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -391,7 +398,7 @@ Ho: m2 = m1  versus  Ha: m2 != m1
 <span>        y <span class="op">=</span> <span class="st">"Total sample size"</span><span class="op">)</span> <span class="op">+</span> <span class="co"># add labels</span></span>
 <span>        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+<p><img src="index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section><section id="execution-in-stata-2" class="level5"><h5 class="anchored" data-anchor-id="execution-in-stata-2">Execution in Stata</h5>
@@ -404,6 +411,7 @@ Ho: m2 = m1  versus  Ha: m2 != m1
 </div>
 </div>
 <p><img src="stata.png" class="img-fluid"></p>
+<p>As previously noted, it is not easier to visualize the relationship between sample size and effect size.</p>
 
 
 </section></section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">

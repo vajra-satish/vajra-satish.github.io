@@ -7,6 +7,12 @@ image: "image.jpg"
 engine: "knitr"
 ---
 
+```{css, echo = FALSE}
+p {
+  text-align: justify
+}
+```
+
 # Individual level randomization
 
 In this section, we calculate the power for individually randomized experiments. Suppose we want to calculate the sample size required for a randomized control trial(RCT) for a program intervention, where equal number of people are assigned to the treatment and control groups. We fix a test size ($\alpha$) of 0.5 to calculate the sample size required to detect a 0.1 standard deviation effect size with 80% power. We use a standard deviation value of 1.
@@ -156,3 +162,5 @@ power twomeans 0 (0.01 0.025 0.05 0.1 0.2), graph
 ```
 
 ![](stata.png)
+
+As previously noted, it is not easier to visualize the relationship between sample size and effect size. 
