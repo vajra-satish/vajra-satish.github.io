@@ -7,7 +7,7 @@ image: "image.jpg"
 engine: "knitr"
 ---
 
-In this section,, we calculate the power for individually randomized experiments. Suppose we want to calculate the sample size required for a randomized control trial for a program intervention. The team plans to assign equal number of people to the treatment and control group.  
+In this section, we calculate the power for individually randomized experiments. Suppose we want to calculate the sample size required for a randomized control trial for a program intervention, where equal number of people are assigned to the treatment and control groups. We fix a test size ($\alpha$) of 0.5 to calculate the sample size required to detect a 0.1 standard deviation effect size with 80% power. We use a standard deviation value of 1.       
 
 ```{stata, engine.path="C:/Stata15/Stata-64.exe"}
 power twomeans 0 0.01
