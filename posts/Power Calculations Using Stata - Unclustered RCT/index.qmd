@@ -49,4 +49,67 @@ In Stata, we use the command *power twomeans {hypothesized control mean} {hypoth
 power twomeans 0 0.1
 ```
 
-We would need a total sample size of 3,142 individuals who are randomly assigned to either treatment or control group, with 1,571 individuals in each. 
+We would need a total sample size of 3,142 individuals who are randomly assigned to either treatment or control group, with 1,571 individuals in each, to detect a minimum detectable effect of 0.1 standard deviations.
+
+## Calculating sample sizes needed to detect a 0.01, 0.025, 0.05, 0.1 and 0.2 standard deviation effect
+
+To calculate the sample size required for the treatment effects (0.01, 0.025, 0.05, 0.1, 0.2), we can use the **for** function to iterate the **effect sizes** and use the **pwr.t.test** function to calculate the corresponding sample size. 
+
+```{r}
+# Create variable effect_sizes and assign the treatment effects
+effect_sizes <- c(0.01, 0.025, 0.05, 0.1, 0.2)
+# Initialize an empty dataframe to store the results
+result_table <- data.frame()
+# Iterate over each effect size
+for (i in effect_sizes) {
+# Calculate sample size using the pwr.t.test function
+# Make sure that the pwr package is loaded in R
+result <- pwr.t.test(n = NULL,
+                     d = i, 
+                     sig.level = 0.05,
+                     power = 0.8,
+                     type = "two.sample")
+# n gives the sample size for each group
+# Multiply by 2 to gett the total sample size
+sample_size <- result$n*2
+# Sample size for control group
+N1 <- sample_size
+# Sample size for treatment group
+N2 <- sample_size
+# Test size
+alpha <- result$sig.level
+# Power
+power <- result$power
+# Effect size
+delta <- result$d
+# Control group mean
+m1 <- 0
+# Treatment group mean
+m2 <- result$d
+# Standard deviation
+Std_dev<- 1
+# Append the results to the dataframe
+result_table <- rbind(result_table,
+                      c(alpha, 
+                        power,
+                        sample_size,
+                        N1, 
+                        N2, 
+                        delta,
+                        m1, 
+                        m2, 
+                        Std_dev))
+}
+# Assign column names
+colnames(result_table) <- c("Alpha",
+                            "Power",
+                            "Sample size", 
+                            "N1", 
+                            "N2", 
+                            "Delta", 
+                            "M1", 
+                            "M2", 
+                            "Std.Dev")
+# Print the result table
+print(result_table)
+```
