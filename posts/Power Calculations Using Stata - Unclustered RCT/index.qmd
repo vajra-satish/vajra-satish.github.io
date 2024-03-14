@@ -137,7 +137,8 @@ library(ggplot2)
 library(dplyr)
 result_table |> # select variables Delta and Sample size from the data frame 
   select(Delta, `Sample size`) |>
-  ggplot(aes( x = Delta, y = `Sample size`)) + # plot Delta on the x-axis and Sample size on the y-axis
+  ggplot(aes( x = Delta, y = `Sample size`)) + # plot Delta on the x-axis
+  # and Sample size on the y-axis
   geom_line(color = "#2c3e50", lwd = 1) + # add a geometric line to the plot 
   geom_point(color = "#2c3e50", size = 2) + # add a geometric point to the plot 
   labs (title = "Estimated total sample size for two-sample means test",
