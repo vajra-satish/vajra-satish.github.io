@@ -130,7 +130,7 @@ We can see that the required sample size increases exponentially as the effect s
 
 ## Plotting the relationship
 
-```{r, warning = FALSE}
+```{r message = FALSE, warning = FALSE}
 # Load the grammar of graphics package to plot the graph
 library(ggplot2)
 # Load dplyr package to use pipe operator |> to enter commands in a chain
