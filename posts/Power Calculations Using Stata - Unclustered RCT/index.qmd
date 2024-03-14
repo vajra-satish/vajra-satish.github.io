@@ -119,3 +119,11 @@ print(result_table)
 ```
 
 ##### Execution in Stata
+
+We again use the power twomeans command in Stata to calculate the respective sample size for the given effect size. The option table(, labels(N "Sample size" sd "Std. Dev")) indicates that we want the output in table format, and that we want "N" to be renamed as "Sample size and sd to be renamed as "Std. Dev".
+
+```{stata, engine.path="C:/Stata15/Stata-64.exe"}
+power twomeans 0 (0.01 0.025 0.05 0.1 0.2), table(, labels(N "Sample size" sd "Std. Dev."))
+```
+
+We can see that the required sample size increases exponentially as the effect size approaches 0. Instead of a table calculations might be easire to interpret in a graph.

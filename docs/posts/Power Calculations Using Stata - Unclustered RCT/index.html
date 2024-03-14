@@ -339,6 +339,40 @@ Estimated sample sizes:
 </div>
 </div>
 </section><section id="execution-in-stata-1" class="level5"><h5 class="anchored" data-anchor-id="execution-in-stata-1">Execution in Stata</h5>
+<p>We again use the power twomeans command in Stata to calculate the respective sample size for the given effect size. The option table(, labels(N “Sample size” sd “Std. Dev”)) indicates that we want the output in table format, and that we want “N” to be renamed as “Sample size and sd to be renamed as”Std. Dev”.</p>
+<div class="cell" data-engine.path="C:/Stata15/Stata-64.exe">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>power twomeans 0 (0.01 0.025 0.05 0.1 0.2), <span class="kw">table</span>(, labels(<span class="kw">N</span> <span class="st">"Sample size"</span> <span class="fu">sd</span> <span class="st">"Std. Dev."</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+
+. power twomeans 0 (0.01 0.025 0.05 0.1 0.2), table(, labels(N "Sample size" sd
+&gt;  "Std. Dev."))
+
+Performing iteration Estimated sample sizes for a two-sample means test
+t test assuming sd1 = sd2 = sd
+Ho: m2 = m1  versus  Ha: m2 != m1
+
+  +---------------------------------------------------------------------+
+  |   alpha   power Sample size      N1      N2   delta      m1      m2 |
+  |---------------------------------------------------------------------|
+  |     .05      .8     3.1e+05 1.6e+05 1.6e+05     .01       0     .01 |
+  |     .05      .8       50236   25118   25118    .025       0    .025 |
+  |     .05      .8       12562   6,281   6,281     .05       0     .05 |
+  |     .05      .8       3,142   1,571   1,571      .1       0      .1 |
+  |     .05      .8         788     394     394      .2       0      .2 |
+  +---------------------------------------------------------------------+
+  +-----------+
+  | Std. Dev. |
+  |-----------|
+  |         1 |
+  |         1 |
+  |         1 |
+  |         1 |
+  |         1 |
+  +-----------+</code></pre>
+</div>
+</div>
+<p>We can see that the required sample size increases exponentially as the effect size approaches 0. Instead of a table calculations might be easire to interpret in a graph.</p>
 
 
 </section></section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
