@@ -161,6 +161,6 @@ result_table |> # select variables Delta and Sample size from the data frame
 power twomeans 0 (0.01 0.025 0.05 0.1 0.2), graph
 ```
 
-![](stata.png)
+![](image.jpg)
 
 Now, it is easier to visualize the relationship between sample size and effect size. The sample size increases exponentially as we appraoch an effect size of zero.  
