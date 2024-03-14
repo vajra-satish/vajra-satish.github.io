@@ -219,11 +219,8 @@ Power Calculations
 <p>To test a 0.1 standard deviation effect size with standard deviation of 1, we set the minimum detectable effect to 0.1. The <em>power.t.test()</em> will give the sample size required to detect 0.1 standard deviation effect size, which is the difference between the treatment and control mean.</p>
 <div class="cell">
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Load the pwr package</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/heliosdrm/pwr">pwr</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'pwr' was built under R version 4.2.3</code></pre>
-</div>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Run the pwr.t.test function</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/heliosdrm/pwr">pwr</a></span><span class="op">)</span></span>
+<span><span class="co"># Run the pwr.t.test function</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/pwr/man/pwr.t.test.html">pwr.t.test</a></span><span class="op">(</span>n <span class="op">=</span> <span class="cn">NULL</span>, </span>
 <span>           d <span class="op">=</span> <span class="fl">0.1</span>,</span>
 <span>           sig.level <span class="op">=</span> <span class="fl">0.05</span>,</span>
@@ -242,8 +239,9 @@ Power Calculations
 NOTE: n is number in *each* group</code></pre>
 </div>
 </div>
+</section><section id="execution-in-stata" class="level5"><h5 class="anchored" data-anchor-id="execution-in-stata">Execution in Stata</h5>
 <div class="cell" data-engine.path="C:/Stata15/Stata-64.exe">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>power twomeans 0 0.01</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>power twomeans 0 0.01</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 

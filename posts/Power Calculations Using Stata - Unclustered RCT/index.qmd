@@ -30,7 +30,7 @@ To run the **pwr.t.test()** funcntion we need to install the *pwr* package with 
 
 To test a 0.1 standard deviation effect size with standard deviation of 1, we set the minimum detectable effect to 0.1. The *power.t.test()* will give the sample size required to detect 0.1 standard deviation effect size, which is the difference between the treatment and control mean.  
 
-```{r}
+```{r, warning = FALSE}
 # Load the pwr package
 library(pwr)
 # Run the pwr.t.test function
@@ -40,6 +40,8 @@ pwr.t.test(n = NULL,
            power = 0.8,
            type = "two.sample")
 ```
+
+##### Execution in Stata
 
 ```{stata, engine.path="C:/Stata15/Stata-64.exe"}
 power twomeans 0 0.01
