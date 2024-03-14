@@ -2,7 +2,7 @@
 title: "Power Calculations in Unclustered RCT"
 author: "Satish Bajracharya"
 date: "2024-03-15"
-categories: [Power Calculations, Survey]
+categories: [Power Calculations, Survey, R, Stata]
 image: "image.jpg"
 engine: "knitr"
 ---
