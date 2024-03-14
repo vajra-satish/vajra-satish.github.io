@@ -215,8 +215,8 @@ Power Calculations
 </tr>
 </tbody>
 </table>
-<p>To run the <strong>pwr.t.test()</strong> funcntion we need to install the <em>pwr</em> package with the install.packages command. Watch this <a href="https://www.youtube.com/watch?v=-wTcDqJWSzA">video</a> to learn how to install packages in R.</p>
-<p>To test a 0.1 standard deviation effect size with standard deviation of 1, we set the minimum detectable effect to 0.1. The <em>power.t.test()</em> will give the sample size required to detect 0.1 standard deviation effect size, which is the difference between the treatment and control mean.</p>
+<p>To run the <strong>pwr.t.test()</strong> function we need to install the <em>pwr</em> package with the install.packages command. Watch this <a href="https://www.youtube.com/watch?v=-wTcDqJWSzA">video</a> to learn how to install packages in R.</p>
+<p>The <em>power.t.test()</em> will give the sample size required to detect 0.1 standard deviation effect size, which is the difference between the treatment and control mean. We specify the value of n to NULL in order to get the number of observations per sample.</p>
 <div class="cell">
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Load the pwr package</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/heliosdrm/pwr">pwr</a></span><span class="op">)</span></span>
@@ -240,12 +240,13 @@ NOTE: n is number in *each* group</code></pre>
 </div>
 </div>
 </section><section id="execution-in-stata" class="level5"><h5 class="anchored" data-anchor-id="execution-in-stata">Execution in Stata</h5>
+<p>In Stata, we use the command <em>power twomeans {hypothesized control mean} {hypothesized treatment mean}</em> where twomeans refers to the fact that we are comparing means between the control and treatment groups. To test a 0.1 standard deviation effect size, we set the mean value of control group to 1 and that of treatment group to 0.1. This will give us the result we want.</p>
 <div class="cell" data-engine.path="C:/Stata15/Stata-64.exe">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>power twomeans 0 0.01</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>power twomeans 0 0.1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 
-. power twomeans 0 0.01
+. power twomeans 0 0.1
 
 Performing iteration Estimated sample sizes for a two-sample means test
 t test assuming sd1 = sd2 = sd
@@ -255,17 +256,18 @@ Study parameters:
 
         alpha =    0.0500
         power =    0.8000
-        delta =    0.0100
+        delta =    0.1000
            m1 =    0.0000
-           m2 =    0.0100
+           m2 =    0.1000
            sd =    1.0000
 
 Estimated sample sizes:
 
-            N =   313,958
-  N per group =   156,979</code></pre>
+            N =     3,142
+  N per group =     1,571</code></pre>
 </div>
 </div>
+<p>We would need a total sample size of 3,142 individuals who are randomly assigned to either treatment or control group, with 1,571 individuals in each.</p>
 
 
 </section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
