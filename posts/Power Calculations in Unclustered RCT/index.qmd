@@ -1,5 +1,5 @@
 ---
-title: "Power Calculations Using Stata: Unclustered RCT"
+title: "Power Calculations in Unclustered RCT"
 author: "Satish Bajracharya"
 date: "2024-03-15"
 categories: [Power Calculations, Survey]
