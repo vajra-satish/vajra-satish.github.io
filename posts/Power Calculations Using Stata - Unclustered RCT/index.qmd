@@ -7,6 +7,8 @@ image: "image.jpg"
 engine: "knitr"
 ---
 
+# Individual level randomization
+
 In this section, we calculate the power for individually randomized experiments. Suppose we want to calculate the sample size required for a randomized control trial(RCT) for a program intervention, where equal number of people are assigned to the treatment and control groups. We fix a test size ($\alpha$) of 0.5 to calculate the sample size required to detect a 0.1 standard deviation effect size with 80% power. We use a standard deviation value of 1.
 
 ::: callout-tip
@@ -30,7 +32,7 @@ To run the **pwr.t.test()** function we need to install the *pwr* package with t
 
 The *power.t.test()* will give the sample size required to detect 0.1 standard deviation effect size, which is the difference between the treatment and control mean. We specify the value of n to NULL in order to get the number of observations per sample.
 
-``````{r, warning = FALSE}
+```{r, warning = FALSE}
 # Load the pwr package
 library(pwr)
 # Run the pwr.t.test function
@@ -51,7 +53,7 @@ power twomeans 0 0.1
 
 We would need a total sample size of 3,142 individuals who are randomly assigned to either treatment or control group, with 1,571 individuals in each, to detect a minimum detectable effect of 0.1 standard deviations.
 
-#### Sample size needed to detect a 0.01, 0.025, 0.05, 0.1 and 0.2 standard deviation effect
+## Multiple effect size calculation
 
 ##### Execution in R
 

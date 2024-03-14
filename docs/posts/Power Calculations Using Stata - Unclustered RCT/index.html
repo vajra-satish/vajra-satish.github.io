@@ -175,7 +175,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content"><p>In this section, we calculate the power for individually randomized experiments. Suppose we want to calculate the sample size required for a randomized control trial(RCT) for a program intervention, where equal number of people are assigned to the treatment and control groups. We fix a test size (<span class="math inline">\(\alpha\)</span>) of 0.5 to calculate the sample size required to detect a 0.1 standard deviation effect size with 80% power. We use a standard deviation value of 1.</p>
+<main class="content quarto-banner-title-block" id="quarto-document-content"><section id="individual-level-randomization" class="level1"><h1>Individual level randomization</h1>
+<p>In this section, we calculate the power for individually randomized experiments. Suppose we want to calculate the sample size required for a randomized control trial(RCT) for a program intervention, where equal number of people are assigned to the treatment and control groups. We fix a test size (<span class="math inline">\(\alpha\)</span>) of 0.5 to calculate the sample size required to detect a 0.1 standard deviation effect size with 80% power. We use a standard deviation value of 1.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -268,7 +269,7 @@ Estimated sample sizes:
 </div>
 </div>
 <p>We would need a total sample size of 3,142 individuals who are randomly assigned to either treatment or control group, with 1,571 individuals in each, to detect a minimum detectable effect of 0.1 standard deviations.</p>
-</section><section id="sample-size-needed-to-detect-a-0.01-0.025-0.05-0.1-and-0.2-standard-deviation-effect" class="level4"><h4 class="anchored" data-anchor-id="sample-size-needed-to-detect-a-0.01-0.025-0.05-0.1-and-0.2-standard-deviation-effect">Sample size needed to detect a 0.01, 0.025, 0.05, 0.1 and 0.2 standard deviation effect</h4>
+</section><section id="multiple-effect-size-calculation" class="level2"><h2 class="anchored" data-anchor-id="multiple-effect-size-calculation">Multiple effect size calculation</h2>
 <section id="execution-in-r-1" class="level5"><h5 class="anchored" data-anchor-id="execution-in-r-1">Execution in R</h5>
 <p>To calculate the sample size required for the treatment effects (0.01, 0.025, 0.05, 0.1, 0.2), we can use the <strong>for</strong> function to iterate the <strong>effect sizes</strong> and use the <strong>pwr.t.test</strong> function to calculate the corresponding sample size.</p>
 <div class="cell">
@@ -340,7 +341,7 @@ Estimated sample sizes:
 </section><section id="execution-in-stata-1" class="level5"><h5 class="anchored" data-anchor-id="execution-in-stata-1">Execution in Stata</h5>
 
 
-</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section></section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
