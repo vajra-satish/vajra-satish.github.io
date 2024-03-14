@@ -145,7 +145,8 @@ result_table |> # select variables Delta and Sample size from the data frame
   geom_point(color = "#2c3e50", size = 2) + # add a geometric point to the plot 
   labs (title = "Estimated total sample size for two-sample means test",
         x = "Experimental-group mean",
-        y = "Total sample size") # add labels
+        y = "Total sample size") + # add labels
+        theme(plot.title = element_text(hjust = 0.5)) 
 ```
 
 ##### Execution in Stata
