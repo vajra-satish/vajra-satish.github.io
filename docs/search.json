@@ -32,7 +32,7 @@
     "href": "posts/Power Calculations Using Stata - Unclustered RCT/index.html#plotting-the-relationship",
     "title": "Power Calculations Using Stata: Unclustered RCT",
     "section": "Plotting the relationship",
-    "text": "Plotting the relationship\nExecution in R\n\n# Load the grammar of graphics package to plot the graph\nlibrary(ggplot2)\n# Load dplyr package to use pipe operator |&gt; to enter commands in a chain\nlibrary(dplyr)\nresult_table |&gt; # select variables Delta and Sample size from the data frame \n  select(Delta, `Sample size`) |&gt;\n  ggplot(aes( x = Delta, y = `Sample size`)) + # plot Delta on the x-axis\n  # and Sample size on the y-axis\n  geom_line(color = \"#2c3e50\", lwd = 1) + # add a geometric line to the plot \n  geom_point(color = \"#2c3e50\", size = 2) + # add a geometric point to the plot \n  labs (title = \"Estimated total sample size for two-sample means test\",\n        x = \"Experimental-group mean\",\n        y = \"Total sample size\") + # add labels\n        theme(plot.title = element_text(hjust = 0.5)) \n\n\n\n\nExecution in Stata\n\npower twomeans 0 (0.01 0.025 0.05 0.1 0.2), graph\n\n\n\n. power twomeans 0 (0.01 0.025 0.05 0.1 0.2), graph\n\n\n\nAs previously noted, it is not easier to visualize the relationship between sample size and effect size."
+    "text": "Plotting the relationship\nExecution in R\n\n# Load the grammar of graphics package to plot the graph\nlibrary(ggplot2)\n# Load dplyr package to use pipe operator |&gt; to enter commands in a chain\nlibrary(dplyr)\nresult_table |&gt; # select variables Delta and Sample size from the data frame \n  select(Delta, `Sample size`) |&gt;\n  ggplot(aes( x = Delta, y = `Sample size`)) + # plot Delta on the x-axis\n  # and Sample size on the y-axis\n  geom_line(color = \"#2c3e50\", lwd = 1) + # add a geometric line to the plot \n  geom_point(color = \"#2c3e50\", size = 2) + # add a geometric point to the plot \n  labs (title = \"Estimated total sample size for two-sample means test\",\n        x = \"Experimental-group mean\",\n        y = \"Total sample size\") + # add labels\n        theme(plot.title = element_text(hjust = 0.5)) \n\n\n\n\nExecution in Stata\n\npower twomeans 0 (0.01 0.025 0.05 0.1 0.2), graph\n\n\n\n. power twomeans 0 (0.01 0.025 0.05 0.1 0.2), graph\n\n\n\nNow, it is easier to visualize the relationship between sample size and effect size. The sample size increases exponentially as we appraoch an effect size of zero."
   },
   {
     "objectID": "index.html",
@@ -74,7 +74,7 @@
     "href": "data analytics.html",
     "title": "Data Analysis Projects",
     "section": "",
-    "text": "Post With Plot\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nNov 7, 2023\n\n\nHarlow Malloc\n\n\n\n\n\n\n  \n\n\n\n\nPower Calculations Using Stata: Unclustered RCT\n\n\n\n\n\n\n\nPower Calculations\n\n\nSurvey\n\n\n\n\n\n\n\n\n\n\n\nNov 7, 2023\n\n\nSatish Bajracharya\n\n\n\n\n\n\n  \n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 4, 2023\n\n\nTristan O’Malley\n\n\n\n\n\n\nNo matching items"
+    "text": "Post With Plot\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\nHarlow Malloc\n\n\nNov 7, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPower Calculations Using Stata: Unclustered RCT\n\n\n\nPower Calculations\n\n\nSurvey\n\n\n\n\n\n\n\nSatish Bajracharya\n\n\nNov 7, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\nnews\n\n\n\n\n\n\n\nTristan O’Malley\n\n\nNov 4, 2023\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/Postwithplot/index.html",
