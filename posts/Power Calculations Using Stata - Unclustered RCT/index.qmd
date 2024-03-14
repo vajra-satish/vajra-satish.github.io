@@ -7,7 +7,39 @@ image: "image.jpg"
 engine: "knitr"
 ---
 
-In this section, we calculate the power for individually randomized experiments. Suppose we want to calculate the sample size required for a randomized control trial for a program intervention, where equal number of people are assigned to the treatment and control groups. We fix a test size ($\alpha$) of 0.5 to calculate the sample size required to detect a 0.1 standard deviation effect size with 80% power. We use a standard deviation value of 1.       
+In this section, we calculate the power for individually randomized experiments. Suppose we want to calculate the sample size required for a randomized control trial(RCT) for a program intervention, where equal number of people are assigned to the treatment and control groups. We fix a test size ($\alpha$) of 0.5 to calculate the sample size required to detect a 0.1 standard deviation effect size with 80% power. We use a standard deviation value of 1.   
+
+::: {.callout-tip}
+## Power Calculations
+
+To know more about the theoretical approach to power calculations, check my previous blog [here](https://vajra-satish.github.io/blogs/Power%20Calculations%20in%20RCT%20-%20Without%20Clusters%20(Theory)/)
+:::
+
+##### Execution in R
+
+We use the **pwr** package in R to calculate the sample size for individually randomized experiments. We use the **pwr.t.test()** function with arguments n, d, sig.level, power, and type. The default standard deviation value is 1 so we do not need to specify it. A brief description of the arguments is given below:
+
+| Arguments  | Description  |
+|--------|--------|
+| n  | Number of observations (per sample) |
+| d   | Effect size   |
+| sig.level | Significance level (Type I error probability) |
+|power | Type of t test |
+
+To run the **pwr.t.test()** funcntion we need to install the *pwr* package with the install.packages command. Watch this [video](https://www.youtube.com/watch?v=-wTcDqJWSzA) to learn how to install packages in R. 
+
+To test a 0.1 standard deviation effect size with standard deviation of 1, we set the minimum detectable effect to 0.1. The *power.t.test()* will give the sample size required to detect 0.1 standard deviation effect size, which is the difference between the treatment and control mean.  
+
+```{r}
+# Load the pwr package
+library(pwr)
+# Run the pwr.t.test function
+pwr.t.test(n = NULL, 
+           d = 0.1,
+           sig.level = 0.05,
+           power = 0.8,
+           type = "two.sample")
+```
 
 ```{stata, engine.path="C:/Stata15/Stata-64.exe"}
 power twomeans 0 0.01

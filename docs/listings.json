@@ -7,19 +7,19 @@
     ]
   },
   {
-    "listing": "/data analytics.html",
-    "items": [
-      "/posts/Postwithplot/index.html",
-      "/posts/Power Calculations Using Stata - Unclustered RCT/index.html",
-      "/posts/welcome/index.html"
-    ]
-  },
-  {
     "listing": "/blogs.html",
     "items": [
       "/blogs/Power Calculations in RCT - Without Clusters (Theory)/index.html",
       "/blogs/Postwithplot/index.html",
       "/blogs/welcome/index.html"
+    ]
+  },
+  {
+    "listing": "/data analytics.html",
+    "items": [
+      "/posts/Postwithplot/index.html",
+      "/posts/Power Calculations Using Stata - Unclustered RCT/index.html",
+      "/posts/welcome/index.html"
     ]
   }
 ]
