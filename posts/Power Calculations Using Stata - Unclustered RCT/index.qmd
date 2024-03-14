@@ -126,4 +126,21 @@ We again use the power twomeans command in Stata to calculate the respective sam
 power twomeans 0 (0.01 0.025 0.05 0.1 0.2), table(, labels(N "Sample size" sd "Std. Dev."))
 ```
 
-We can see that the required sample size increases exponentially as the effect size approaches 0. Instead of a table calculations might be easire to interpret in a graph.
+We can see that the required sample size increases exponentially as the effect size approaches 0. Instead of a table calculations might be easier to interpret in a graph.
+
+## Plotting the relationship
+
+```{r, warning = FALSE}
+# Load the grammar of graphics package to plot the graph
+library(ggplot2)
+# Load dplyr package to use pipe operator |> to enter commands in a chain
+library(dplyr)
+result_table |> # select variables Delta and Sample size from the data frame 
+  select(Delta, `Sample size`) |>
+  ggplot(aes( x = Delta, y = `Sample size`)) + # plot Delta on the x-axis and Sample size on the y-axis
+  geom_line(color = "#2c3e50", lwd = 1) + # add a geometric line to the plot 
+  geom_point(color = "#2c3e50", size = 2) + # add a geometric point to the plot 
+  labs (title = "Estimated total sample size for two-sample means test",
+        x = "Experimental-group mean",
+        y = "Total sample size") # add labels
+```
