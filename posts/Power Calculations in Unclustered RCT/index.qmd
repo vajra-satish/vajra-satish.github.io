@@ -13,7 +13,7 @@ p {
 }
 ```
 
-# Individual level randomization
+# Case 1: Individual level randomization
 
 In this section, we calculate the power for individually randomized experiments. Suppose we want to calculate the sample size required for a randomized control trial(RCT) for a program intervention, where equal number of people are assigned to the treatment and control groups. We fix a test size ($\alpha$) of 0.5 to calculate the sample size required to detect a 0.1 standard deviation effect size with 80% power. We use a standard deviation value of 1.
 
@@ -32,7 +32,8 @@ We use the **pwr** package in R to calculate the sample size for individually ra
 | n         | Number of observations (per sample)           |
 | d         | Effect size                                   |
 | sig.level | Significance level (Type I error probability) |
-| power     | Type of t test                                |
+| power     | Power of test                              |
+| type | Type of t test|
 
 To run the **pwr.t.test()** function we need to install the *pwr* package with the install.packages command. Watch this [video](https://www.youtube.com/watch?v=-wTcDqJWSzA) to learn how to install packages in R.
 
@@ -51,7 +52,7 @@ pwr.t.test(n = NULL,
 
 ##### Execution in Stata
 
-In Stata, we use the command *power twomeans {hypothesized control mean} {hypothesized treatment mean}* where twomeans refers to the fact that we are comparing means between the control and treatment groups. To test a 0.1 standard deviation effect size, we set the mean value of control group to 1 and that of treatment group to 0.1. This will give us the result we want.
+In Stata, we use the command *power twomeans {hypothesized control mean} {hypothesized treatment mean}*, where twomeans refer to the fact that we are comparing means between the control and treatment group. To test a 0.1 standard deviation effect size, we set the mean value of control group to 1 and that of treatment group to 0.1. This will give us the result we want.
 
 ```{stata, engine.path="C:/Stata15/Stata-64.exe"}
 power twomeans 0 0.1
@@ -59,7 +60,7 @@ power twomeans 0 0.1
 
 We would need a total sample size of 3,142 individuals who are randomly assigned to either treatment or control group, with 1,571 individuals in each, to detect a minimum detectable effect of 0.1 standard deviations.
 
-## Multiple effect size calculation
+# Case 2: Multiple effect size calculation
 
 ##### Execution in R
 
@@ -83,9 +84,9 @@ result <- pwr.t.test(n = NULL,
 # Multiply by 2 to gett the total sample size
 sample_size <- result$n*2
 # Sample size for control group
-N1 <- sample_size
+N1 <- result$n
 # Sample size for treatment group
-N2 <- sample_size
+N2 <- result$n
 # Test size
 alpha <- result$sig.level
 # Power
@@ -132,7 +133,7 @@ We again use the power twomeans command in Stata to calculate the respective sam
 power twomeans 0 (0.01 0.025 0.05 0.1 0.2), table(, labels(N "Sample size" sd "Std. Dev."))
 ```
 
-We can see that the required sample size increases exponentially as the effect size approaches 0. Instead of a table calculations might be easier to interpret in a graph.
+We can see that the required sample size increases exponentially as the effect size approaches 0. The calculations might be easier to interpret in a graph instead of a table.
 
 ## Plotting the relationship
 
@@ -163,4 +164,4 @@ power twomeans 0 (0.01 0.025 0.05 0.1 0.2), graph
 
 ![](image.jpg)
 
-Now, it is easier to visualize the relationship between sample size and effect size. The sample size increases exponentially as we appraoch an effect size of zero.  
+Now, it is easier to visualize the relationship between sample size and effect size. The sample size increases exponentially as we approach an effect size of zero.  
