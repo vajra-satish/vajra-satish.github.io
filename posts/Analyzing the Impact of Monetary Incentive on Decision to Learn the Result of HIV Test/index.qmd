@@ -3,7 +3,7 @@ title: "Analyzing the Impact of Receiving Monetary Incentive on Decision to Lear
 author: "Satish Bajracharya"
 date: "2024-03-18"
 categories: [RCT, R, Stata]
-image: "image.jpg"
+image: "image1.jpg"
 engine: "knitr"
 ---
 ::: callout-tip
