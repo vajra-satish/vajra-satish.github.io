@@ -13,7 +13,7 @@ p {
 }
 ```
 
-# How to make comparisons between treatment and control group?
+# Making comparisons between treatment and control group
 
 While measuring the impact of an intervention or a program, we randomly assign individuals to treatment and control groups and compare the average outcome in each group. In general, we ask if the outcomes are different between the groups. 
 
@@ -29,7 +29,7 @@ $$y_i = \alpha + \beta T_i + \gamma_1 Income_i + \gamma_2 Education_i + ... $$
 
 Here, we are controlling for income and education in regression equation. Introducing such controls may or may not be useful (a separate blog on control variables will be uploaded later).  
 
-# How to measure the average impact of an intervention?
+# Measuring the average impact of an intervention?
 
 To measure the average impact of an intervention, we estimate the average outcome in the treatment group, $\bar y (T=1)$, and compare it with the average outcome in the control group, $\bar y (T=0)$. 
 
