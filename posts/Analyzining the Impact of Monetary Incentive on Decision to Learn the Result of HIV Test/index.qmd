@@ -1,7 +1,7 @@
 ---
 title: "Analyzing the Impact of Receiving Monetary Incentive on Decision to Learn the Result of HIV Test"
 author: "Satish Bajracharya"
-date: "2024-03-17"
+date: "2024-03-18"
 categories: [RCT, R, Stata]
 image: "image.jpg"
 engine: "knitr"
@@ -121,3 +121,26 @@ The treatment effect of receiving a financial incentive is 0.4506 or about 45 pe
 
 When making comparison between the distribution of outcomes between two groups, we assume that the two groups have the same variance even though their means differed. This assumption is called the homoskedasticity assumption. However, when the variance in the treatment and control group are different the assumption of homoskedasticity is violated, i.e., the error terms are heteroskedastic. In such cases, we have to use robust standard errors to account for heteroskedasticity. The robust standard errors do not affect the estimates of the parameters in the regression. The robust standard errors tend to be larger than the unadjusted standard errors, which in turn makes the confidence interval wider. 
 
+To test for heteroskedasticity, we run the Breusch-Pagan / Cook-Weisberg test for heteroskedasticity. It tests the null hypothesis of homoskedasticity against the alternative hypothesis of heteroskedasticity. We need to install the lmtest package and run the bttest() function. 
+
+##### Execution in R
+
+```{r}
+library(lmtest)
+bptest(reg) 
+```
+
+##### Execution in Stata
+
+We use the estat hettest command in Stata to test ko heteroskedasticity. 
+
+```{stata, engine.path="C:/Stata15/Stata-64.exe"}
+cd "C://Impact Evaluation"
+use "Regression Analysis\Data\Thornton HIV Testing Data.dta", clear
+drop if missing(tinc) | missing(got)
+generate treatment = cond(tinc>0, 1, 0)
+label define treatment 0 "Control" 1 "Treatment"
+label val treatment treatment
+regress got treatment
+estat hettest
+```

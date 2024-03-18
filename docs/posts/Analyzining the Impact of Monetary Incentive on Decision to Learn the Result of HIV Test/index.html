@@ -5,7 +5,7 @@
 <meta name="generator" content="quarto-1.3.450">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Satish Bajracharya">
-<meta name="dcterms.date" content="2024-03-17">
+<meta name="dcterms.date" content="2024-03-18">
 <title>Satish Bajracharya - Analyzing the Impact of Receiving Monetary Incentive on Decision to Learn the Result of HIV Test</title>
 <style>
 code{white-space: pre-wrap;}
@@ -163,7 +163,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">March 17, 2024</p>
+        <p class="date">March 18, 2024</p>
       </div>
     </div>
     
@@ -504,9 +504,94 @@ C:\Impact Evaluation
 <p>The treatment effect of receiving a financial incentive is 0.4506 or about 45 percentage points, compared to the control group average of about 34 percentage points. The treatment effect is statistically significant (has a p-value of 0.000).</p>
 </section></section><section id="robust-standard-errors" class="level3"><h3 class="anchored" data-anchor-id="robust-standard-errors">Robust Standard Errors</h3>
 <p>When making comparison between the distribution of outcomes between two groups, we assume that the two groups have the same variance even though their means differed. This assumption is called the homoskedasticity assumption. However, when the variance in the treatment and control group are different the assumption of homoskedasticity is violated, i.e., the error terms are heteroskedastic. In such cases, we have to use robust standard errors to account for heteroskedasticity. The robust standard errors do not affect the estimates of the parameters in the regression. The robust standard errors tend to be larger than the unadjusted standard errors, which in turn makes the confidence interval wider.</p>
+<p>To test for heteroskedasticity, we run the Breusch-Pagan / Cook-Weisberg test for heteroskedasticity. It tests the null hypothesis of homoskedasticity against the alternative hypothesis of heteroskedasticity. We need to install the lmtest package and run the bttest() function.</p>
+<section id="execution-in-r-3" class="level5"><h5 class="anchored" data-anchor-id="execution-in-r-3">Execution in R</h5>
+<div class="cell">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">lmtest</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'lmtest' was built under R version 4.2.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: zoo</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'zoo' was built under R version 4.2.2</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'zoo'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    as.Date, as.Date.numeric</code></pre>
+</div>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/lmtest/man/bptest.html">bptest</a></span><span class="op">(</span><span class="va">reg</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    studentized Breusch-Pagan test
+
+data:  reg
+BP = 32.868, df = 1, p-value = 9.865e-09</code></pre>
+</div>
+</div>
+</section><section id="execution-in-stata-3" class="level5"><h5 class="anchored" data-anchor-id="execution-in-stata-3">Execution in Stata</h5>
+<p>We use the estat hettest command in Stata to test ko heteroskedasticity.</p>
+<div class="cell" data-engine.path="C:/Stata15/Stata-64.exe">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>cd <span class="st">"C://Impact Evaluation"</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="st">"Regression Analysis\Data\Thornton HIV Testing Data.dta"</span>, <span class="kw">clear</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="kw">drop</span> <span class="kw">if</span> <span class="fu">missing</span>(tinc) | <span class="fu">missing</span>(got)</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="kw">generate</span> treatment = <span class="fu">cond</span>(tinc&gt;0, 1, 0)</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="kw">label</span> <span class="kw">define</span> treatment 0 <span class="st">"Control"</span> 1 <span class="st">"Treatment"</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="kw">label</span> val treatment treatment</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="kw">regress</span> got treatment</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="kw">estat</span> <span class="kw">hettest</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+
+. cd "C://Impact Evaluation"
+C:\Impact Evaluation
+
+. use "Regression Analysis\Data\Thornton HIV Testing Data.dta", clear
+
+. drop if missing(tinc) | missing(got)
+(1,986 observations deleted)
+
+. generate treatment = cond(tinc&gt;0, 1, 0)
+
+. label define treatment 0 "Control" 1 "Treatment"
+
+. label val treatment treatment
+
+. regress got treatment
+
+      Source |       SS           df       MS      Number of obs   =     2,834
+-------------+----------------------------------   F(1, 2832)      =    550.78
+       Model |  98.6657682         1  98.6657682   Prob &gt; F        =    0.0000
+    Residual |  507.321529     2,832  .179138958   R-squared       =    0.1628
+-------------+----------------------------------   Adj R-squared   =    0.1625
+       Total |  605.987297     2,833  .213903035   Root MSE        =    .42325
+
+------------------------------------------------------------------------------
+         got |      Coef.   Std. Err.      t    P&gt;|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+   treatment |   .4505519    .019198    23.47   0.000     .4129083    .4881954
+       _cons |   .3386838   .0169571    19.97   0.000     .3054343    .3719333
+------------------------------------------------------------------------------
+
+. estat hettest
+
+Breusch-Pagan / Cook-Weisberg test for heteroskedasticity 
+         Ho: Constant variance
+         Variables: fitted values of got
+
+         chi2(1)      =    25.19
+         Prob &gt; chi2  =   0.0000</code></pre>
+</div>
+</div>
 
 
-</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section></section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
