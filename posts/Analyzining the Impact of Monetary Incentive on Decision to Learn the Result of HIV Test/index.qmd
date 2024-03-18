@@ -86,7 +86,7 @@ use "Regression Analysis\Data\Thornton HIV Testing Data.dta", clear
 tabulate tinc
 ```
 
-### Regression
+### Running the Regression
 
 Here, we only focus on analyzing the effect of receiving any financial incentive. Thus, we create a factor variable indicating whether the respondent has received an incentive or not. Once we create the treatment variable we run a regression to analyze the impact of receiving a financial incentive on the decision to obtain HIV results. The variable **got** indicates whether or not the respondent received the HIV result. In R we use the lm () function to run a regrssion. In Stata we use the regress command for the same
 
@@ -116,3 +116,8 @@ regress got treatment
 ```
 
 The treatment effect of receiving a financial incentive is 0.4506 or about 45 percentage points, compared to the control group average of about 34 percentage points. The treatment effect is statistically significant (has a p-value of 0.000).
+
+### Robust Standard Errors
+
+When making comparison between the distribution of outcomes between two groups, we assume that the two groups have the same variance even though their means differed. This assumption is called the homoskedasticity assumption. However, when the variance in the treatment and control group are different the assumption of homoskedasticity is violated, i.e., the error terms are heteroskedastic. In such cases, we have to use robust standard errors to account for heteroskedasticity. The robust standard errors do not affect the estimates of the parameters in the regression. The robust standard errors tend to be larger than the unadjusted standard errors, which in turn makes the confidence interval wider. 
+
