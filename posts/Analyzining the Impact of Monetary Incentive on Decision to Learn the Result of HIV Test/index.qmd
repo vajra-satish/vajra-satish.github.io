@@ -1,5 +1,5 @@
 ---
-title: "Analyzining the Impact of Receiving Any Monetary Incentive on Decision to Learn the Result of HIV Test"
+title: "Analyzing the Impact of Receiving Monetary Incentive on Decision to Learn the Result of HIV Test"
 author: "Satish Bajracharya"
 date: "2024-03-17"
 categories: [RCT, R, Stata]
@@ -17,7 +17,7 @@ Data file: [Click here](https://www.aeaweb.org/aer/data/dec08/20060732_data.zip)
 Detailed description of the intervention: [Click here](https://www.povertyactionlab.org/evaluation/demand-and-impact-learning-hiv-status-malawi)
 :::
 
-We use the "Thorton HIV Testing Data.dta" for the analysis.
+We use the "Thornton HIV Testing Data.dta" for the analysis.
 
 ## Importing and describing the data
 
@@ -37,7 +37,7 @@ Now, import the data set and check the list of variables and number of observati
 The str () function in R provides the structure of the dataset. However, we will only use the names () and dim() function here to make the content of this analysis shorter. Please check the Stata execution section to get a detailed description of the variables. 
 :::
 
-```{r, warning=FALSE}
+```{r, warning = FALSE}
 library(haven)
 # import the .dta file
 data <- read_dta("C:/Impact Evaluation/Regression Analysis/Data/Thornton HIV Testing Data.dta")
@@ -65,7 +65,7 @@ Here, we analyze the impact of receiving any monetary incentive on the decision 
 
 ##### Execution in R
 
-```{r message = FALSE}
+```{r message = FALSE, warning = FALSE}
 library(dplyr)
 # ensure that all rows are diplayed when priting tibbles
 options (tibble.print_max = Inf) 
@@ -77,3 +77,42 @@ data |> filter(!is.na(tinc))|> # remove NA
   mutate(percent = count/sum(count)*100) |> # create percent variable
   round(digits = 2) # round the digits upto 2 decimal points
 ```
+
+##### Execution in Stata
+
+```{stata, engine.path="C:/Stata15/Stata-64.exe"}
+cd "C://Impact Evaluation"
+use "Regression Analysis\Data\Thornton HIV Testing Data.dta", clear
+tabulate tinc
+```
+
+### Regression
+
+Here, we only focus on analyzing the effect of receiving any financial incentive. Thus, we create a factor variable indicating whether the respondent has received an incentive or not. Once we create the treatment variable we run a regression to analyze the impact of receiving a financial incentive on the decision to obtain HIV results. The variable **got** indicates whether or not the respondent received the HIV result. In R we use the lm () function to run a regrssion. In Stata we use the regress command for the same
+
+##### Execution in R
+
+```{r}
+data_1 <- data |>
+  filter(!is.na(tinc)) |>
+  mutate(treatment = ifelse(tinc > 0, 1, 0))
+data_1$treatment <- factor(data_1$treatment, 
+                       levels = c(0, 1),
+                       labels = c("Control", "Treatment"))
+reg <- lm(got ~ treatment, data = data_1)
+summary(reg)
+```
+
+##### Execution in Stata
+
+```{stata, engine.path="C:/Stata15/Stata-64.exe"}
+cd "C://Impact Evaluation"
+use "Regression Analysis\Data\Thornton HIV Testing Data.dta", clear
+drop if missing(tinc) | missing(got)
+generate treatment = cond(tinc>0, 1, 0)
+label define treatment 0 "Control" 1 "Treatment"
+label val treatment treatment
+regress got treatment
+```
+
+The treatment effect of receiving a financial incentive is 0.4506 or about 45 percentage points, compared to the control group average of about 34 percentage points. The treatment effect is statistically significant (has a p-value of 0.000).

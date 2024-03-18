@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Satish Bajracharya">
 <meta name="dcterms.date" content="2024-03-17">
-<title>Satish Bajracharya - Analyzining the Impact of Receiving Any Monetary Incentive on Decision to Learn the Result of HIV Test</title>
+<title>Satish Bajracharya - Analyzing the Impact of Receiving Monetary Incentive on Decision to Learn the Result of HIV Test</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -141,7 +141,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       </div> <!-- /container-fluid -->
     </nav></header><!-- content --><header id="title-block-header" class="quarto-title-block default page-columns page-full"><div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Analyzining the Impact of Receiving Any Monetary Incentive on Decision to Learn the Result of HIV Test</h1>
+      <h1 class="title">Analyzing the Impact of Receiving Monetary Incentive on Decision to Learn the Result of HIV Test</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">RCT</div>
                 <div class="quarto-category">R</div>
@@ -192,7 +192,7 @@ Note
 <p>Detailed description of the intervention: <a href="https://www.povertyactionlab.org/evaluation/demand-and-impact-learning-hiv-status-malawi">Click here</a></p>
 </div>
 </div>
-<p>We use the “Thorton HIV Testing Data.dta” for the analysis.</p>
+<p>We use the “Thornton HIV Testing Data.dta” for the analysis.</p>
 <section id="importing-and-describing-the-data" class="level2"><h2 class="anchored" data-anchor-id="importing-and-describing-the-data">Importing and describing the data</h2>
 <section id="execution-in-r" class="level5"><h5 class="anchored" data-anchor-id="execution-in-r">Execution in R</h5>
 <p>The data file is a Stata (.dta) file. To import the data set in R, we will need to install the <strong>Haven</strong> package in R and use the <strong>read_dta()</strong> function. Run the following code in R to install the Haven package:</p>
@@ -330,11 +330,8 @@ Sorted by: </code></pre>
 <p>Here, we analyze the impact of receiving any monetary incentive on the decision to receive results from study participant’s HIV test. The <strong>tinc</strong> variable records the amount of monetary incentive received (in kwacha) by the study participants. We tabulate the variable tinc to see the range of monetary incentives offered.</p>
 <section id="execution-in-r-1" class="level5"><h5 class="anchored" data-anchor-id="execution-in-r-1">Execution in R</h5>
 <div class="cell">
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'dplyr' was built under R version 4.2.3</code></pre>
-</div>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># ensure that all rows are diplayed when priting tibbles</span></span>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
+<span><span class="co"># ensure that all rows are diplayed when priting tibbles</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span> <span class="op">(</span>tibble.print_max <span class="op">=</span> <span class="cn">Inf</span><span class="op">)</span> </span>
 <span><span class="co"># tabulate tinc</span></span>
 <span><span class="va">data</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">tinc</span><span class="op">)</span><span class="op">)</span><span class="op">|&gt;</span> <span class="co"># remove NA</span></span>
@@ -376,9 +373,138 @@ Sorted by: </code></pre>
 27   300   223    7.69</code></pre>
 </div>
 </div>
+</section><section id="execution-in-stata-1" class="level5"><h5 class="anchored" data-anchor-id="execution-in-stata-1">Execution in Stata</h5>
+<div class="cell" data-engine.path="C:/Stata15/Stata-64.exe">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>cd <span class="st">"C://Impact Evaluation"</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="st">"Regression Analysis\Data\Thornton HIV Testing Data.dta"</span>, <span class="kw">clear</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="kw">tabulate</span> tinc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+
+. cd "C://Impact Evaluation"
+C:\Impact Evaluation
+
+. use "Regression Analysis\Data\Thornton HIV Testing Data.dta", clear
+
+. tabulate tinc
+
+Total value |
+     of the |
+  incentive |
+   (kwacha) |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          0 |        679       23.41       23.41
+         10 |         58        2.00       25.41
+         20 |        154        5.31       30.71
+         30 |         81        2.79       33.51
+         40 |         64        2.21       35.71
+         50 |        205        7.07       42.78
+         60 |         37        1.28       44.05
+         70 |         40        1.38       45.43
+         80 |          7        0.24       45.67
+         90 |          8        0.28       45.95
+        100 |        492       16.96       62.91
+        110 |         14        0.48       63.39
+        120 |         82        2.83       66.22
+        130 |          9        0.31       66.53
+        140 |         42        1.45       67.98
+        150 |         43        1.48       69.46
+        160 |         28        0.97       70.42
+        170 |          8        0.28       70.70
+        180 |          9        0.31       71.01
+        200 |        431       14.86       85.87
+        210 |         36        1.24       87.11
+        220 |         48        1.65       88.76
+        230 |         30        1.03       89.80
+        240 |          2        0.07       89.87
+        250 |         68        2.34       92.21
+        260 |          3        0.10       92.31
+        300 |        223        7.69      100.00
+------------+-----------------------------------
+      Total |      2,901      100.00</code></pre>
+</div>
+</div>
+</section><section id="regression" class="level3"><h3 class="anchored" data-anchor-id="regression">Regression</h3>
+<p>Here, we only focus on analyzing the effect of receiving any financial incentive. Thus, we create a factor variable indicating whether the respondent has received an incentive or not. Once we create the treatment variable we run a regression to analyze the impact of receiving a financial incentive on the decision to obtain HIV results. The variable <strong>got</strong> indicates whether or not the respondent received the HIV result. In R we use the lm () function to run a regrssion. In Stata we use the regress command for the same</p>
+<section id="execution-in-r-2" class="level5"><h5 class="anchored" data-anchor-id="execution-in-r-2">Execution in R</h5>
+<div class="cell">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data_1</span> <span class="op">&lt;-</span> <span class="va">data</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">tinc</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>treatment <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">tinc</span> <span class="op">&gt;</span> <span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">data_1</span><span class="op">$</span><span class="va">treatment</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">data_1</span><span class="op">$</span><span class="va">treatment</span>, </span>
+<span>                       levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span>,</span>
+<span>                       labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Control"</span>, <span class="st">"Treatment"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">reg</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">got</span> <span class="op">~</span> <span class="va">treatment</span>, data <span class="op">=</span> <span class="va">data_1</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">reg</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = got ~ treatment, data = data_1)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-0.7892 -0.3387  0.2108  0.2108  0.6613 
+
+Coefficients:
+                   Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)         0.33868    0.01696   19.97   &lt;2e-16 ***
+treatmentTreatment  0.45055    0.01920   23.47   &lt;2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.4232 on 2832 degrees of freedom
+  (67 observations deleted due to missingness)
+Multiple R-squared:  0.1628,    Adjusted R-squared:  0.1625 
+F-statistic: 550.8 on 1 and 2832 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+</section><section id="execution-in-stata-2" class="level5"><h5 class="anchored" data-anchor-id="execution-in-stata-2">Execution in Stata</h5>
+<div class="cell" data-engine.path="C:/Stata15/Stata-64.exe">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>cd <span class="st">"C://Impact Evaluation"</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="st">"Regression Analysis\Data\Thornton HIV Testing Data.dta"</span>, <span class="kw">clear</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="kw">drop</span> <span class="kw">if</span> <span class="fu">missing</span>(tinc) | <span class="fu">missing</span>(got)</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="kw">generate</span> treatment = <span class="fu">cond</span>(tinc&gt;0, 1, 0)</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="kw">label</span> <span class="kw">define</span> treatment 0 <span class="st">"Control"</span> 1 <span class="st">"Treatment"</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="kw">label</span> val treatment treatment</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="kw">regress</span> got treatment</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+
+. cd "C://Impact Evaluation"
+C:\Impact Evaluation
+
+. use "Regression Analysis\Data\Thornton HIV Testing Data.dta", clear
+
+. drop if missing(tinc) | missing(got)
+(1,986 observations deleted)
+
+. generate treatment = cond(tinc&gt;0, 1, 0)
+
+. label define treatment 0 "Control" 1 "Treatment"
+
+. label val treatment treatment
+
+. regress got treatment
+
+      Source |       SS           df       MS      Number of obs   =     2,834
+-------------+----------------------------------   F(1, 2832)      =    550.78
+       Model |  98.6657682         1  98.6657682   Prob &gt; F        =    0.0000
+    Residual |  507.321529     2,832  .179138958   R-squared       =    0.1628
+-------------+----------------------------------   Adj R-squared   =    0.1625
+       Total |  605.987297     2,833  .213903035   Root MSE        =    .42325
+
+------------------------------------------------------------------------------
+         got |      Coef.   Std. Err.      t    P&gt;|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+   treatment |   .4505519    .019198    23.47   0.000     .4129083    .4881954
+       _cons |   .3386838   .0169571    19.97   0.000     .3054343    .3719333
+------------------------------------------------------------------------------</code></pre>
+</div>
+</div>
+<p>The treatment effect of receiving a financial incentive is 0.4506 or about 45 percentage points, compared to the control group average of about 34 percentage points. The treatment effect is statistically significant (has a p-value of 0.000).</p>
 
 
-</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section></section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
