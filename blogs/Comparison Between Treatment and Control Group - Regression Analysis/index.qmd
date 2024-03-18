@@ -1,5 +1,5 @@
 ---
-title: "Power Calculations in RCT: Without Clusters (Theory)"
+title: "Comparisons Between Treatment and Control Group: Regression Analysis"
 author: "Satish Bajracharrya"
 date: "2024-03-12"
 categories: [Survey design, RCT]
@@ -20,7 +20,8 @@ While measuring the impact of an intervention or a program, we randomly assign i
 Researchers use regression analysis to report the results of a RCT in scientific journals or reports.
 
 ::: {.callout-note}
-Regression equation: $y_i= \alpha + \beta T_i + \epsilon_i$. Here, the outcome variable is denoted by $y$, error term is deonted by $\epsilon_i$, and treatment variable is denoted by $T_i$. If an individual is assigned to the treatment group, $T = 1$, otherwise $T = 0$. 
+Regression equation: $y_i= \alpha + \beta T_i + \epsilon_i$. Here, the outcome variable is denoted by $y$, error term is deonted by $\epsilon_i$, and treatment variable is denoted by $T_i$. If an individual is assigned to the treatment group, $T = 1$, otherwise $T = 0$.
+:::
 
 A regression not just allows us to quantify the relationship between the treatment and outcome variable but also quantify the associations between outcomes and other variables. When we introduce other variables, we say that we are controlling for other factors. 
 
@@ -71,9 +72,9 @@ The $H_0$ is the benchmark against which virtually all interventions are measure
 
 ::: {.callout-note}
 The confidence interval gives a range of values which likely includes the true population parameter at a given confidence level.
-:::
 
-The p-value is a probability that measures how compatible the data are with the null hypothesis. It is the probability of observing the data extreme as what we observed, assuming that the $\H_0$ is true.
+The p-value is a probability that measures how compatible the data are with the null hypothesis. It is the probability of observing the data extreme as what we observed, assuming that the $H_0$ is true.
+:::
 
 Confidence interval
 
@@ -92,3 +93,6 @@ P-value
 - Spillover effects
 - Imperfect compliance and attrition
 
+::: {.callout-note}
+More on these topics will be uploaded later.
+:::

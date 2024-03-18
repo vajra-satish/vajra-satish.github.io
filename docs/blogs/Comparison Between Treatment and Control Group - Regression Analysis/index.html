@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Satish Bajracharrya">
 <meta name="dcterms.date" content="2024-03-12">
-<title>Satish Bajracharya - Power Calculations in RCT: Without Clusters (Theory)</title>
+<title>Satish Bajracharya - Comparisons Between Treatment and Control Group: Regression Analysis</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -107,7 +107,7 @@ ul.task-list li input[type="checkbox"] {
       </div> <!-- /container-fluid -->
     </nav></header><!-- content --><header id="title-block-header" class="quarto-title-block default page-columns page-full"><div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Power Calculations in RCT: Without Clusters (Theory)</h1>
+      <h1 class="title">Comparisons Between Treatment and Control Group: Regression Analysis</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">Survey design</div>
                 <div class="quarto-category">RCT</div>
@@ -151,7 +151,19 @@ p {
 <section id="how-to-make-comparisons-between-treatment-and-control-group" class="level1"><h1>How to make comparisons between treatment and control group?</h1>
 <p>While measuring the impact of an intervention or a program, we randomly assign individuals to treatment and control groups and compare the average outcome in each group. In general, we ask if the outcomes are different between the groups.</p>
 <p>Researchers use regression analysis to report the results of a RCT in scientific journals or reports.</p>
-<p>::: {.callout-note} Regression equation: <span class="math inline">\(y_i= \alpha + \beta T_i + \epsilon_i\)</span>. Here, the outcome variable is denoted by <span class="math inline">\(y\)</span>, error term is deonted by <span class="math inline">\(\epsilon_i\)</span>, and treatment variable is denoted by <span class="math inline">\(T_i\)</span>. If an individual is assigned to the treatment group, <span class="math inline">\(T = 1\)</span>, otherwise <span class="math inline">\(T = 0\)</span>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Regression equation: <span class="math inline">\(y_i= \alpha + \beta T_i + \epsilon_i\)</span>. Here, the outcome variable is denoted by <span class="math inline">\(y\)</span>, error term is deonted by <span class="math inline">\(\epsilon_i\)</span>, and treatment variable is denoted by <span class="math inline">\(T_i\)</span>. If an individual is assigned to the treatment group, <span class="math inline">\(T = 1\)</span>, otherwise <span class="math inline">\(T = 0\)</span>.</p>
+</div>
+</div>
 <p>A regression not just allows us to quantify the relationship between the treatment and outcome variable but also quantify the associations between outcomes and other variables. When we introduce other variables, we say that we are controlling for other factors.</p>
 <p><span class="math display">\[y_i = \alpha + \beta T_i + \gamma_1 Income_i + \gamma_2 Education_i + ... \]</span></p>
 <p>Here, we are controlling for income and education in regression equation. Introducing such controls may or may not be useful (a separate blog on control variables will be uploaded later).</p>
@@ -195,9 +207,9 @@ Note
 </div>
 <div class="callout-body-container callout-body">
 <p>The confidence interval gives a range of values which likely includes the true population parameter at a given confidence level.</p>
+<p>The p-value is a probability that measures how compatible the data are with the null hypothesis. It is the probability of observing the data extreme as what we observed, assuming that the <span class="math inline">\(H_0\)</span> is true.</p>
 </div>
 </div>
-<p>The p-value is a probability that measures how compatible the data are with the null hypothesis. It is the probability of observing the data extreme as what we observed, assuming that the <span class="math inline">\(\H_0\)</span> is true.</p>
 <p>Confidence interval</p>
 <ul>
 <li>If the null value falls within the range of the confidence interval, we fail to reject the <span class="math inline">\(H_0\)</span>.</li>
@@ -214,6 +226,19 @@ Note
 <li>Spillover effects</li>
 <li>Imperfect compliance and attrition</li>
 </ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>More on these topics will be uploaded later.</p>
+</div>
+</div>
 
 
 </section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
