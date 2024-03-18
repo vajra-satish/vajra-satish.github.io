@@ -6,6 +6,11 @@ categories: [RCT, R, Stata]
 image: "image.jpg"
 engine: "knitr"
 ---
+::: callout-tip
+## Comparing outcomes between treatment and control group
+
+Here, we apply regression analysis to analyze the impact of receiving monetary incentive on decision to learn the result of HIV test. Visit my previous [blog](https://vajra-satish.github.io/blogs/Comparison%20Between%20Treatment%20and%20Control%20Group%20-%20Regression%20Analysis/) to learn more about the theoretical aspects discussed in this section. 
+:::
 
 We use data from **"The Demand for, and Impact of, Learning HIV Status"** study in Malawi. The study uses a randomized controlled trial (RCT), where individuals were provided varying degrees of monetary incentives to learn about their HIV status after receiving an HIV Test. 
 
@@ -88,7 +93,7 @@ tabulate tinc
 
 ### Running the Regression
 
-Here, we only focus on analyzing the effect of receiving any financial incentive. Thus, we create a factor variable indicating whether the respondent has received an incentive or not. Once we create the treatment variable we run a regression to analyze the impact of receiving a financial incentive on the decision to obtain HIV results. The variable **got** indicates whether or not the respondent received the HIV result. In R we use the lm () function to run a regrssion. In Stata we use the regress command for the same
+Here, we only focus on analyzing the effect of receiving any financial incentive. Thus, we create a factor variable indicating whether the respondent has received an incentive or not. Once we create the treatment variable we run a regression to analyze the impact of receiving a financial incentive on the decision to obtain HIV results. The variable **got** indicates whether or not the respondent received the HIV result. In R we use the **lm ()** function to run a regression. In Stata we use the regress command for the same.
 
 ##### Execution in R
 
@@ -119,20 +124,20 @@ The treatment effect of receiving a financial incentive is 0.4506 or about 45 pe
 
 ### Robust Standard Errors
 
-When making comparison between the distribution of outcomes between two groups, we assume that the two groups have the same variance even though their means differed. This assumption is called the homoskedasticity assumption. However, when the variance in the treatment and control group are different the assumption of homoskedasticity is violated, i.e., the error terms are heteroskedastic. In such cases, we have to use robust standard errors to account for heteroskedasticity. The robust standard errors do not affect the estimates of the parameters in the regression. The robust standard errors tend to be larger than the unadjusted standard errors, which in turn makes the confidence interval wider. 
+When making comparison between the distribution of outcomes between two groups, we assume that the two groups have the same variance even though their means differed. This assumption is called the homoskedasticity assumption. However, when the variance in the treatment and control group are different the assumption of homoskedasticity is violated, i.e., the error terms are heteroskedastic. In such cases, we have to use robust standard errors to account for heteroskedasticity. The robust standard errors do not affect the estimates of the parameters in the regression, but they tend to be larger than the unadjusted standard errors. This in turn makes the confidence interval wider.  
 
-To test for heteroskedasticity, we run the Breusch-Pagan / Cook-Weisberg test for heteroskedasticity. It tests the null hypothesis of homoskedasticity against the alternative hypothesis of heteroskedasticity. We need to install the lmtest package and run the bttest() function. 
+To test for heteroskedasticity, we run the Breusch-Pagan / Cook-Weisberg test for heteroskedasticity. It tests the null hypothesis of homoskedasticity against the alternative hypothesis of heteroskedasticity. We need to install the **lmtest** package and run the **bptest()** function. 
 
 ##### Execution in R
 
-```{r}
+```{r message = FALSE, warning = FALSE}
 library(lmtest)
 bptest(reg, studentize = FALSE) 
 ```
 
 ##### Execution in Stata
 
-We use the estat hettest command in Stata to test ko heteroskedasticity. 
+We use the **estat hettest** command in Stata to test ko heteroskedasticity. 
 
 ```{stata, engine.path="C:/Stata15/Stata-64.exe"}
 cd "C://Impact Evaluation"
@@ -149,20 +154,20 @@ estat hettest
 The Breusch-Pagan test may not capture heteroskedasticity in all instances. 
 :::
 
-The low p-value suggests that we can reject the null hypothesis of homoskedasticity. In this case, it is better to use robust standard errors instead of unadjusted standard errors in our regression. 
+The low p-value suggests that we can reject the null hypothesis of homoskedasticity. In this case, it is better to use robust standard errors instead of unadjusted standard errors. 
 
 ##### Running Regression with Robust Standard Errors
 
-To use robust standard errors, we need to install the sandwich package and use vcovHC function in the coeftest() function from the lmtest package. 
+To use robust standard errors, we need to install the **sandwich** package and use **vcovHC()** function in the **coeftest()** function from the **lmtest** package. 
 
-```{r}
+```{r message = FALSE, warning = FALSE}
 library(sandwich)
 coeftest(reg, vcov = vcovHC(reg, type = "HC1"))
 ```
 
 ##### Execution in Stata
 
-To run a regression with robust standard errors, we run the regress command with the robust option.
+To run a regression with robust standard errors, we run the **regress** command with the **robust** option.
 
 ```{stata, engine.path="C:/Stata15/Stata-64.exe"}
 cd "C://Impact Evaluation"
