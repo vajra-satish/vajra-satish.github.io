@@ -47,6 +47,8 @@ names(data)
 dim(data)
 ```
 
+There are 44 variables and 4,820 observations.
+
 ##### Execution in Stata
 
 Use the cd command to import the dataset. The describe command provides a list of variables with their types and labels. 
