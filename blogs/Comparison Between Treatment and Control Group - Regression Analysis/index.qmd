@@ -60,11 +60,12 @@ In a regression equation, the parameter $\beta$ gives an estimate of the average
 The standard error is a measure of how uncertain we are about the true underlying value of a coefficient.
 :::
 
-The $\beta$ coefficient is the difference in the averages of the treatment and control group. The difference is just and estimate of the difference in the true underlying mean. 
+The $\beta$ coefficient is the difference in the averages of the treatment and control group. The difference is just an estimate of the difference in the true underlying mean. 
 
 $$True \space slope = \beta \approx Estimated \space slope = \hat{\beta}$$
 $$\beta = \mu_1 - \mu_0 \approx \hat{\beta} = \bar{y} (1) - \bar{y}(0)$$
-Since the coefficient $\hat{\beta}$ is an estimate of the true underlying mean, we could form a hypothesis about true difference in mean, i.e., $H_0: \mu_1 = \mu_0$ against $H_A: \mu_1 \neq \mu_0$. We can test the hypothesis about $\beta$ by forming confidence intervals around $\hat{\beta}$ and by calculating the corresponding p values. 
+
+Since the coefficient $\hat{\beta}$ is an estimate of the true underlying mean, we could form a hypothesis about the true difference in mean, i.e., $H_0: \mu_1 = \mu_0$ against $H_A: \mu_1 \neq \mu_0$. We can test the hypothesis about $\beta$ by forming confidence intervals around $\hat{\beta}$ and by calculating the corresponding p values. 
 
 ## Decision rules
 
