@@ -52,7 +52,7 @@ $$\bar y(1) - \bar y(0) = \alpha + \beta -\alpha = \beta$$
 
 # Population parameters and their estimates
 
-In a regression equation, the parameter $\beta$ gives an estimate of the average impact of an intervention. We estimate the true population parameter $\beta$ from a sample in a regression analysis. Hence, we use $\hat{\beta}$ instead of $\beta$ to denote that it is an estimate of the population parameter. We do the same for the parameter $\alpha$. Since these coefficients are estimates, the standard error is also reported in the regression output. 
+In a regression equation, the parameter $\hat{\beta}$ gives an estimate of the average impact of an intervention. We estimate the true population parameter $\beta$ from a sample in a regression analysis. Hence, we use $\hat{\beta}$ instead of $\beta$ to denote that it is an estimate of the population parameter. We do the same for the parameter $\alpha$. Since these coefficients are estimates, the standard error is also reported in the regression output. 
 
 ::: {.callout-tip}
 ## Standard error
