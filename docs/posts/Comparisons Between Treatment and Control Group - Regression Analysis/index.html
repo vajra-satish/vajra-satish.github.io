@@ -150,7 +150,7 @@ p {
 </style>
 </div>
 <section id="how-to-make-comparisons-between-treatment-and-control-group" class="level1"><h1>How to make comparisons between treatment and control group?</h1>
-<p>While measuring impact of an intervention or program, we randomly assign individuals to treatment and control groups and compare the average outcome in each group. In general, we ask if the outcomes are different between the groups.</p>
+<p>While measuring the impact of an intervention or a program, we randomly assign individuals to treatment and control groups and compare the average outcome in each group. In general, we ask if the outcomes are different between the groups.</p>
 <p>Researchers use regression analysis to report the results of a RCT in scientific journals or reports.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -171,17 +171,33 @@ Note
 </section><section id="how-to-measure-the-average-impact-of-an-intervention" class="level1"><h1>How to measure the average impact of an intervention?</h1>
 <p>To measure the average impact of an intervention, we estimate the average outcome in the treatment group, <span class="math inline">\(\bar y (T=1)\)</span>, and compare it with the average outcome in the control group, <span class="math inline">\(\bar y (T=0)\)</span>.</p>
 <section id="computing-average-outcome-for-the-control-group-and-treatment-group" class="level5"><h5 class="anchored" data-anchor-id="computing-average-outcome-for-the-control-group-and-treatment-group">Computing average outcome for the control group and treatment group</h5>
-<p>Using the regression equation, lets compute the average outcome for the treatment and control group. For the treatment group, the treatment variable will take on the value of one.</p>
+<p>Lets compute the average outcome for the treatment and control group. For the treatment group, the treatment variable will take on the value of one.</p>
 <p><span class="math display">\[ \bar y(1) = \alpha + \beta * 1 = \alpha + \beta \]</span> The average outcome of the treatment group is the sum of coefficients <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span></p>
 <p>For the control group, the treatment variable will take on the value of zero.</p>
 <p><span class="math display">\[\bar y(0) = \alpha + \beta * 0 = \alpha\]</span></p>
 <p>The average outcome of the control group is <span class="math inline">\(\alpha\)</span>, which is also the intercept term.</p>
-<p>We can calculate the average impact of an intervention by calculating the different in average outcome between the treatment and control group.</p>
+<p>We can calculate the average impact of an intervention by calculating the difference in average outcome between the treatment and control group.</p>
 <p><span class="math display">\[\bar y(1) - \bar y(0) = \alpha + \beta -\alpha = \beta\]</span></p>
-<p>In a regression equation, the coefficient <span class="math inline">\(\beta\)</span> gives an estimate of the average impact of an intervention.</p>
+</section></section><section id="population-parameters-and-their-estimates" class="level1"><h1>Population parameters and their estimates</h1>
+<p>In a regression equation, the parameter <span class="math inline">\(\beta\)</span> gives an estimate of the average impact of an intervention. We estimate the true population parameter <span class="math inline">\(\beta\)</span> from a sample in a regression analysis. Hence, we use <span class="math inline">\(\hat{\beta}\)</span> instead of <span class="math inline">\(\beta\)</span> to denote that it is an estimate of the population parameter. We do the same for the parameter <span class="math inline">\(\alpha\)</span>. Since these coefficients are estimates, the standard error is also reported in the regression output.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Standard error
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The standard error is a measure of how uncertain we are about the true underlying value of a coefficient.</p>
+</div>
+</div>
+<p>The <span class="math inline">\(\beta\)</span> coefficient is the difference in the averages of the treatment and control group. The difference is just and estimate of the difference in the true underlying mean.</p>
+<p><span class="math display">\[True \space slope = \beta \approx Estimated \space slope = \hat{\beta}\]</span> <span class="math display">\[\beta = \mu_1 - \mu_0 \approx \hat{\beta} = \bar{y} (1) - \bar{y}(0)\]</span> Since the coefficient <span class="math inline">\(\hat{\beta}\)</span> is an estimate of the true underlying mean, we could form a hypothesis about true difference in mean, i.e., <span class="math inline">\(H_0: \mu_1 = \mu_0\)</span> against <span class="math inline">\(H_A: \mu_1 \neq \mu_0\)</span>. We can test the hypothesis about <span class="math inline">\(\beta\)</span> by forming confidence intervals around <span class="math inline">\(\hat{\beta}\)</span> and by calculating the corresponding p values.</p>
 
 
-</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");

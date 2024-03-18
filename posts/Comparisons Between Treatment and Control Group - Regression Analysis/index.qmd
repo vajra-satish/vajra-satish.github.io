@@ -15,7 +15,7 @@ p {
 
 # How to make comparisons between treatment and control group?
 
-While measuring impact of an intervention or program, we randomly assign individuals to treatment and control groups and compare the average outcome in each group. In general, we ask if the outcomes are different between the groups. 
+While measuring the impact of an intervention or a program, we randomly assign individuals to treatment and control groups and compare the average outcome in each group. In general, we ask if the outcomes are different between the groups. 
 
 Researchers use regression analysis to report the results of a RCT in scientific journals or reports.
 
@@ -35,7 +35,7 @@ To measure the average impact of an intervention, we estimate the average outcom
 
 ##### Computing average outcome for the control group and treatment group
 
-Using the regression equation, lets compute the average outcome for the treatment and control group. For the treatment group, the treatment variable will take on the value of one. 
+Lets compute the average outcome for the treatment and control group. For the treatment group, the treatment variable will take on the value of one. 
 
 $$ \bar y(1) = \alpha + \beta * 1 = \alpha + \beta $$
 The average outcome of the treatment group is the sum of coefficients $\alpha$ and $\beta$
@@ -46,8 +46,22 @@ $$\bar y(0) = \alpha + \beta * 0 = \alpha$$
 
 The average outcome of the control group is $\alpha$, which is also the intercept term. 
 
-We can calculate the average impact of an intervention by calculating the different in average outcome between the treatment and control group. 
+We can calculate the average impact of an intervention by calculating the difference in average outcome between the treatment and control group. 
 
 $$\bar y(1) - \bar y(0) = \alpha + \beta -\alpha = \beta$$
 
-In a regression equation, the coefficient $\beta$ gives an estimate of the average impact of an intervention.   
+# Population parameters and their estimates
+
+In a regression equation, the parameter $\beta$ gives an estimate of the average impact of an intervention. We estimate the true population parameter $\beta$ from a sample in a regression analysis. Hence, we use $\hat{\beta}$ instead of $\beta$ to denote that it is an estimate of the population parameter. We do the same for the parameter $\alpha$. Since these coefficients are estimates, the standard error is also reported in the regression output. 
+
+::: {.callout-tip}
+## Standard error
+
+The standard error is a measure of how uncertain we are about the true underlying value of a coefficient.
+:::
+
+The $\beta$ coefficient is the difference in the averages of the treatment and control group. The difference is just and estimate of the difference in the true underlying mean. 
+
+$$True \space slope = \beta \approx Estimated \space slope = \hat{\beta}$$
+$$\beta = \mu_1 - \mu_0 \approx \hat{\beta} = \bar{y} (1) - \bar{y}(0)$$
+Since the coefficient $\hat{\beta}$ is an estimate of the true underlying mean, we could form a hypothesis about true difference in mean, i.e., $H_0: \mu_1 = \mu_0$ against $H_A: \mu_1 \neq \mu_0$. We can test the hypothesis about $\beta$ by forming confidence intervals around $\hat{\beta}$ and by calculating the corresponding p values. 
