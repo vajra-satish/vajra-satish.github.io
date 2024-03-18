@@ -70,10 +70,10 @@ library(dplyr)
 # ensure that all rows are diplayed when priting tibbles
 options (tibble.print_max = Inf) 
 # tabulate tinc
-data |> filter(!is.na(tinc))|>
-  select(tinc) |>
-  group_by(tinc) |>
-  summarize(count=n()) |>
-  mutate(percent = count/sum(count)*100) |>
-  round(digits = 2)
+data |> filter(!is.na(tinc))|> # remove NA
+  select(tinc) |> # select tinc from dataset
+  group_by(tinc) |> # group by tinc
+  summarize(count=n()) |> # create table with frequency 
+  mutate(percent = count/sum(count)*100) |> # create percent variable
+  round(digits = 2) # round the digits upto 2 decimal points
 ```
