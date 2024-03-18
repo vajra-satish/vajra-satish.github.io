@@ -31,10 +31,28 @@ install.packages("haven")
 
 Now, import the data set and check the list of variables and number of observations. When you download the data file, it comes with a readme file. Please read the readme file to learn more about the variables. 
 
+::: callout-tip
+## The str function in R
+
+The str () function in R provides the structure of the dataset. However, we will only use the names () and dim() function here to make the content of this analysis shorter. Please check the Stata execution section to get a detailed description of the variables. 
+:::
+
 ```{r, warning=FALSE}
 library(haven)
 # import the .dta file
 data <- read_dta("C:/Impact Evaluation/Regression Analysis/Data/Thornton HIV Testing Data.dta")
-# check the structure of the dataset
-str(data)
+# List of variables
+names(data)
+# dimensions of the dataset
+dim(data)
+```
+
+##### Execution in Stata
+
+Use the cd command to import the dataset. The describe command provides a list of variables with their types and labels. 
+
+```{stata, engine.path="C:/Stata15/Stata-64.exe"}
+cd "C://Impact Evaluation"
+use "Regression Analysis\Data\Thornton HIV Testing Data.dta", clear
+describe
 ```
