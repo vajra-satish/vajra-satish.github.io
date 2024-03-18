@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Satish Bajracharya">
 <meta name="dcterms.date" content="2024-03-17">
-<title>Satish Bajracharya - Analyzining the Impact of Monetary Incentive on Decision to Learn the Result of HIV Test</title>
+<title>Satish Bajracharya - Analyzining the Impact of Receiving Any Monetary Incentive on Decision to Learn the Result of HIV Test</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -141,7 +141,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       </div> <!-- /container-fluid -->
     </nav></header><!-- content --><header id="title-block-header" class="quarto-title-block default page-columns page-full"><div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Analyzining the Impact of Monetary Incentive on Decision to Learn the Result of HIV Test</h1>
+      <h1 class="title">Analyzining the Impact of Receiving Any Monetary Incentive on Decision to Learn the Result of HIV Test</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">RCT</div>
                 <div class="quarto-category">R</div>
@@ -245,7 +245,7 @@ The str function in R
 <p>Use the cd command to import the dataset. The describe command provides a list of variables with their types and labels.</p>
 <div class="cell" data-engine.path="C:/Stata15/Stata-64.exe">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>cd <span class="st">"C://Impact Evaluation"</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="st">"Regression Analysis\Data\Thornton HIV Testing Data.dta"</span>, <span class="kw">clear</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="st">"Regression Analysis\Data\Thornton HIV Testing Data.dta"</span>, <span class="kw">clear</span> </span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="kw">describe</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -253,7 +253,7 @@ The str function in R
 . cd "C://Impact Evaluation"
 C:\Impact Evaluation
 
-. use "Regression Analysis\Data\Thornton HIV Testing Data.dta", clear
+. use "Regression Analysis\Data\Thornton HIV Testing Data.dta", clear 
 
 . describe
 
@@ -324,6 +324,56 @@ bought          float   %9.0g                 Bought condoms on own at
                                                 follow-up
 -------------------------------------------------------------------------------
 Sorted by: </code></pre>
+</div>
+</div>
+</section></section><section id="regression-analysis" class="level2"><h2 class="anchored" data-anchor-id="regression-analysis">Regression Analysis</h2>
+<p>Here, we analyze the impact of receiving any monetary incentive on the decision to receive results from study participant’s HIV test. The <strong>tinc</strong> variable records the amount of monetary incentive received (in kwacha) by the study participants. We tabulate the variable tinc to see the range of monetary incentives offered.</p>
+<section id="execution-in-r-1" class="level5"><h5 class="anchored" data-anchor-id="execution-in-r-1">Execution in R</h5>
+<div class="cell">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'dplyr' was built under R version 4.2.3</code></pre>
+</div>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># ensure that all rows are diplayed when priting tibbles</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span> <span class="op">(</span>tibble.print_max <span class="op">=</span> <span class="cn">Inf</span><span class="op">)</span> </span>
+<span><span class="co"># tabulate tinc</span></span>
+<span><span class="va">data</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">tinc</span><span class="op">)</span><span class="op">)</span><span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">tinc</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">tinc</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>count<span class="op">=</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>percent <span class="op">=</span> <span class="va">count</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">count</span><span class="op">)</span><span class="op">*</span><span class="fl">100</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span>digits <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 27 × 3
+    tinc count percent
+   &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;
+ 1     0   679   23.4 
+ 2    10    58    2   
+ 3    20   154    5.31
+ 4    30    81    2.79
+ 5    40    64    2.21
+ 6    50   205    7.07
+ 7    60    37    1.28
+ 8    70    40    1.38
+ 9    80     7    0.24
+10    90     8    0.28
+11   100   492   17.0 
+12   110    14    0.48
+13   120    82    2.83
+14   130     9    0.31
+15   140    42    1.45
+16   150    43    1.48
+17   160    28    0.97
+18   170     8    0.28
+19   180     9    0.31
+20   200   431   14.9 
+21   210    36    1.24
+22   220    48    1.65
+23   230    30    1.03
+24   240     2    0.07
+25   250    68    2.34
+26   260     3    0.1 
+27   300   223    7.69</code></pre>
 </div>
 </div>
 

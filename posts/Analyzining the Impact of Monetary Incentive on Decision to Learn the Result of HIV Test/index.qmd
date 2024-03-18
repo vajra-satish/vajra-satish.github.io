@@ -1,5 +1,5 @@
 ---
-title: "Analyzining the Impact of Monetary Incentive on Decision to Learn the Result of HIV Test"
+title: "Analyzining the Impact of Receiving Any Monetary Incentive on Decision to Learn the Result of HIV Test"
 author: "Satish Bajracharya"
 date: "2024-03-17"
 categories: [RCT, R, Stata]
@@ -55,6 +55,25 @@ Use the cd command to import the dataset. The describe command provides a list o
 
 ```{stata, engine.path="C:/Stata15/Stata-64.exe"}
 cd "C://Impact Evaluation"
-use "Regression Analysis\Data\Thornton HIV Testing Data.dta", clear
+use "Regression Analysis\Data\Thornton HIV Testing Data.dta", clear 
 describe
+```
+
+## Regression Analysis
+
+Here, we analyze the impact of receiving any monetary incentive on the decision to receive results from study participant's HIV test. The **tinc** variable records the amount of monetary incentive received (in kwacha) by the study participants. We tabulate the variable tinc to see the range of monetary incentives offered.
+
+##### Execution in R
+
+```{r message = FALSE}
+library(dplyr)
+# ensure that all rows are diplayed when priting tibbles
+options (tibble.print_max = Inf) 
+# tabulate tinc
+data |> filter(!is.na(tinc))|>
+  select(tinc) |>
+  group_by(tinc) |>
+  summarize(count=n()) |>
+  mutate(percent = count/sum(count)*100) |>
+  round(digits = 2)
 ```
