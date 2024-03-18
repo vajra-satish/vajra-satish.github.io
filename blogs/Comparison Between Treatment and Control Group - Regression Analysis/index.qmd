@@ -17,9 +17,9 @@ p {
 
 While measuring the impact of an intervention or a program, we randomly assign individuals to treatment and control groups and compare the average outcome in each group. In general, we ask if the outcomes are different between the groups. 
 
+::: {.callout-note}
 Researchers use regression analysis to report the results of a RCT in scientific journals or reports.
 
-::: {.callout-note}
 Regression equation: $y_i= \alpha + \beta T_i + \epsilon_i$. Here, the outcome variable is denoted by $y$, error term is deonted by $\epsilon_i$, and treatment variable is denoted by $T_i$. If an individual is assigned to the treatment group, $T = 1$, otherwise $T = 0$.
 :::
 
