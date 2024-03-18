@@ -604,20 +604,20 @@ Note
 </div>
 <p>The low p-value suggests that we can reject the null hypothesis of homoskedasticity. In this case, it is better to use robust standard errors instead of unadjusted standard errors in our regression.</p>
 </section><section id="running-regression-with-robust-standard-errors" class="level5"><h5 class="anchored" data-anchor-id="running-regression-with-robust-standard-errors">Running Regression with Robust Standard Errors</h5>
-<p>To use robust standard errors, we need to install the sandwich package and use vcovHC function in the coeftest() function from the lmtest package. We use a simple White standard error.</p>
+<p>To use robust standard errors, we need to install the sandwich package and use vcovHC function in the coeftest() function from the lmtest package.</p>
 <div class="cell">
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://sandwich.R-Forge.R-project.org/">sandwich</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: package 'sandwich' was built under R version 4.2.3</code></pre>
 </div>
-<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/lmtest/man/coeftest.html">coeftest</a></span><span class="op">(</span><span class="va">reg</span>, vcov <span class="op">=</span> <span class="fu"><a href="https://sandwich.R-Forge.R-project.org/reference/vcovHC.html">vcovHC</a></span><span class="op">(</span><span class="va">reg</span>, type <span class="op">=</span> <span class="st">"HC0"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/lmtest/man/coeftest.html">coeftest</a></span><span class="op">(</span><span class="va">reg</span>, vcov <span class="op">=</span> <span class="fu"><a href="https://sandwich.R-Forge.R-project.org/reference/vcovHC.html">vcovHC</a></span><span class="op">(</span><span class="va">reg</span>, type <span class="op">=</span> <span class="st">"HC1"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 t test of coefficients:
 
                    Estimate Std. Error t value  Pr(&gt;|t|)    
-(Intercept)        0.338684   0.018961  17.862 &lt; 2.2e-16 ***
-treatmentTreatment 0.450552   0.020851  21.609 &lt; 2.2e-16 ***
+(Intercept)        0.338684   0.018968  17.856 &lt; 2.2e-16 ***
+treatmentTreatment 0.450552   0.020858  21.601 &lt; 2.2e-16 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
@@ -666,6 +666,7 @@ Linear regression                               Number of obs     =      2,834
 ------------------------------------------------------------------------------</code></pre>
 </div>
 </div>
+<p>The coefficients of the treatment and constant term are the same. But the standard errors of both the parameters are larger.</p>
 
 
 </section></section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">

@@ -153,11 +153,11 @@ The low p-value suggests that we can reject the null hypothesis of homoskedastic
 
 ##### Running Regression with Robust Standard Errors
 
-To use robust standard errors, we need to install the sandwich package and use vcovHC function in the coeftest() function from the lmtest package. We use a simple White standard error.
+To use robust standard errors, we need to install the sandwich package and use vcovHC function in the coeftest() function from the lmtest package. 
 
 ```{r}
 library(sandwich)
-coeftest(reg, vcov = vcovHC(reg, type = "HC0"))
+coeftest(reg, vcov = vcovHC(reg, type = "HC1"))
 ```
 
 ##### Execution in Stata
@@ -173,3 +173,5 @@ label define treatment 0 "Control" 1 "Treatment"
 label val treatment treatment
 regress got treatment, robust
 ```
+
+The coefficients of the treatment and constant term are the same. But the standard errors of both the parameters are larger. 
