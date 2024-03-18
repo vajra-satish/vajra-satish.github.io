@@ -127,7 +127,7 @@ To test for heteroskedasticity, we run the Breusch-Pagan / Cook-Weisberg test fo
 
 ```{r}
 library(lmtest)
-bptest(reg) 
+bptest(reg, studentize = FALSE) 
 ```
 
 ##### Execution in Stata
@@ -143,4 +143,33 @@ label define treatment 0 "Control" 1 "Treatment"
 label val treatment treatment
 regress got treatment
 estat hettest
+```
+
+::: callout-note
+The Breusch-Pagan test may not capture heteroskedasticity in all instances. 
+:::
+
+The low p-value suggests that we can reject the null hypothesis of homoskedasticity. In this case, it is better to use robust standard errors instead of unadjusted standard errors in our regression. 
+
+##### Running Regression with Robust Standard Errors
+
+To use robust standard errors, we need to install the sandwich package and use vcovHC function in the coeftest() function from the lmtest package. We use a simple White standard error.
+
+```{r}
+library(sandwich)
+coeftest(reg, vcov = vcovHC(reg, type = "HC0"))
+```
+
+##### Execution in Stata
+
+To run a regression with robust standard errors, we run the regress command with the robust option.
+
+```{stata, engine.path="C:/Stata15/Stata-64.exe"}
+cd "C://Impact Evaluation"
+use "Regression Analysis\Data\Thornton HIV Testing Data.dta", clear
+drop if missing(tinc) | missing(got)
+generate treatment = cond(tinc>0, 1, 0)
+label define treatment 0 "Control" 1 "Treatment"
+label val treatment treatment
+regress got treatment, robust
 ```

@@ -526,13 +526,13 @@ Attaching package: 'zoo'</code></pre>
 
     as.Date, as.Date.numeric</code></pre>
 </div>
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/lmtest/man/bptest.html">bptest</a></span><span class="op">(</span><span class="va">reg</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/lmtest/man/bptest.html">bptest</a></span><span class="op">(</span><span class="va">reg</span>, studentize <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
-    studentized Breusch-Pagan test
+    Breusch-Pagan test
 
 data:  reg
-BP = 32.868, df = 1, p-value = 9.865e-09</code></pre>
+BP = 25.191, df = 1, p-value = 5.193e-07</code></pre>
 </div>
 </div>
 </section><section id="execution-in-stata-3" class="level5"><h5 class="anchored" data-anchor-id="execution-in-stata-3">Execution in Stata</h5>
@@ -587,6 +587,83 @@ Breusch-Pagan / Cook-Weisberg test for heteroskedasticity
 
          chi2(1)      =    25.19
          Prob &gt; chi2  =   0.0000</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The Breusch-Pagan test may not capture heteroskedasticity in all instances.</p>
+</div>
+</div>
+<p>The low p-value suggests that we can reject the null hypothesis of homoskedasticity. In this case, it is better to use robust standard errors instead of unadjusted standard errors in our regression.</p>
+</section><section id="running-regression-with-robust-standard-errors" class="level5"><h5 class="anchored" data-anchor-id="running-regression-with-robust-standard-errors">Running Regression with Robust Standard Errors</h5>
+<p>To use robust standard errors, we need to install the sandwich package and use vcovHC function in the coeftest() function from the lmtest package. We use a simple White standard error.</p>
+<div class="cell">
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://sandwich.R-Forge.R-project.org/">sandwich</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'sandwich' was built under R version 4.2.3</code></pre>
+</div>
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/lmtest/man/coeftest.html">coeftest</a></span><span class="op">(</span><span class="va">reg</span>, vcov <span class="op">=</span> <span class="fu"><a href="https://sandwich.R-Forge.R-project.org/reference/vcovHC.html">vcovHC</a></span><span class="op">(</span><span class="va">reg</span>, type <span class="op">=</span> <span class="st">"HC0"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+t test of coefficients:
+
+                   Estimate Std. Error t value  Pr(&gt;|t|)    
+(Intercept)        0.338684   0.018961  17.862 &lt; 2.2e-16 ***
+treatmentTreatment 0.450552   0.020851  21.609 &lt; 2.2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+</section><section id="execution-in-stata-4" class="level5"><h5 class="anchored" data-anchor-id="execution-in-stata-4">Execution in Stata</h5>
+<p>To run a regression with robust standard errors, we run the regress command with the robust option.</p>
+<div class="cell" data-engine.path="C:/Stata15/Stata-64.exe">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>cd <span class="st">"C://Impact Evaluation"</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="st">"Regression Analysis\Data\Thornton HIV Testing Data.dta"</span>, <span class="kw">clear</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="kw">drop</span> <span class="kw">if</span> <span class="fu">missing</span>(tinc) | <span class="fu">missing</span>(got)</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="kw">generate</span> treatment = <span class="fu">cond</span>(tinc&gt;0, 1, 0)</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="kw">label</span> <span class="kw">define</span> treatment 0 <span class="st">"Control"</span> 1 <span class="st">"Treatment"</span></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="kw">label</span> val treatment treatment</span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="kw">regress</span> got treatment, <span class="kw">robust</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+
+. cd "C://Impact Evaluation"
+C:\Impact Evaluation
+
+. use "Regression Analysis\Data\Thornton HIV Testing Data.dta", clear
+
+. drop if missing(tinc) | missing(got)
+(1,986 observations deleted)
+
+. generate treatment = cond(tinc&gt;0, 1, 0)
+
+. label define treatment 0 "Control" 1 "Treatment"
+
+. label val treatment treatment
+
+. regress got treatment, robust
+
+Linear regression                               Number of obs     =      2,834
+                                                F(1, 2832)        =     466.60
+                                                Prob &gt; F          =     0.0000
+                                                R-squared         =     0.1628
+                                                Root MSE          =     .42325
+
+------------------------------------------------------------------------------
+             |               Robust
+         got |      Coef.   Std. Err.      t    P&gt;|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+   treatment |   .4505519    .020858    21.60   0.000     .4096535    .4914502
+       _cons |   .3386838   .0189675    17.86   0.000     .3014922    .3758754
+------------------------------------------------------------------------------</code></pre>
 </div>
 </div>
 
