@@ -1,6 +1,6 @@
 ---
 title: "Power Calculations in RCT: Without Clusters (Theory)"
-author: "Satish Bajracharrya"
+author: "Satish Bajracharya"
 date: "2024-03-12"
 categories: [Survey design, RCT]
 image: "image.jpg"
