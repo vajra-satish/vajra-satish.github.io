@@ -6,6 +6,12 @@ categories: [RCT, R, Stata]
 image: "image.jpg"
 engine: "knitr"
 ---
+```{css, echo = FALSE}
+p {
+  text-align: justify
+}
+```
+
 ::: callout-tip
 ## Comparing outcomes between treatment and control group
 
@@ -28,13 +34,13 @@ We use the "Thornton HIV Testing Data.dta" for the analysis.
 
 ##### Execution in R
 
-The data file is a Stata (.dta) file. To import the data set in R, we will need to install the **Haven** package in R and use the **read_dta()** function. Run the following code in R to install the Haven package:
+The data file is a Stata (.dta) file. To import the dataset in R, we will need to install the **haven** package in R and use the **read_dta()** function. Run the following code in R to install the haven package:
 
 ```
 install.packages("haven")
 ```
 
-Now, import the data set and check the list of variables and number of observations. When you download the data file, it comes with a readme file. Please read the readme file to learn more about the variables. 
+Now, import the dataset and check the list of variables and number of observations. When you download the data file, it comes with a readme file. Please read the readme file to learn more about the variables. 
 
 ::: callout-tip
 ## The str function in R
@@ -93,18 +99,18 @@ tabulate tinc
 
 ### Running the Regression
 
-Here, we only focus on analyzing the effect of receiving any financial incentive. Thus, we create a factor variable indicating whether the respondent has received an incentive or not. Once we create the treatment variable we run a regression to analyze the impact of receiving a financial incentive on the decision to obtain HIV results. The variable **got** indicates whether or not the respondent received the HIV result. In R we use the **lm ()** function to run a regression. In Stata we use the regress command for the same.
+Here, we only focus on analyzing the effect of receiving any financial incentive. Thus, we create a factor variable indicating whether the respondent has received an incentive or not. Once we create the treatment variable, we run a regression to analyze the impact of receiving financial incentive on the decision to obtain HIV results. The variable **got** indicates whether or not the respondent received the HIV result. In R we use the **lm ()** function to run a regression. In Stata we use the regress command for the same.
 
 ##### Execution in R
 
 ```{r}
 data_1 <- data |>
-  filter(!is.na(tinc)) |>
-  mutate(treatment = ifelse(tinc > 0, 1, 0))
+  filter(!is.na(tinc)) |> #remove na in tinc
+  mutate(treatment = ifelse(tinc > 0, 1, 0)) # create treatment variable
 data_1$treatment <- factor(data_1$treatment, 
                        levels = c(0, 1),
                        labels = c("Control", "Treatment"))
-reg <- lm(got ~ treatment, data = data_1)
+reg <- lm(got ~ treatment, data = data_1) #run the regression
 summary(reg)
 ```
 
