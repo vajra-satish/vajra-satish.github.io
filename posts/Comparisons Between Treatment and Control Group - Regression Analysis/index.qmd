@@ -1,9 +1,0 @@
----
-title: "Comparisons Between Treatment and Control Group: Regression Analysis"
-author: "Satish Bajracharya"
-date: "2024-03-17"
-categories: [RCT, R, Stata]
-image: "image.jpg"
-engine: "knitr"
----
-

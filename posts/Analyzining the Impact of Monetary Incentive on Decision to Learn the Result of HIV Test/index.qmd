@@ -1,0 +1,40 @@
+---
+title: "Analyzining the Impact of Monetary Incentive on Decision to Learn the Result of HIV Test"
+author: "Satish Bajracharya"
+date: "2024-03-17"
+categories: [RCT, R, Stata]
+image: "image.jpg"
+engine: "knitr"
+---
+
+We use data from **"The Demand for, and Impact of, Learning HIV Status"** study in Malawi. The study uses a randomized controlled trial (RCT), where individuals were provided varying degrees of monetary incentives to learn about their HIV status after receiving an HIV Test. 
+
+::: callout-note
+Study: Thornton, Rebecca L. 2008. “The Demand for, and Impact of, Learning HIV Status.” American Economic Review, 98 (5): 1829-63. 
+
+Data file: [Click here](https://www.aeaweb.org/aer/data/dec08/20060732_data.zip)
+
+Detailed description of the intervention: [Click here](https://www.povertyactionlab.org/evaluation/demand-and-impact-learning-hiv-status-malawi)
+:::
+
+We use the "Thorton HIV Testing Data.dta" for the analysis.
+
+## Importing and describing the data
+
+##### Execution in R
+
+The data file is a Stata (.dta) file. To import the data set in R, we will need to install the **Haven** package in R and use the **read_dta()** function. Run the following code in R to install the Haven package:
+
+```
+install.packages("haven")
+```
+
+Now, import the data set and check the list of variables and number of observations. When you download the data file, it comes with a readme file. Please read the readme file to learn more about the variables. 
+
+```{r, warning=FALSE}
+library(haven)
+# import the .dta file
+data <- read_dta("C:/Impact Evaluation/Regression Analysis/Data/Thornton HIV Testing Data.dta")
+# check the structure of the dataset
+str(data)
+```
