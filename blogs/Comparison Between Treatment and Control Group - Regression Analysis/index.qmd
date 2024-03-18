@@ -85,7 +85,7 @@ Confidence interval
 ::: {.callout-tip}
 ## Sample size and confidence interval
 
-As the sample size increases, the confidence interval shrinks. This helps us to improve the precision of our estimates, which improves the likelihood of detecting an impact of an intervention.
+As the sample size increases, the confidence interval shrinks. This helps us to improve the precision of our estimates and increases the likelihood of detecting the impact of an intervention.
 :::
 
 P-value
