@@ -109,7 +109,6 @@ ul.task-list li input[type="checkbox"] {
     <div class="quarto-title column-body">
       <h1 class="title">Comparisons Between Treatment and Control Group: Regression Analysis</h1>
                                 <div class="quarto-categories">
-                <div class="quarto-category">Survey design</div>
                 <div class="quarto-category">RCT</div>
               </div>
                   </div>
@@ -194,7 +193,7 @@ Standard error
 </div>
 <p>The <span class="math inline">\(\beta\)</span> coefficient is the difference in the averages of the treatment and control group. The difference is just an estimate of the difference in the true underlying mean.</p>
 <p><span class="math display">\[True \space slope = \beta \approx Estimated \space slope = \hat{\beta}\]</span> <span class="math display">\[\beta = \mu_1 - \mu_0 \approx \hat{\beta} = \bar{y} (1) - \bar{y}(0)\]</span></p>
-<p>Since the coefficient <span class="math inline">\(\hat{\beta}\)</span> is an estimate of the true underlying mean, we could form a hypothesis about the true difference in mean, i.e., <span class="math inline">\(H_0: \mu_1 = \mu_0\)</span> against <span class="math inline">\(H_A: \mu_1 \neq \mu_0\)</span>. We can test the hypothesis about <span class="math inline">\(\beta\)</span> by forming confidence intervals around <span class="math inline">\(\hat{\beta}\)</span> and by calculating the corresponding p values.</p>
+<p>Since the coefficient <span class="math inline">\(\hat{\beta}\)</span> is an estimate of the true underlying mean, we could form a hypothesis about the true difference in mean, i.e., <span class="math inline">\(H_0: \mu_1 = \mu_0\)</span> against <span class="math inline">\(H_A: \mu_1 \neq \mu_0\)</span>. We can test the hypothesis about <span class="math inline">\(\beta\)</span> by forming confidence intervals around <span class="math inline">\(\hat{\beta}\)</span> and by calculating the corresponding p-values.</p>
 <section id="decision-rules" class="level2"><h2 class="anchored" data-anchor-id="decision-rules">Decision rules</h2>
 <p>The <span class="math inline">\(H_0\)</span> is the benchmark against which virtually all interventions are measured. The test will yield a <strong>confidence interval</strong> and a <strong>p-value</strong>.</p>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -208,7 +207,7 @@ Note
 </div>
 <div class="callout-body-container callout-body">
 <p>The confidence interval gives a range of values which likely includes the true population parameter at a given confidence level.</p>
-<p>The p-value is a probability that measures how compatible the data are with the null hypothesis. It is the probability of observing the data extreme as what we observed, assuming that the <span class="math inline">\(H_0\)</span> is true.</p>
+<p>The p-value is a probability that measures how compatible the data are with the null hypothesis. It is the probability of observing the data as extreme as what we observed, assuming that the <span class="math inline">\(H_0\)</span> is true.</p>
 </div>
 </div>
 <p>Confidence interval</p>
@@ -216,10 +215,23 @@ Note
 <li>If the null value falls within the range of the confidence interval, we fail to reject the <span class="math inline">\(H_0\)</span>.</li>
 <li>If the null value falls outside the confidence interval, we reject the <span class="math inline">\(H_0\)</span>.</li>
 </ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Sample size and confidence interval
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>As the sample size increases, the confidence interval shrinks. This helps us to improve the precision of our estimates, which improves the likelihood of detecting an impact of an intervention.</p>
+</div>
+</div>
 <p>P-value</p>
 <ul>
-<li>If the p-value is less than the significance level (<span class="math inline">\(\alpha\)</span>), we reject the <span class="math inline">\(H_0\)</span>.</li>
-<li>If the p-value is more than the significance level (<span class="math inline">\(\alpha\)</span>), we fail reject the <span class="math inline">\(H_0\)</span>.</li>
+<li>If the p-value is less than the significance level, we reject the <span class="math inline">\(H_0\)</span>.</li>
+<li>If the p-value is more than the significance level, we fail reject the <span class="math inline">\(H_0\)</span>.</li>
 </ul></section></section><section id="things-to-remember-while-conducting-rct" class="level1"><h1>Things to remember while conducting RCT</h1>
 <ul>
 <li>Controlling for additional variables</li>

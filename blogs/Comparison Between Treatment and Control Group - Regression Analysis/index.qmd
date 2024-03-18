@@ -2,7 +2,7 @@
 title: "Comparisons Between Treatment and Control Group: Regression Analysis"
 author: "Satish Bajracharrya"
 date: "2024-03-12"
-categories: [Survey design, RCT]
+categories: [RCT]
 image: "image.jpg"
 engine: "knitr"
 ---
@@ -65,7 +65,7 @@ The $\beta$ coefficient is the difference in the averages of the treatment and c
 $$True \space slope = \beta \approx Estimated \space slope = \hat{\beta}$$
 $$\beta = \mu_1 - \mu_0 \approx \hat{\beta} = \bar{y} (1) - \bar{y}(0)$$
 
-Since the coefficient $\hat{\beta}$ is an estimate of the true underlying mean, we could form a hypothesis about the true difference in mean, i.e., $H_0: \mu_1 = \mu_0$ against $H_A: \mu_1 \neq \mu_0$. We can test the hypothesis about $\beta$ by forming confidence intervals around $\hat{\beta}$ and by calculating the corresponding p values. 
+Since the coefficient $\hat{\beta}$ is an estimate of the true underlying mean, we could form a hypothesis about the true difference in mean, i.e., $H_0: \mu_1 = \mu_0$ against $H_A: \mu_1 \neq \mu_0$. We can test the hypothesis about $\beta$ by forming confidence intervals around $\hat{\beta}$ and by calculating the corresponding p-values. 
 
 ## Decision rules
 
@@ -74,7 +74,7 @@ The $H_0$ is the benchmark against which virtually all interventions are measure
 ::: {.callout-note}
 The confidence interval gives a range of values which likely includes the true population parameter at a given confidence level.
 
-The p-value is a probability that measures how compatible the data are with the null hypothesis. It is the probability of observing the data extreme as what we observed, assuming that the $H_0$ is true.
+The p-value is a probability that measures how compatible the data are with the null hypothesis. It is the probability of observing the data as extreme as what we observed, assuming that the $H_0$ is true.
 :::
 
 Confidence interval
@@ -82,10 +82,16 @@ Confidence interval
 - If the null value falls within the range of the confidence interval, we fail to reject the $H_0$.
 - If the null value falls outside the confidence interval, we reject the $H_0$.
 
+::: {.callout-tip}
+## Sample size and confidence interval
+
+As the sample size increases, the confidence interval shrinks. This helps us to improve the precision of our estimates, which improves the likelihood of detecting an impact of an intervention.
+:::
+
 P-value
 
-- If the p-value is less than the significance level ($\alpha$), we reject the $H_0$.
-- If the p-value is more than the significance level ($\alpha$), we fail reject the $H_0$.
+- If the p-value is less than the significance level, we reject the $H_0$.
+- If the p-value is more than the significance level, we fail reject the $H_0$.
 
 # Things to remember while conducting RCT
 
