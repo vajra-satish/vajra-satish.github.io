@@ -1,0 +1,126 @@
+---
+title: "Measuring Impact in an Experiment with Partial Compliance: HIV Status and Changes in Sexual Behavior"
+author: "Satish Bajracharya"
+date: "2024-03-19"
+categories: [RCT, R, Stata]
+image: "image.jpg"
+engine: "knitr"
+---
+```{css, echo = FALSE}
+p {
+  text-align: justify
+}
+```
+
+We use data from **"The Demand for, and Impact of, Learning HIV Status"** study in Malawi. The study uses a randomized controlled trial (RCT), where individuals were provided varying degrees of monetary incentives to learn about their HIV status after receiving an HIV Test. 
+
+::: callout-note
+Study: Thornton, Rebecca L. 2008. “The Demand for, and Impact of, Learning HIV Status.” American Economic Review, 98 (5): 1829-63. 
+
+Data file: [Click here](https://www.aeaweb.org/aer/data/dec08/20060732_data.zip)
+
+Detailed description of the intervention: [Click here](https://www.povertyactionlab.org/evaluation/demand-and-impact-learning-hiv-status-malawi)
+:::
+
+We use the "Thornton HIV Testing Data.dta" for the analysis.
+
+## Import the data
+
+##### Execution in R
+
+The data file is a Stata (.dta) file. To import the dataset in R, we will need to install the **haven** package in R and use the **read_dta()** function. Run the following code in R to install the haven package:
+
+```
+install.packages("haven")
+```
+
+When you download the data file, it comes with a readme file. Please read the readme file to learn more about the variables. 
+
+
+```{r, warning = FALSE}
+library(haven)
+library(dplyr)
+library(lmtest)
+library(sandwich)
+# import the .dta file
+data <- read_dta("C:/Impact Evaluation/Regression Analysis/Data/Thornton HIV Testing Data.dta")
+```
+
+##### Execution in Stata
+
+Use the cd command to import the dataset. 
+
+```{stata, engine.path="C:/Stata15/Stata-64.exe"}
+cd "C://Impact Evaluation"
+use "Regression Analysis\Data\Thornton HIV Testing Data.dta", clear 
+```
+
+## Create treatment variable
+
+Create a variable called treatment which takes on a value of 1 if the participant received any financial incentive, and otherwise takes on a value of 0. Label the value of 0 and 1 as Control and Treatment. 
+
+##### Execution in R
+
+```{r}
+data_1 <- data |>
+  filter(!is.na(tinc)) |> #remove na in tinc
+  mutate(treatment = ifelse(tinc > 0, 1, 0)) # create treatment variable
+data_1$treatment <- factor(data_1$treatment, 
+                       levels = c(0, 1),
+                       labels = c("Control", "Treatment"))
+```
+
+##### Execution in Stata
+
+```{stata, engine.path="C:/Stata15/Stata-64.exe"}
+cd "C://Impact Evaluation"
+use "Regression Analysis\Data\Thornton HIV Testing Data.dta", clear
+generate treatment = cond(tinc>0, 1, 0)
+label define treatment 0 "Control" 1 "Treatment"
+label val treatment treatment
+```
+
+## Calculating the compliance rate
+
+In this analysis, we try to study the effect of learning one's HIV status on the decision to purchase a condom. We focus on a sub-group of individuals who are sexually active and HIV positive. To do this, we will need to restrict our sample to the sexually active and HIV positive individuals, and calculate the compliance rate for this sub-group. 
+
+::: callout-note
+Baseline data was collected in 2004 and follow up data was collected in 2005.
+
+Variable description: 
+treatment: takes on the value of 1 if individual received monetary incentive and 0 otherwise.  
+hadsex12: Indicator if reported having sex in the pas 12 months from baseline (1 = Yes, 0 = No).  
+hiv2004: HIV results (1 = HIV Positive, 0 = HIV Negative, -1 = Indeterminent)  
+got: Indicator if obtained HIV results (1 = learned HIV results)  
+anycond: Indicator of any condom purchased at the follow-up survey
+:::
+
+n R we use the **lm ()** function to run a regression. In Stata we use the regress command for the same.
+
+To use robust standard errors, we need to install the **sandwich** package and use **vcovHC()** function in the **coeftest()** function from the **lmtest** package. 
+
+```{r}
+data_1 <- data_1 |>
+  filter( hadsex12 == 1, 
+          hiv2004 == 1,
+          !is.na(got),
+          !is.na(anycond))
+data_1 <- data_1 |>
+  mutate(followed_treatment = ifelse(treatment ==  "Treatment", got, 1-got))
+trt_dat <- data_1 |>
+  filter(treatment == "Treatment") |>
+  select(followed_treatment) |>
+  group_by(followed_treatment) |>
+  summarize(Count = n()) |>
+  mutate(Percent = Count/sum(Count))
+print(trt_dat)
+cntrl_dat <- data_1 |>
+  filter(treatment == "Control") |>
+  select(followed_treatment) |>
+  group_by(followed_treatment) |>
+  summarize(Count = n()) |>
+  mutate(Percent = Count/sum(Count))
+print(trt_dat)
+trt_dat$Percent[trt_dat$followed_treatment == 1] - cntrl_dat$Percent[trt_dat$followed_treatment == 0]
+```
+**Work in Progress**
