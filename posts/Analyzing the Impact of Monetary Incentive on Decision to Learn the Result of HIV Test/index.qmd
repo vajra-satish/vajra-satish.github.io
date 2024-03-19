@@ -186,3 +186,7 @@ regress got treatment, robust
 ```
 
 The coefficients of the treatment and constant term are the same. But the standard errors of both the parameters are larger. 
+
+::: callout-note
+To learn about measuring impact in an experiment with partial compliance, click [here](https://vajra-satish.github.io/posts/Does%20Learning%20One's%20HIV%20Status%20Change%20the%20Sexual%20Behavior%20of%20Individuals/) 
+:::

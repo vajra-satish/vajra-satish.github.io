@@ -299,14 +299,11 @@ Note
 </div>
 <div class="callout-body-container callout-body">
 <p>Baseline data was collected in 2004 and follow up data was collected in 2005.</p>
-<p>Variable description: treatment: takes on the value of 1 if individual received monetary incentive and 0 otherwise.<br>
-hadsex12: Indicator if reported having sex in the pas 12 months from baseline (1 = Yes, 0 = No).<br>
-hiv2004: HIV results (1 = HIV Positive, 0 = HIV Negative, -1 = Indeterminent)<br>
-got: Indicator if obtained HIV results (1 = learned HIV results)<br>
-anycond: Indicator of any condom purchased at the follow-up survey</p>
+<p>Variable description:<br><strong>treatment</strong>: takes on the value of 1 if individual received monetary incentive and 0 otherwise.<br><strong>hadsex12</strong>: Indicator if reported having sex in the pas 12 months from baseline (1 = Yes, 0 = No).<br><strong>hiv2004</strong>: HIV results (1 = HIV Positive, 0 = HIV Negative, -1 = Indeterminent)<br><strong>got</strong>: Indicator if obtained HIV results (1 = learned HIV results)<br><strong>anycond</strong>: Indicator of any condom purchased at the follow-up survey</p>
 </div>
 </div>
-<p>n R we use the <strong>lm ()</strong> function to run a regression. In Stata we use the regress command for the same.</p>
+<section id="execution-in-r-2" class="level5"><h5 class="anchored" data-anchor-id="execution-in-r-2">Execution in R</h5>
+<p>In R we use the <strong>lm ()</strong> function to run a regression. In Stata we use the regress command for the same.</p>
 <p>To use robust standard errors, we need to install the <strong>sandwich</strong> package and use <strong>vcovHC()</strong> function in the <strong>coeftest()</strong> function from the <strong>lmtest</strong> package.</p>
 <div class="cell">
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data_1</span> <span class="op">&lt;-</span> <span class="va">data_1</span> <span class="op">|&gt;</span></span>
@@ -349,7 +346,7 @@ anycond: Indicator of any condom purchased at the follow-up survey</p>
 <pre><code>[1] 0.4142857</code></pre>
 </div>
 </div>
-<p><strong>Work in Progress</strong></p>
+</section></section><section id="work-in-progress" class="level1"><h1>Work in Progress</h1>
 
 
 </section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">

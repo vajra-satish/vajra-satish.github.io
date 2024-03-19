@@ -87,15 +87,17 @@ In this analysis, we try to study the effect of learning one's HIV status on the
 ::: callout-note
 Baseline data was collected in 2004 and follow up data was collected in 2005.
 
-Variable description: 
-treatment: takes on the value of 1 if individual received monetary incentive and 0 otherwise.  
-hadsex12: Indicator if reported having sex in the pas 12 months from baseline (1 = Yes, 0 = No).  
-hiv2004: HIV results (1 = HIV Positive, 0 = HIV Negative, -1 = Indeterminent)  
-got: Indicator if obtained HIV results (1 = learned HIV results)  
-anycond: Indicator of any condom purchased at the follow-up survey
+Variable description:  
+**treatment**: takes on the value of 1 if individual received monetary incentive and 0 otherwise.  
+**hadsex12**: Indicator if reported having sex in the pas 12 months from baseline (1 = Yes, 0 = No).  
+**hiv2004**: HIV results (1 = HIV Positive, 0 = HIV Negative, -1 = Indeterminent)  
+**got**: Indicator if obtained HIV results (1 = learned HIV results)  
+**anycond**: Indicator of any condom purchased at the follow-up survey
 :::
 
-n R we use the **lm ()** function to run a regression. In Stata we use the regress command for the same.
+##### Execution in R
+
+In R we use the **lm ()** function to run a regression. In Stata we use the regress command for the same.
 
 To use robust standard errors, we need to install the **sandwich** package and use **vcovHC()** function in the **coeftest()** function from the **lmtest** package. 
 
@@ -123,4 +125,4 @@ cntrl_dat <- data_1 |>
 print(trt_dat)
 trt_dat$Percent[trt_dat$followed_treatment == 1] - cntrl_dat$Percent[trt_dat$followed_treatment == 0]
 ```
-**Work in Progress**
+# Work in Progress
