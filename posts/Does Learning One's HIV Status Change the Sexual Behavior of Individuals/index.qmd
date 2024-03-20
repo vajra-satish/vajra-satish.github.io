@@ -147,7 +147,7 @@ Here, 71.4% of the treatment group learned about their HIV status and 30% of the
 
 ## Calculating the Intent to Treat Effect and the Local Average Treatment Effect (LATE) estimate
 
-In R we use the **lm ()** function to run a regression. In Stata we use the regress command for the same.
+In R, we use the **lm_robust()** function from the **estimatr** package to run a regression with robust standard errors. In Stata, we use the regress command with the robust option for the same.
 
 ##### Execution in R
 
@@ -155,6 +155,57 @@ In R we use the **lm ()** function to run a regression. In Stata we use the regr
 reg <- lm_robust(anycond ~ treatment, data = data_1, se_type = "HC1")
 summary(reg)
 ```
-The estimates show that 20% of the sexually active individuals, who were HIV positive and were not offered a monetary incentive to learn about their HIV status, purchased condoms anyways, while those who were offered a monetary incentive to learn about their HIV status were 22.86% more likely to purchase condoms. This is the intent to treat effect. 
+##### Execution in Stata
 
+```{stata, engine.path="C:/Stata15/Stata-64.exe"}
+cd "C://Impact Evaluation"
+use "Regression Analysis\Data\Thornton HIV Testing Data.dta", clear
+generate treatment = cond(tinc>0, 1, 0)
+label define treatment 0 "Control" 1 "Treatment"
+label val treatment treatment
+keep if hadsex12 == 1 & hiv2004 == 1
+drop if missing(tinc) | missing(got) | missing(anycond)
+regress anycond treatment, robust
+```
+
+The estimates show that 20% of the sexually active individuals, who were HIV positive and were not offered a monetary incentive to learn about their HIV status, purchased condoms anyway, while those who were offered a monetary incentive to learn about their HIV status were 22.86% more likely to purchase condoms. This is the intent to treat effect. Even though, the monetary incentive provided to learn about one's HIV status increases the willingness to buy condoms, it is not statistically significant. 
+
+Next, we use the results of the regression of anycond on treatment and got on treatment to calculate the Local Average Treatment Effect (LATE). 
+
+::: callout-note
+LATE = Intent to Treat / Compliance rate
+:::
+
+##### Execution in R
+
+```{r}
+reg_1 <- lm_robust(got ~ treatment, data = data_1, se_type = "HC1")
+summary(reg_1)
+LATE <- 0.2285714/0.4142957
+print(LATE)
+```
+
+##### Execution in Stata
+
+```{stata, engine.path="C:/Stata15/Stata-64.exe"}
+cd "C://Impact Evaluation"
+use "Regression Analysis\Data\Thornton HIV Testing Data.dta", clear
+generate treatment = cond(tinc>0, 1, 0)
+label define treatment 0 "Control" 1 "Treatment"
+label val treatment treatment
+keep if hadsex12 == 1 & hiv2004 == 1
+drop if missing(tinc) | missing(got) | missing(anycond)
+regress got treatment, robust
+dis "LATE =" 0.2285714/0.4142857
+```
+
+Notice that the coefficient of treatment variable in this regression is equal to compliance rate that we calculated earlier. Amongst sexually active and HIV positive respondents, we estimate that learning ones HIV status increases the likelihood of purchasing condoms by about 55.17%. However, when we calculate the LATE estimate this way we will not get the standard errors and we will not know if it is statistically significant or not. An alternative is to use the 2 SLS method to calculate the LATE effect. 
+
+#### Execution in R
+
+```{r}
+iv_reg <- iv_robust(anycond ~ got | treatment, data = data_1, se_type = "HC1")
+summary(iv_reg)
+```
+The LATE estimate is statistically significant. Therefore, we can come to a conclusion that learning about one's HIV positive status increases the likelihood of purchasing condoms by a statisitcally significant margin. 
 # Work in Progress
