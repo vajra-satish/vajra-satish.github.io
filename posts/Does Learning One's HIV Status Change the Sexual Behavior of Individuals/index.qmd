@@ -207,5 +207,18 @@ Notice that the coefficient of treatment variable in this regression is equal to
 iv_reg <- iv_robust(anycond ~ got | treatment, data = data_1, se_type = "HC1")
 summary(iv_reg)
 ```
-The LATE estimate is statistically significant. Therefore, we can come to a conclusion that learning about one's HIV positive status increases the likelihood of purchasing condoms by a statisitcally significant margin. 
-# Work in Progress
+
+##### Execution in Stata
+
+```{stata, engine.path="C:/Stata15/Stata-64.exe"}
+cd "C://Impact Evaluation"
+use "Regression Analysis\Data\Thornton HIV Testing Data.dta", clear
+generate treatment = cond(tinc>0, 1, 0)
+label define treatment 0 "Control" 1 "Treatment"
+label val treatment treatment
+keep if hadsex12 == 1 & hiv2004 == 1
+drop if missing(tinc) | missing(got) | missing(anycond)
+ivregress 2sls anycond (got = treatment), robust
+```
+
+The coefficient of **got** in the regression and the previously calculated value for the LATE estimate is the same. The 2SLS regression estimates a p-value of 0.039. Therefore, we can come to a conclusion that learning about one's HIV positive status increases the likelihood of purchasing condoms by a statistically significant margin. 

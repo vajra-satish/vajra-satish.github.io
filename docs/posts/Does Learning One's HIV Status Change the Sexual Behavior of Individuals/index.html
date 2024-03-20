@@ -565,10 +565,59 @@ Multiple R-squared:  0.1776 ,   Adjusted R-squared:  0.1612
 F-statistic: 4.088 on 1 and 50 DF,  p-value: 0.04855</code></pre>
 </div>
 </div>
-<p>The LATE estimate is statistically significant. Therefore, we can come to a conclusion that learning about one’s HIV positive status increases the likelihood of purchasing condoms by a statisitcally significant margin. # Work in Progress</p>
+<section id="execution-in-stata-5" class="level5"><h5 class="anchored" data-anchor-id="execution-in-stata-5">Execution in Stata</h5>
+<div class="cell" data-engine.path="C:/Stata15/Stata-64.exe">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>cd <span class="st">"C://Impact Evaluation"</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="st">"Regression Analysis\Data\Thornton HIV Testing Data.dta"</span>, <span class="kw">clear</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="kw">generate</span> treatment = <span class="fu">cond</span>(tinc&gt;0, 1, 0)</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="kw">label</span> <span class="kw">define</span> treatment 0 <span class="st">"Control"</span> 1 <span class="st">"Treatment"</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="kw">label</span> val treatment treatment</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a><span class="kw">keep</span> <span class="kw">if</span> hadsex12 == 1 &amp; hiv2004 == 1</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="kw">drop</span> <span class="kw">if</span> <span class="fu">missing</span>(tinc) | <span class="fu">missing</span>(got) | <span class="fu">missing</span>(anycond)</span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>ivregress 2sls anycond (got = treatment), <span class="kw">robust</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+
+. cd "C://Impact Evaluation"
+C:\Impact Evaluation
+
+. use "Regression Analysis\Data\Thornton HIV Testing Data.dta", clear
+
+. generate treatment = cond(tinc&gt;0, 1, 0)
+
+. label define treatment 0 "Control" 1 "Treatment"
+
+. label val treatment treatment
+
+. keep if hadsex12 == 1 &amp; hiv2004 == 1
+(4,698 observations deleted)
+
+. drop if missing(tinc) | missing(got) | missing(anycond)
+(70 observations deleted)
+
+. ivregress 2sls anycond (got = treatment), robust
+
+Instrumental variables (2SLS) regression          Number of obs   =         52
+                                                  Wald chi2(1)    =       4.25
+                                                  Prob &gt; chi2     =     0.0392
+                                                  R-squared       =     0.1776
+                                                  Root MSE        =     .44118
+
+------------------------------------------------------------------------------
+             |               Robust
+     anycond |      Coef.   Std. Err.      z    P&gt;|z|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+         got |   .5517241   .2675736     2.06   0.039     .0272896    1.076159
+       _cons |   .0344828   .1531167     0.23   0.822    -.2656204    .3345859
+------------------------------------------------------------------------------
+Instrumented:  got
+Instruments:   treatment</code></pre>
+</div>
+</div>
+<p>The coefficient of <strong>got</strong> in the regression and the previously calculated value for the LATE estimate is the same. The 2SLS regression estimates a p-value of 0.039. Therefore, we can come to a conclusion that learning about one’s HIV positive status increases the likelihood of purchasing condoms by a statistically significant margin.</p>
 
 
-</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section></section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
