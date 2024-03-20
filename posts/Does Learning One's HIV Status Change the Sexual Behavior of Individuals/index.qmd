@@ -168,7 +168,7 @@ drop if missing(tinc) | missing(got) | missing(anycond)
 regress anycond treatment, robust
 ```
 
-The estimates show that 20% of the sexually active individuals, who were HIV positive and were not offered a monetary incentive to learn about their HIV status, purchased condoms anyway, while those who were offered a monetary incentive to learn about their HIV status were 22.86% more likely to purchase condoms. This is the intent to treat effect. Even though, the monetary incentive provided to learn about one's HIV status increases the willingness to buy condoms, it is not statistically significant. 
+The estimates show that 20% of the sexually active individuals, who were HIV positive and were not offered a monetary incentive to learn about their HIV status, purchased condoms anyway, while those who were offered a monetary incentive to learn about their HIV status were 22.86% more likely to purchase condoms. This is the intent to treat effect. Even though, the monetary incentive provided to learn about one's HIV status increased the willingness to buy condoms, it is not statistically significant. 
 
 Next, we use the results of the regression of anycond on treatment and got on treatment to calculate the Local Average Treatment Effect (LATE). 
 
