@@ -207,43 +207,17 @@ Note
 <p>When you download the data file, it comes with a readme file. Please read the readme file to learn more about the variables.</p>
 <div class="cell">
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://haven.tidyverse.org">haven</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Attaching package: 'dplyr'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following objects are masked from 'package:stats':
-
-    filter, lag</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following objects are masked from 'package:base':
-
-    intersect, setdiff, setequal, union</code></pre>
-</div>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">lmtest</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Loading required package: zoo</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Attaching package: 'zoo'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following objects are masked from 'package:base':
-
-    as.Date, as.Date.numeric</code></pre>
-</div>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://sandwich.R-Forge.R-project.org/">sandwich</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">lmtest</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://sandwich.R-Forge.R-project.org/">sandwich</a></span><span class="op">)</span></span>
 <span><span class="co"># import the .dta file</span></span>
 <span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/read_dta.html">read_dta</a></span><span class="op">(</span><span class="st">"C:/Impact Evaluation/Regression Analysis/Data/Thornton HIV Testing Data.dta"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="execution-in-stata" class="level5"><h5 class="anchored" data-anchor-id="execution-in-stata">Execution in Stata</h5>
 <p>Use the cd command to import the dataset.</p>
 <div class="cell" data-engine.path="C:/Stata15/Stata-64.exe">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>cd <span class="st">"C://Impact Evaluation"</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="st">"Regression Analysis\Data\Thornton HIV Testing Data.dta"</span>, <span class="kw">clear</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>cd <span class="st">"C://Impact Evaluation"</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="st">"Regression Analysis\Data\Thornton HIV Testing Data.dta"</span>, <span class="kw">clear</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 
@@ -257,8 +231,8 @@ C:\Impact Evaluation
 <p>Create a variable called treatment which takes on a value of 1 if the participant received any financial incentive, and otherwise takes on a value of 0. The variable tinc records the amount of monetary incentive received by the respondents. Label the value of 0 and 1 as Control and Treatment.</p>
 <section id="execution-in-r-1" class="level5"><h5 class="anchored" data-anchor-id="execution-in-r-1">Execution in R</h5>
 <div class="cell">
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data_1</span> <span class="op">&lt;-</span> <span class="va">data</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">tinc</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="co">#remove na in tinc</span></span>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data_1</span> <span class="op">&lt;-</span> <span class="va">data</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">tinc</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="co">#remove na in tinc</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>treatment <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">tinc</span> <span class="op">&gt;</span> <span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span> <span class="co"># create treatment variable</span></span>
 <span><span class="va">data_1</span><span class="op">$</span><span class="va">treatment</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">data_1</span><span class="op">$</span><span class="va">treatment</span>, </span>
 <span>                       levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span>,</span>
@@ -266,11 +240,11 @@ C:\Impact Evaluation
 </div>
 </section><section id="execution-in-stata-1" class="level5"><h5 class="anchored" data-anchor-id="execution-in-stata-1">Execution in Stata</h5>
 <div class="cell" data-engine.path="C:/Stata15/Stata-64.exe">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>cd <span class="st">"C://Impact Evaluation"</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="st">"Regression Analysis\Data\Thornton HIV Testing Data.dta"</span>, <span class="kw">clear</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="kw">generate</span> treatment = <span class="fu">cond</span>(tinc&gt;0, 1, 0)</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="kw">label</span> <span class="kw">define</span> treatment 0 <span class="st">"Control"</span> 1 <span class="st">"Treatment"</span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="kw">label</span> val treatment treatment</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>cd <span class="st">"C://Impact Evaluation"</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="st">"Regression Analysis\Data\Thornton HIV Testing Data.dta"</span>, <span class="kw">clear</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="kw">generate</span> treatment = <span class="fu">cond</span>(tinc&gt;0, 1, 0)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="kw">label</span> <span class="kw">define</span> treatment 0 <span class="st">"Control"</span> 1 <span class="st">"Treatment"</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="kw">label</span> val treatment treatment</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 
@@ -304,20 +278,22 @@ Note
 </div>
 <section id="execution-in-r-2" class="level5"><h5 class="anchored" data-anchor-id="execution-in-r-2">Execution in R</h5>
 <div class="cell">
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data_1</span> <span class="op">&lt;-</span> <span class="va">data_1</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span> <span class="va">hadsex12</span> <span class="op">==</span> <span class="fl">1</span>, </span>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data_1</span> <span class="op">&lt;-</span> <span class="va">data_1</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span> <span class="va">hadsex12</span> <span class="op">==</span> <span class="fl">1</span>, <span class="co"># restrict the sample size to hadsex 12 &amp; hiv 2004</span></span>
 <span>          <span class="va">hiv2004</span> <span class="op">==</span> <span class="fl">1</span>,</span>
-<span>          <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">got</span><span class="op">)</span>,</span>
-<span>          <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">anycond</span><span class="op">)</span><span class="op">)</span></span>
+<span>          <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">got</span><span class="op">)</span>, <span class="co"># remove NAs</span></span>
+<span>          <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">anycond</span><span class="op">)</span><span class="op">)</span> <span class="co"># remove NAs</span></span>
+<span><span class="co"># create variable to calculate the share of people in the control and treatment group</span></span>
 <span><span class="va">data_1</span> <span class="op">&lt;-</span> <span class="va">data_1</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>followed_treatment <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">treatment</span> <span class="op">==</span>  <span class="st">"Treatment"</span>, <span class="va">got</span>, <span class="fl">1</span><span class="op">-</span><span class="va">got</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>followed_treatment <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">treatment</span> <span class="op">==</span>  <span class="st">"Treatment"</span>, <span class="va">got</span>, <span class="fl">1</span><span class="op">-</span><span class="va">got</span><span class="op">)</span><span class="op">)</span> </span>
+<span><span class="co"># tabulate followed_treatment given treatment == 1</span></span>
 <span><span class="va">trt_dat</span> <span class="op">&lt;-</span> <span class="va">data_1</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">treatment</span> <span class="op">==</span> <span class="st">"Treatment"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">treatment</span> <span class="op">==</span> <span class="st">"Treatment"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">followed_treatment</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">followed_treatment</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>Count <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>Percent <span class="op">=</span> <span class="va">Count</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">Count</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">trt_dat</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">trt_dat</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 3
   followed_treatment Count Percent
@@ -325,8 +301,9 @@ Note
 1                  0    12   0.286
 2                  1    30   0.714</code></pre>
 </div>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cntrl_dat</span> <span class="op">&lt;-</span> <span class="va">data_1</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">treatment</span> <span class="op">==</span> <span class="st">"Control"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># tabulate followed_treatment given treatment == 0</span></span>
+<span><span class="va">cntrl_dat</span> <span class="op">&lt;-</span> <span class="va">data_1</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">treatment</span> <span class="op">==</span> <span class="st">"Control"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">followed_treatment</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">followed_treatment</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>Count <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
@@ -339,7 +316,8 @@ Note
 1                  0     3     0.3
 2                  1     7     0.7</code></pre>
 </div>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">trt_dat</span><span class="op">$</span><span class="va">Percent</span><span class="op">[</span><span class="va">trt_dat</span><span class="op">$</span><span class="va">followed_treatment</span> <span class="op">==</span> <span class="fl">1</span><span class="op">]</span> <span class="op">-</span> <span class="va">cntrl_dat</span><span class="op">$</span><span class="va">Percent</span><span class="op">[</span><span class="va">trt_dat</span><span class="op">$</span><span class="va">followed_treatment</span> <span class="op">==</span> <span class="fl">0</span><span class="op">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># calculate the compliance rate</span></span>
+<span><span class="va">trt_dat</span><span class="op">$</span><span class="va">Percent</span><span class="op">[</span><span class="va">trt_dat</span><span class="op">$</span><span class="va">followed_treatment</span> <span class="op">==</span> <span class="fl">1</span><span class="op">]</span> <span class="op">-</span> <span class="va">cntrl_dat</span><span class="op">$</span><span class="va">Percent</span><span class="op">[</span><span class="va">trt_dat</span><span class="op">$</span><span class="va">followed_treatment</span> <span class="op">==</span> <span class="fl">0</span><span class="op">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.4142857</code></pre>
 </div>
