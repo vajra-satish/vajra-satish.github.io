@@ -140,7 +140,7 @@ drop if missing(tinc) | missing(got) | missing(anycond)
 generate followed_treatment = cond(treatment == 1, got, 1-got)
 tab followed_treatment if treatment == 0
 tab followed_treatment if treatment == 1
-dis "Compliance rate =" 74.4 - 30
+dis "Compliance rate =" 71.4 - 30
 ```
 
 Here, 71.4% of the treatment group learned about their HIV status and 30% of the control group did so. The compliance rate is the difference between the share of treated individuals in the treatment group(71.43%) and the share of treated individuals in the control group(30%). Hence, the compliance rate for the experiment is 41.4% (71.43% - 30%).
