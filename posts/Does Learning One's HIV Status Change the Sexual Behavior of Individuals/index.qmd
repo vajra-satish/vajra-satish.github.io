@@ -40,8 +40,8 @@ When you download the data file, it comes with a readme file. Please read the re
 ```{r message = FALSE, warning = FALSE}
 library(haven)
 library(dplyr)
-library(lmtest)
-library(sandwich)
+library(lmtest) # for regression
+library(estimatr)# for robust standard errors
 # import the .dta file
 data <- read_dta("C:/Impact Evaluation/Regression Analysis/Data/Thornton HIV Testing Data.dta")
 ```
@@ -123,15 +123,38 @@ cntrl_dat <- data_1 |>
   mutate(Percent = Count/sum(Count))
 print(cntrl_dat)
 # calculate the compliance rate
-trt_dat$Percent[trt_dat$followed_treatment == 1] - cntrl_dat$Percent[trt_dat$followed_treatment == 0]
+compliance_rate <- 71.4-30.0
+print(compliance_rate)
 ```
 
-Here, 71.4% of the treatment group learned about their HIV status and 30% of the control group did so. The compliance rate is the difference between the share of treated individuals in the treatment group(71.43%) and the share of treated individuals in the control group(30%). Hence, the compliance rate for the experiment is 41.43% (71.43% - 30%).
+##### Execution in Stata
+
+```{stata, engine.path="C:/Stata15/Stata-64.exe"}
+cd "C://Impact Evaluation"
+use "Regression Analysis\Data\Thornton HIV Testing Data.dta", clear
+generate treatment = cond(tinc>0, 1, 0)
+label define treatment 0 "Control" 1 "Treatment"
+label val treatment treatment
+keep if hadsex12 == 1 & hiv2004 == 1
+drop if missing(tinc) | missing(got) | missing(anycond)
+generate followed_treatment = cond(treatment == 1, got, 1-got)
+tab followed_treatment if treatment == 0
+tab followed_treatment if treatment == 1
+dis "Compliance rate =" 74.4 - 30
+```
+
+Here, 71.4% of the treatment group learned about their HIV status and 30% of the control group did so. The compliance rate is the difference between the share of treated individuals in the treatment group(71.43%) and the share of treated individuals in the control group(30%). Hence, the compliance rate for the experiment is 41.4% (71.43% - 30%).
 
 ## Calculating the Intent to Treat Effect and the Local Average Treatment Effect (LATE) estimate
 
 In R we use the **lm ()** function to run a regression. In Stata we use the regress command for the same.
 
-To use robust standard errors, we need to install the **sandwich** package and use **vcovHC()** function in the **coeftest()** function from the **lmtest** package. 
+##### Execution in R
+
+```{r}
+reg <- lm_robust(anycond ~ treatment, data = data_1, se_type = "HC1")
+summary(reg)
+```
+The estimates show that 20% of the sexually active individuals, who were HIV positive and were not offered a monetary incentive to learn about their HIV status, purchased condoms anyways, while those who were offered a monetary incentive to learn about their HIV status were 22.86% more likely to purchase condoms. This is the intent to treat effect. 
 
 # Work in Progress

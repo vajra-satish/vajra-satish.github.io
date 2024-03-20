@@ -208,8 +208,8 @@ Note
 <div class="cell">
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://haven.tidyverse.org">haven</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">lmtest</span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://sandwich.R-Forge.R-project.org/">sandwich</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">lmtest</span><span class="op">)</span> <span class="co"># for regression</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://declaredesign.org/r/estimatr/">estimatr</a></span><span class="op">)</span><span class="co"># for robust standard errors</span></span>
 <span><span class="co"># import the .dta file</span></span>
 <span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/read_dta.html">read_dta</a></span><span class="op">(</span><span class="st">"C:/Impact Evaluation/Regression Analysis/Data/Thornton HIV Testing Data.dta"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -317,16 +317,96 @@ Note
 2                  1     7     0.7</code></pre>
 </div>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># calculate the compliance rate</span></span>
-<span><span class="va">trt_dat</span><span class="op">$</span><span class="va">Percent</span><span class="op">[</span><span class="va">trt_dat</span><span class="op">$</span><span class="va">followed_treatment</span> <span class="op">==</span> <span class="fl">1</span><span class="op">]</span> <span class="op">-</span> <span class="va">cntrl_dat</span><span class="op">$</span><span class="va">Percent</span><span class="op">[</span><span class="va">trt_dat</span><span class="op">$</span><span class="va">followed_treatment</span> <span class="op">==</span> <span class="fl">0</span><span class="op">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="va">compliance_rate</span> <span class="op">&lt;-</span> <span class="fl">71.4</span><span class="op">-</span><span class="fl">30.0</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">compliance_rate</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.4142857</code></pre>
+<pre><code>[1] 41.4</code></pre>
 </div>
 </div>
-<p>Here, 71.4% of the treatment group learned about their HIV status and 30% of the control group did so. The compliance rate is the difference between the share of treated individuals in the treatment group(71.43%) and the share of treated individuals in the control group(30%). Hence, the compliance rate for the experiment is 41.43% (71.43% - 30%).</p>
+</section><section id="execution-in-stata-2" class="level5"><h5 class="anchored" data-anchor-id="execution-in-stata-2">Execution in Stata</h5>
+<div class="cell" data-engine.path="C:/Stata15/Stata-64.exe">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>cd <span class="st">"C://Impact Evaluation"</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="st">"Regression Analysis\Data\Thornton HIV Testing Data.dta"</span>, <span class="kw">clear</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="kw">generate</span> treatment = <span class="fu">cond</span>(tinc&gt;0, 1, 0)</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="kw">label</span> <span class="kw">define</span> treatment 0 <span class="st">"Control"</span> 1 <span class="st">"Treatment"</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="kw">label</span> val treatment treatment</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="kw">keep</span> <span class="kw">if</span> hadsex12 == 1 &amp; hiv2004 == 1</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="kw">drop</span> <span class="kw">if</span> <span class="fu">missing</span>(tinc) | <span class="fu">missing</span>(got) | <span class="fu">missing</span>(anycond)</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="kw">generate</span> followed_treatment = <span class="fu">cond</span>(treatment == 1, got, 1-got)</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="kw">tab</span> followed_treatment <span class="kw">if</span> treatment == 0</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="kw">tab</span> followed_treatment <span class="kw">if</span> treatment == 1</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>dis <span class="st">"Compliance rate ="</span> 74.4 - 30</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+
+. cd "C://Impact Evaluation"
+C:\Impact Evaluation
+
+. use "Regression Analysis\Data\Thornton HIV Testing Data.dta", clear
+
+. generate treatment = cond(tinc&gt;0, 1, 0)
+
+. label define treatment 0 "Control" 1 "Treatment"
+
+. label val treatment treatment
+
+. keep if hadsex12 == 1 &amp; hiv2004 == 1
+(4,698 observations deleted)
+
+. drop if missing(tinc) | missing(got) | missing(anycond)
+(70 observations deleted)
+
+. generate followed_treatment = cond(treatment == 1, got, 1-got)
+
+. tab followed_treatment if treatment == 0
+
+followed_tr |
+    eatment |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          0 |          3       30.00       30.00
+          1 |          7       70.00      100.00
+------------+-----------------------------------
+      Total |         10      100.00
+
+. tab followed_treatment if treatment == 1
+
+followed_tr |
+    eatment |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          0 |         12       28.57       28.57
+          1 |         30       71.43      100.00
+------------+-----------------------------------
+      Total |         42      100.00
+
+. dis "Compliance rate =" 74.4 - 30
+Compliance rate =44.4</code></pre>
+</div>
+</div>
+<p>Here, 71.4% of the treatment group learned about their HIV status and 30% of the control group did so. The compliance rate is the difference between the share of treated individuals in the treatment group(71.43%) and the share of treated individuals in the control group(30%). Hence, the compliance rate for the experiment is 41.4% (71.43% - 30%).</p>
 </section></section><section id="calculating-the-intent-to-treat-effect-and-the-local-average-treatment-effect-late-estimate" class="level2"><h2 class="anchored" data-anchor-id="calculating-the-intent-to-treat-effect-and-the-local-average-treatment-effect-late-estimate">Calculating the Intent to Treat Effect and the Local Average Treatment Effect (LATE) estimate</h2>
 <p>In R we use the <strong>lm ()</strong> function to run a regression. In Stata we use the regress command for the same.</p>
-<p>To use robust standard errors, we need to install the <strong>sandwich</strong> package and use <strong>vcovHC()</strong> function in the <strong>coeftest()</strong> function from the <strong>lmtest</strong> package.</p>
-</section><section id="work-in-progress" class="level1"><h1>Work in Progress</h1>
+<section id="execution-in-r-3" class="level5"><h5 class="anchored" data-anchor-id="execution-in-r-3">Execution in R</h5>
+<div class="cell">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">reg</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://declaredesign.org/r/estimatr/reference/lm_robust.html">lm_robust</a></span><span class="op">(</span><span class="va">anycond</span> <span class="op">~</span> <span class="va">treatment</span>, data <span class="op">=</span> <span class="va">data_1</span>, se_type <span class="op">=</span> <span class="st">"HC1"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">reg</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm_robust(formula = anycond ~ treatment, data = data_1, se_type = "HC1")
+
+Standard error type:  HC1 
+
+Coefficients:
+                   Estimate Std. Error t value Pr(&gt;|t|) CI Lower CI Upper DF
+(Intercept)          0.2000     0.1290   1.550   0.1273 -0.05910   0.4591 50
+treatmentTreatment   0.2286     0.1507   1.517   0.1356 -0.07408   0.5312 50
+
+Multiple R-squared:  0.03429 ,  Adjusted R-squared:  0.01497 
+F-statistic: 2.301 on 1 and 50 DF,  p-value: 0.1356</code></pre>
+</div>
+</div>
+<p>The estimates show that 20% of the sexually active individuals, who were HIV positive and were not offered a monetary incentive to learn about their HIV status, purchased condoms anyways, while those who were offered a monetary incentive to learn about their HIV status were 22.86% more likely to purchase condoms. This is the intent to treat effect.</p>
+</section></section><section id="work-in-progress" class="level1"><h1>Work in Progress</h1>
 
 
 </section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
