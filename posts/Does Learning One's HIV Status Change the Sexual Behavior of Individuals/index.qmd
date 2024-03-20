@@ -118,7 +118,7 @@ cntrl_dat <- data_1 |>
   group_by(followed_treatment) |>
   summarize(Count = n()) |>
   mutate(Percent = Count/sum(Count))
-print(trt_dat)
+print(cntrl_dat)
 trt_dat$Percent[trt_dat$followed_treatment == 1] - cntrl_dat$Percent[trt_dat$followed_treatment == 0]
 ```
 
