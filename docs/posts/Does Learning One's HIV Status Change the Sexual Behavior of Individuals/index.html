@@ -254,7 +254,7 @@ C:\Impact Evaluation
 </div>
 </div>
 </section></section><section id="create-treatment-variable" class="level2"><h2 class="anchored" data-anchor-id="create-treatment-variable">Create treatment variable</h2>
-<p>Create a variable called treatment which takes on a value of 1 if the participant received any financial incentive, and otherwise takes on a value of 0. Label the value of 0 and 1 as Control and Treatment.</p>
+<p>Create a variable called treatment which takes on a value of 1 if the participant received any financial incentive, and otherwise takes on a value of 0. The variable tinc records the amount of monetary incentive received by the respondents. Label the value of 0 and 1 as Control and Treatment.</p>
 <section id="execution-in-r-1" class="level5"><h5 class="anchored" data-anchor-id="execution-in-r-1">Execution in R</h5>
 <div class="cell">
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data_1</span> <span class="op">&lt;-</span> <span class="va">data</span> <span class="op">|&gt;</span></span>
@@ -303,8 +303,6 @@ Note
 </div>
 </div>
 <section id="execution-in-r-2" class="level5"><h5 class="anchored" data-anchor-id="execution-in-r-2">Execution in R</h5>
-<p>In R we use the <strong>lm ()</strong> function to run a regression. In Stata we use the regress command for the same.</p>
-<p>To use robust standard errors, we need to install the <strong>sandwich</strong> package and use <strong>vcovHC()</strong> function in the <strong>coeftest()</strong> function from the <strong>lmtest</strong> package.</p>
 <div class="cell">
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data_1</span> <span class="op">&lt;-</span> <span class="va">data_1</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span> <span class="va">hadsex12</span> <span class="op">==</span> <span class="fl">1</span>, </span>
@@ -346,7 +344,11 @@ Note
 <pre><code>[1] 0.4142857</code></pre>
 </div>
 </div>
-</section></section><section id="work-in-progress" class="level1"><h1>Work in Progress</h1>
+<p>Here, 71.4% of the treatment group learned about their HIV status and 30% of the control group dis so. The compliance rate is the difference between the share of treated individuals in the treatment group(71.43%) and the share of treated individuals in the control group(30%). Hence, the compliance rate for the experiment is 41.43% (71.43% - 30%).</p>
+</section></section><section id="calculating-the-intent-to-treat-effect-and-the-local-average-treatment-effect-late-estimate" class="level2"><h2 class="anchored" data-anchor-id="calculating-the-intent-to-treat-effect-and-the-local-average-treatment-effect-late-estimate">Calculating the Intent to Treat Effect and the Local Average Treatment Effect (LATE) estimate</h2>
+<p>In R we use the <strong>lm ()</strong> function to run a regression. In Stata we use the regress command for the same.</p>
+<p>To use robust standard errors, we need to install the <strong>sandwich</strong> package and use <strong>vcovHC()</strong> function in the <strong>coeftest()</strong> function from the <strong>lmtest</strong> package.</p>
+</section><section id="work-in-progress" class="level1"><h1>Work in Progress</h1>
 
 
 </section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">

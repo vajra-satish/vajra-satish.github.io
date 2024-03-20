@@ -57,7 +57,7 @@ use "Regression Analysis\Data\Thornton HIV Testing Data.dta", clear
 
 ## Create treatment variable
 
-Create a variable called treatment which takes on a value of 1 if the participant received any financial incentive, and otherwise takes on a value of 0. Label the value of 0 and 1 as Control and Treatment. 
+Create a variable called treatment which takes on a value of 1 if the participant received any financial incentive, and otherwise takes on a value of 0. The variable tinc records the amount of monetary incentive received by the respondents. Label the value of 0 and 1 as Control and Treatment. 
 
 ##### Execution in R
 
@@ -97,10 +97,6 @@ Variable description:
 
 ##### Execution in R
 
-In R we use the **lm ()** function to run a regression. In Stata we use the regress command for the same.
-
-To use robust standard errors, we need to install the **sandwich** package and use **vcovHC()** function in the **coeftest()** function from the **lmtest** package. 
-
 ```{r}
 data_1 <- data_1 |>
   filter( hadsex12 == 1, 
@@ -125,4 +121,13 @@ cntrl_dat <- data_1 |>
 print(trt_dat)
 trt_dat$Percent[trt_dat$followed_treatment == 1] - cntrl_dat$Percent[trt_dat$followed_treatment == 0]
 ```
+
+Here, 71.4% of the treatment group learned about their HIV status and 30% of the control group dis so. The compliance rate is the difference between the share of treated individuals in the treatment group(71.43%) and the share of treated individuals in the control group(30%). Hence, the compliance rate for the experiment is 41.43% (71.43% - 30%).
+
+## Calculating the Intent to Treat Effect and the Local Average Treatment Effect (LATE) estimate
+
+In R we use the **lm ()** function to run a regression. In Stata we use the regress command for the same.
+
+To use robust standard errors, we need to install the **sandwich** package and use **vcovHC()** function in the **coeftest()** function from the **lmtest** package. 
+
 # Work in Progress
