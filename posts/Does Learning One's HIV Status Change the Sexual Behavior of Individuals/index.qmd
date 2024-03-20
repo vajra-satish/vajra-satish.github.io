@@ -3,7 +3,7 @@ title: "Measuring Impact in an Experiment with Partial Compliance: HIV Status an
 author: "Satish Bajracharya"
 date: "2024-03-19"
 categories: [RCT, R, Stata]
-image: "image.jpg"
+image: "image1.jpg"
 engine: "knitr"
 ---
 ```{css, echo = FALSE}
