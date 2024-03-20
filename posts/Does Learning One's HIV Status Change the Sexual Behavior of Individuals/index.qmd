@@ -199,7 +199,7 @@ regress got treatment, robust
 dis "LATE =" 0.2285714/0.4142857
 ```
 
-Notice that the coefficient of treatment variable in this regression is equal to compliance rate that we calculated earlier. Amongst sexually active and HIV positive respondents, we estimate that learning ones HIV status increases the likelihood of purchasing condoms by about 55.17%. However, when we calculate the LATE estimate this way we will not get the standard errors and we will not know if it is statistically significant or not. An alternative is to use the 2 SLS method to calculate the LATE effect. 
+Notice that the coefficient of treatment variable in this regression is equal to compliance rate that we calculated earlier. Amongst sexually active and HIV positive respondents, we estimate that learning ones HIV status increases the likelihood of purchasing condoms by about 55.17%. However, when we calculate the LATE estimate this way we will not get the standard errors and we will not know if it is statistically significant. An alternative is to use the 2 SLS method to calculate the LATE effect. 
 
 #### Execution in R
 
