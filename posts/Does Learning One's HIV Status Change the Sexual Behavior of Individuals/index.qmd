@@ -122,7 +122,7 @@ print(trt_dat)
 trt_dat$Percent[trt_dat$followed_treatment == 1] - cntrl_dat$Percent[trt_dat$followed_treatment == 0]
 ```
 
-Here, 71.4% of the treatment group learned about their HIV status and 30% of the control group dis so. The compliance rate is the difference between the share of treated individuals in the treatment group(71.43%) and the share of treated individuals in the control group(30%). Hence, the compliance rate for the experiment is 41.43% (71.43% - 30%).
+Here, 71.4% of the treatment group learned about their HIV status and 30% of the control group did so. The compliance rate is the difference between the share of treated individuals in the treatment group(71.43%) and the share of treated individuals in the control group(30%). Hence, the compliance rate for the experiment is 41.43% (71.43% - 30%).
 
 ## Calculating the Intent to Treat Effect and the Local Average Treatment Effect (LATE) estimate
 

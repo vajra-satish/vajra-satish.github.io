@@ -344,7 +344,7 @@ Note
 <pre><code>[1] 0.4142857</code></pre>
 </div>
 </div>
-<p>Here, 71.4% of the treatment group learned about their HIV status and 30% of the control group dis so. The compliance rate is the difference between the share of treated individuals in the treatment group(71.43%) and the share of treated individuals in the control group(30%). Hence, the compliance rate for the experiment is 41.43% (71.43% - 30%).</p>
+<p>Here, 71.4% of the treatment group learned about their HIV status and 30% of the control group did so. The compliance rate is the difference between the share of treated individuals in the treatment group(71.43%) and the share of treated individuals in the control group(30%). Hence, the compliance rate for the experiment is 41.43% (71.43% - 30%).</p>
 </section></section><section id="calculating-the-intent-to-treat-effect-and-the-local-average-treatment-effect-late-estimate" class="level2"><h2 class="anchored" data-anchor-id="calculating-the-intent-to-treat-effect-and-the-local-average-treatment-effect-late-estimate">Calculating the Intent to Treat Effect and the Local Average Treatment Effect (LATE) estimate</h2>
 <p>In R we use the <strong>lm ()</strong> function to run a regression. In Stata we use the regress command for the same.</p>
 <p>To use robust standard errors, we need to install the <strong>sandwich</strong> package and use <strong>vcovHC()</strong> function in the <strong>coeftest()</strong> function from the <strong>lmtest</strong> package.</p>
