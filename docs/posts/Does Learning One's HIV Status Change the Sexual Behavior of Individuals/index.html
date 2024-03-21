@@ -211,20 +211,20 @@ Note
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">lmtest</span><span class="op">)</span> <span class="co"># for regression</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://declaredesign.org/r/estimatr/">estimatr</a></span><span class="op">)</span><span class="co"># for robust standard errors</span></span>
 <span><span class="co"># import the .dta file</span></span>
-<span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/read_dta.html">read_dta</a></span><span class="op">(</span><span class="st">"C:/Impact Evaluation/Regression Analysis/Data/Thornton HIV Testing Data.dta"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/read_dta.html">read_dta</a></span><span class="op">(</span><span class="st">"C:/Data analysis/Thornton data/Data/Thornton HIV Testing Data.dta"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="execution-in-stata" class="level5"><h5 class="anchored" data-anchor-id="execution-in-stata">Execution in Stata</h5>
 <p>Use the cd command to import the dataset.</p>
 <div class="cell" data-engine.path="C:/Stata15/Stata-64.exe">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>cd <span class="st">"C://Impact Evaluation"</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="st">"Regression Analysis\Data\Thornton HIV Testing Data.dta"</span>, <span class="kw">clear</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>cd <span class="st">"C://Data analysis"</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="st">"Thornton data/Data/Thornton HIV Testing Data.dta"</span>, <span class="kw">clear</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 
-. cd "C://Impact Evaluation"
-C:\Impact Evaluation
+. cd "C://Data analysis"
+C:\Data analysis
 
-. use "Regression Analysis\Data\Thornton HIV Testing Data.dta", clear </code></pre>
+. use "Thornton data/Data/Thornton HIV Testing Data.dta", clear </code></pre>
 </div>
 </div>
 </section></section><section id="create-treatment-variable" class="level2"><h2 class="anchored" data-anchor-id="create-treatment-variable">Create treatment variable</h2>
@@ -240,18 +240,18 @@ C:\Impact Evaluation
 </div>
 </section><section id="execution-in-stata-1" class="level5"><h5 class="anchored" data-anchor-id="execution-in-stata-1">Execution in Stata</h5>
 <div class="cell" data-engine.path="C:/Stata15/Stata-64.exe">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>cd <span class="st">"C://Impact Evaluation"</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="st">"Regression Analysis\Data\Thornton HIV Testing Data.dta"</span>, <span class="kw">clear</span></span>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>cd <span class="st">"C://Data analysis"</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="st">"Thornton data/Data/Thornton HIV Testing Data.dta"</span>, <span class="kw">clear</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="kw">generate</span> treatment = <span class="fu">cond</span>(tinc&gt;0, 1, 0)</span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="kw">label</span> <span class="kw">define</span> treatment 0 <span class="st">"Control"</span> 1 <span class="st">"Treatment"</span></span>
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="kw">label</span> val treatment treatment</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 
-. cd "C://Impact Evaluation"
-C:\Impact Evaluation
+. cd "C://Data analysis"
+C:\Data analysis
 
-. use "Regression Analysis\Data\Thornton HIV Testing Data.dta", clear
+. use "Thornton data/Data/Thornton HIV Testing Data.dta", clear
 
 . generate treatment = cond(tinc&gt;0, 1, 0)
 
@@ -326,8 +326,8 @@ Note
 </div>
 </section><section id="execution-in-stata-2" class="level5"><h5 class="anchored" data-anchor-id="execution-in-stata-2">Execution in Stata</h5>
 <div class="cell" data-engine.path="C:/Stata15/Stata-64.exe">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>cd <span class="st">"C://Impact Evaluation"</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="st">"Regression Analysis\Data\Thornton HIV Testing Data.dta"</span>, <span class="kw">clear</span></span>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>cd <span class="st">"C://Data analysis"</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="st">"Thornton data/Data/Thornton HIV Testing Data.dta"</span>, <span class="kw">clear</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="kw">generate</span> treatment = <span class="fu">cond</span>(tinc&gt;0, 1, 0)</span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="kw">label</span> <span class="kw">define</span> treatment 0 <span class="st">"Control"</span> 1 <span class="st">"Treatment"</span></span>
 <span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="kw">label</span> val treatment treatment</span>
@@ -340,10 +340,10 @@ Note
 <div class="cell-output cell-output-stdout">
 <pre><code>
 
-. cd "C://Impact Evaluation"
-C:\Impact Evaluation
+. cd "C://Data analysis"
+C:\Data analysis
 
-. use "Regression Analysis\Data\Thornton HIV Testing Data.dta", clear
+. use "Thornton data/Data/Thornton HIV Testing Data.dta", clear
 
 . generate treatment = cond(tinc&gt;0, 1, 0)
 
@@ -408,8 +408,8 @@ F-statistic: 2.301 on 1 and 50 DF,  p-value: 0.1356</code></pre>
 </div>
 </section><section id="execution-in-stata-3" class="level5"><h5 class="anchored" data-anchor-id="execution-in-stata-3">Execution in Stata</h5>
 <div class="cell" data-engine.path="C:/Stata15/Stata-64.exe">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>cd <span class="st">"C://Impact Evaluation"</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="st">"Regression Analysis\Data\Thornton HIV Testing Data.dta"</span>, <span class="kw">clear</span></span>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>cd <span class="st">"C://Data analysis"</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="st">"Thornton data/Data/Thornton HIV Testing Data.dta"</span>, <span class="kw">clear</span></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="kw">generate</span> treatment = <span class="fu">cond</span>(tinc&gt;0, 1, 0)</span>
 <span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="kw">label</span> <span class="kw">define</span> treatment 0 <span class="st">"Control"</span> 1 <span class="st">"Treatment"</span></span>
 <span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="kw">label</span> val treatment treatment</span>
@@ -419,10 +419,10 @@ F-statistic: 2.301 on 1 and 50 DF,  p-value: 0.1356</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 
-. cd "C://Impact Evaluation"
-C:\Impact Evaluation
+. cd "C://Data analysis"
+C:\Data analysis
 
-. use "Regression Analysis\Data\Thornton HIV Testing Data.dta", clear
+. use "Thornton data/Data/Thornton HIV Testing Data.dta", clear
 
 . generate treatment = cond(tinc&gt;0, 1, 0)
 
@@ -495,8 +495,8 @@ F-statistic: 6.382 on 1 and 50 DF,  p-value: 0.01474</code></pre>
 </div>
 </section><section id="execution-in-stata-4" class="level5"><h5 class="anchored" data-anchor-id="execution-in-stata-4">Execution in Stata</h5>
 <div class="cell" data-engine.path="C:/Stata15/Stata-64.exe">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>cd <span class="st">"C://Impact Evaluation"</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="st">"Regression Analysis\Data\Thornton HIV Testing Data.dta"</span>, <span class="kw">clear</span></span>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>cd <span class="st">"C://Data analysis"</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="st">"Thornton data/Data/Thornton HIV Testing Data.dta"</span>, <span class="kw">clear</span></span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="kw">generate</span> treatment = <span class="fu">cond</span>(tinc&gt;0, 1, 0)</span>
 <span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="kw">label</span> <span class="kw">define</span> treatment 0 <span class="st">"Control"</span> 1 <span class="st">"Treatment"</span></span>
 <span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="kw">label</span> val treatment treatment</span>
@@ -507,10 +507,10 @@ F-statistic: 6.382 on 1 and 50 DF,  p-value: 0.01474</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 
-. cd "C://Impact Evaluation"
-C:\Impact Evaluation
+. cd "C://Data analysis"
+C:\Data analysis
 
-. use "Regression Analysis\Data\Thornton HIV Testing Data.dta", clear
+. use "Thornton data/Data/Thornton HIV Testing Data.dta", clear
 
 . generate treatment = cond(tinc&gt;0, 1, 0)
 
@@ -568,8 +568,8 @@ F-statistic: 4.088 on 1 and 50 DF,  p-value: 0.04855</code></pre>
 </div>
 <section id="execution-in-stata-5" class="level5"><h5 class="anchored" data-anchor-id="execution-in-stata-5">Execution in Stata</h5>
 <div class="cell" data-engine.path="C:/Stata15/Stata-64.exe">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>cd <span class="st">"C://Impact Evaluation"</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="st">"Regression Analysis\Data\Thornton HIV Testing Data.dta"</span>, <span class="kw">clear</span></span>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>cd <span class="st">"C://Data analysis"</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="st">"Thornton data/Data/Thornton HIV Testing Data.dta"</span>, <span class="kw">clear</span></span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="kw">generate</span> treatment = <span class="fu">cond</span>(tinc&gt;0, 1, 0)</span>
 <span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="kw">label</span> <span class="kw">define</span> treatment 0 <span class="st">"Control"</span> 1 <span class="st">"Treatment"</span></span>
 <span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="kw">label</span> val treatment treatment</span>
@@ -579,10 +579,10 @@ F-statistic: 4.088 on 1 and 50 DF,  p-value: 0.04855</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 
-. cd "C://Impact Evaluation"
-C:\Impact Evaluation
+. cd "C://Data analysis"
+C:\Data analysis
 
-. use "Regression Analysis\Data\Thornton HIV Testing Data.dta", clear
+. use "Thornton data/Data/Thornton HIV Testing Data.dta", clear
 
 . generate treatment = cond(tinc&gt;0, 1, 0)
 

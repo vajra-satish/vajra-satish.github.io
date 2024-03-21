@@ -43,7 +43,7 @@ library(dplyr)
 library(lmtest) # for regression
 library(estimatr)# for robust standard errors
 # import the .dta file
-data <- read_dta("C:/Impact Evaluation/Regression Analysis/Data/Thornton HIV Testing Data.dta")
+data <- read_dta("C:/Data analysis/Thornton data/Data/Thornton HIV Testing Data.dta")
 ```
 
 ##### Execution in Stata
@@ -51,8 +51,8 @@ data <- read_dta("C:/Impact Evaluation/Regression Analysis/Data/Thornton HIV Tes
 Use the cd command to import the dataset. 
 
 ```{stata, engine.path="C:/Stata15/Stata-64.exe"}
-cd "C://Impact Evaluation"
-use "Regression Analysis\Data\Thornton HIV Testing Data.dta", clear 
+cd "C://Data analysis"
+use "Thornton data/Data/Thornton HIV Testing Data.dta", clear 
 ```
 
 ## Create treatment variable
@@ -73,8 +73,8 @@ data_1$treatment <- factor(data_1$treatment,
 ##### Execution in Stata
 
 ```{stata, engine.path="C:/Stata15/Stata-64.exe"}
-cd "C://Impact Evaluation"
-use "Regression Analysis\Data\Thornton HIV Testing Data.dta", clear
+cd "C://Data analysis"
+use "Thornton data/Data/Thornton HIV Testing Data.dta", clear
 generate treatment = cond(tinc>0, 1, 0)
 label define treatment 0 "Control" 1 "Treatment"
 label val treatment treatment
@@ -131,8 +131,8 @@ print(compliance_rate)
 ##### Execution in Stata
 
 ```{stata, engine.path="C:/Stata15/Stata-64.exe"}
-cd "C://Impact Evaluation"
-use "Regression Analysis\Data\Thornton HIV Testing Data.dta", clear
+cd "C://Data analysis"
+use "Thornton data/Data/Thornton HIV Testing Data.dta", clear
 generate treatment = cond(tinc>0, 1, 0)
 label define treatment 0 "Control" 1 "Treatment"
 label val treatment treatment
@@ -159,8 +159,8 @@ summary(reg)
 ##### Execution in Stata
 
 ```{stata, engine.path="C:/Stata15/Stata-64.exe"}
-cd "C://Impact Evaluation"
-use "Regression Analysis\Data\Thornton HIV Testing Data.dta", clear
+cd "C://Data analysis"
+use "Thornton data/Data/Thornton HIV Testing Data.dta", clear
 generate treatment = cond(tinc>0, 1, 0)
 label define treatment 0 "Control" 1 "Treatment"
 label val treatment treatment
@@ -189,8 +189,8 @@ print(LATE)
 ##### Execution in Stata
 
 ```{stata, engine.path="C:/Stata15/Stata-64.exe"}
-cd "C://Impact Evaluation"
-use "Regression Analysis\Data\Thornton HIV Testing Data.dta", clear
+cd "C://Data analysis"
+use "Thornton data/Data/Thornton HIV Testing Data.dta", clear
 generate treatment = cond(tinc>0, 1, 0)
 label define treatment 0 "Control" 1 "Treatment"
 label val treatment treatment
@@ -212,8 +212,8 @@ summary(iv_reg)
 ##### Execution in Stata
 
 ```{stata, engine.path="C:/Stata15/Stata-64.exe"}
-cd "C://Impact Evaluation"
-use "Regression Analysis\Data\Thornton HIV Testing Data.dta", clear
+cd "C://Data analysis"
+use "Thornton data/Data/Thornton HIV Testing Data.dta", clear
 generate treatment = cond(tinc>0, 1, 0)
 label define treatment 0 "Control" 1 "Treatment"
 label val treatment treatment
