@@ -40,7 +40,6 @@ The downloaded files come with a readme document, which gives a detailed descrip
 ```{r message = FALSE, warning = FALSE}
 library(haven)
 library(dplyr)
-library(lmtest) # for regression
 library(estimatr)# for robust standard errors
 # import the .dta file
 data <- read_dta("C:/Data analysis/Thornton data/Data/Thornton HIV Testing Data.dta")
