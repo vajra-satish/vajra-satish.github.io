@@ -5,7 +5,7 @@
 <meta name="generator" content="quarto-1.3.450">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Satish Bajracharya">
-<meta name="dcterms.date" content="2024-03-19">
+<meta name="dcterms.date" content="2024-03-21">
 <title>Satish Bajracharya - Measuring Impact in an Experiment with Partial Compliance: HIV Status and Changes in Sexual Behavior</title>
 <style>
 code{white-space: pre-wrap;}
@@ -163,7 +163,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">March 19, 2024</p>
+        <p class="date">March 21, 2024</p>
       </div>
     </div>
     
@@ -183,7 +183,7 @@ p {
 }
 </style>
 </div>
-<p>We use data from <strong>“The Demand for, and Impact of, Learning HIV Status”</strong> study in Malawi. The study uses a randomized controlled trial (RCT), where individuals were provided varying degrees of monetary incentives to learn about their HIV status after receiving an HIV Test.</p>
+<p>We use data from <strong>“The Demand for, and Impact of, Learning HIV Status”</strong> study in Malawi. The study uses a randomized controlled trial (RCT) design, where individuals received varying degrees of monetary incentives to learn about their HIV status after undergoing an HIV Test.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -199,12 +199,12 @@ Note
 <p>Detailed description of the intervention: <a href="https://www.povertyactionlab.org/evaluation/demand-and-impact-learning-hiv-status-malawi">Click here</a></p>
 </div>
 </div>
-<p>We use the “Thornton HIV Testing Data.dta” for the analysis.</p>
+<p>For the analysis, we use the “Thornton HIV Testing Data.dta” file.</p>
 <section id="import-the-data" class="level2"><h2 class="anchored" data-anchor-id="import-the-data">Import the data</h2>
 <section id="execution-in-r" class="level5"><h5 class="anchored" data-anchor-id="execution-in-r">Execution in R</h5>
 <p>The data file is a Stata (.dta) file. To import the dataset in R, we will need to install the <strong>haven</strong> package in R and use the <strong>read_dta()</strong> function. Run the following code in R to install the haven package:</p>
 <pre><code>install.packages("haven")</code></pre>
-<p>When you download the data file, it comes with a readme file. Please read the readme file to learn more about the variables.</p>
+<p>The downloaded files come with a readme document, which gives a detailed description of the variables used in the study.</p>
 <div class="cell">
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://haven.tidyverse.org">haven</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
@@ -228,7 +228,7 @@ C:\Impact Evaluation
 </div>
 </div>
 </section></section><section id="create-treatment-variable" class="level2"><h2 class="anchored" data-anchor-id="create-treatment-variable">Create treatment variable</h2>
-<p>Create a variable called treatment which takes on a value of 1 if the participant received any financial incentive, and otherwise takes on a value of 0. The variable tinc records the amount of monetary incentive received by the respondents. Label the value of 0 and 1 as Control and Treatment.</p>
+<p>We create a variable called treatment, which takes on a value of 1 if the participant received any financial incentive, and otherwise takes on a value of 0. The variable tinc records the amount of monetary incentive received by the respondents. We label the values of 0 and 1 as control and treatment.</p>
 <section id="execution-in-r-1" class="level5"><h5 class="anchored" data-anchor-id="execution-in-r-1">Execution in R</h5>
 <div class="cell">
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data_1</span> <span class="op">&lt;-</span> <span class="va">data</span> <span class="op">|&gt;</span></span>
@@ -261,7 +261,7 @@ C:\Impact Evaluation
 </div>
 </div>
 </section></section><section id="calculating-the-compliance-rate" class="level2"><h2 class="anchored" data-anchor-id="calculating-the-compliance-rate">Calculating the compliance rate</h2>
-<p>In this analysis, we try to study the effect of learning one’s HIV status on the decision to purchase a condom. We focus on a sub-group of individuals who are sexually active and HIV positive. To do this, we will need to restrict our sample to the sexually active and HIV positive individuals, and calculate the compliance rate for this sub-group.</p>
+<p>In this analysis, we try to study the effect of learning one’s HIV status on the decision to purchase a condom. We focus on a sub-group of individuals who are sexually active and HIV positive. To do this, we need to restrict our sample to the sexually active and HIV positive individuals and calculate the compliance rate for this sub-group.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -273,7 +273,8 @@ Note
 </div>
 <div class="callout-body-container callout-body">
 <p>Baseline data was collected in 2004 and follow up data was collected in 2005.</p>
-<p>Variable description:<br><strong>treatment</strong>: takes on the value of 1 if individual received monetary incentive and 0 otherwise.<br><strong>hadsex12</strong>: Indicator if reported having sex in the pas 12 months from baseline (1 = Yes, 0 = No).<br><strong>hiv2004</strong>: HIV results (1 = HIV Positive, 0 = HIV Negative, -1 = Indeterminent)<br><strong>got</strong>: Indicator if obtained HIV results (1 = learned HIV results)<br><strong>anycond</strong>: Indicator of any condom purchased at the follow-up survey</p>
+<p>Variable description:</p>
+<p><strong>treatment</strong>: takes on the value of 1 if individual received monetary incentive and 0 otherwise.<br><strong>hadsex12</strong>: Indicator if reported having sex in the pas 12 months from baseline (1 = Yes, 0 = No).<br><strong>hiv2004</strong>: HIV results (1 = HIV Positive, 0 = HIV Negative, -1 = Indeterminent)<br><strong>got</strong>: Indicator if obtained HIV results (1 = learned HIV results)<br><strong>anycond</strong>: Indicator of any condom purchased at the follow-up survey</p>
 </div>
 </div>
 <section id="execution-in-r-2" class="level5"><h5 class="anchored" data-anchor-id="execution-in-r-2">Execution in R</h5>
@@ -382,7 +383,7 @@ followed_tr |
 Compliance rate =41.4</code></pre>
 </div>
 </div>
-<p>Here, 71.4% of the treatment group learned about their HIV status and 30% of the control group did so. The compliance rate is the difference between the share of treated individuals in the treatment group(71.43%) and the share of treated individuals in the control group(30%). Hence, the compliance rate for the experiment is 41.4% (71.43% - 30%).</p>
+<p>Here, 71.4% of the treatment group learned about their HIV status and 30% of the control group did so. The compliance rate is the difference between the share of treated individuals in the treatment group (71.43%) and the share of treated individuals in the control group (30%). Hence, the compliance rate for the experiment is 41.4% (71.43% - 30%).</p>
 </section></section><section id="calculating-the-intent-to-treat-effect-and-the-local-average-treatment-effect-late-estimate" class="level2"><h2 class="anchored" data-anchor-id="calculating-the-intent-to-treat-effect-and-the-local-average-treatment-effect-late-estimate">Calculating the Intent to Treat Effect and the Local Average Treatment Effect (LATE) estimate</h2>
 <p>In R, we use the <strong>lm_robust()</strong> function from the <strong>estimatr</strong> package to run a regression with robust standard errors. In Stata, we use the regress command with the robust option for the same.</p>
 <section id="execution-in-r-3" class="level5"><h5 class="anchored" data-anchor-id="execution-in-r-3">Execution in R</h5>
@@ -452,7 +453,7 @@ Linear regression                               Number of obs     =         52
 ------------------------------------------------------------------------------</code></pre>
 </div>
 </div>
-<p>The estimates show that 20% of the sexually active individuals, who were HIV positive and were not offered a monetary incentive to learn about their HIV status, purchased condoms anyway, while those who were offered a monetary incentive to learn about their HIV status were 22.86% more likely to purchase condoms. This is the intent to treat effect. Even though, the monetary incentive provided to learn about one’s HIV status increased the willingness to buy condoms, it is not statistically significant.</p>
+<p>The estimates show that 20% of the sexually active HIV-positive individuals, who did not receive any monetary incentive to learn about their HIV status, still purchased condoms. In contrast, individuals who received a monetary incentive to learn about their HIV status were 22.86% more likely to purchase condoms. This is the intent to treat effect. Even though the monetary incentive provided to learn about one’s HIV status increased the willingness to buy condoms, it is not statistically significant.</p>
 <p>Next, we use the results of the regression of anycond on treatment and got on treatment to calculate the Local Average Treatment Effect (LATE).</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -543,7 +544,7 @@ Linear regression                               Number of obs     =         52
 LATE =.55172409</code></pre>
 </div>
 </div>
-<p>Notice that the coefficient of treatment variable in this regression is equal to compliance rate that we calculated earlier. Amongst sexually active and HIV positive respondents, we estimate that learning ones HIV status increases the likelihood of purchasing condoms by about 55.17%. However, when we calculate the LATE estimate this way we will not get the standard errors and we will not know if it is statistically significant. An alternative is to use the 2 SLS method to calculate the LATE effect.</p>
+<p>The coefficient of treatment variable in this regression is equal to compliance rate that we calculated earlier. Amongst sexually active and HIV-positive respondents, we estimate that learning one’s HIV status increases the likelihood of purchasing condoms by about 55.17%. However, when we calculate the LATE estimate this way, we will not get the standard errors and we will not know if it is statistically significant. An alternative is to use the 2 SLS method to calculate the LATE effect.</p>
 </section><section id="execution-in-r-5" class="level4"><h4 class="anchored" data-anchor-id="execution-in-r-5">Execution in R</h4>
 <div class="cell">
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">iv_reg</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://declaredesign.org/r/estimatr/reference/iv_robust.html">iv_robust</a></span><span class="op">(</span><span class="va">anycond</span> <span class="op">~</span> <span class="va">got</span> <span class="op">|</span> <span class="va">treatment</span>, data <span class="op">=</span> <span class="va">data_1</span>, se_type <span class="op">=</span> <span class="st">"HC1"</span><span class="op">)</span></span>
@@ -614,7 +615,7 @@ Instrumented:  got
 Instruments:   treatment</code></pre>
 </div>
 </div>
-<p>The coefficient of <strong>got</strong> in the regression and the previously calculated value for the LATE estimate are the same. The 2SLS regression estimates a p-value of 0.039 for <strong>got</strong>. Therefore, we can come to a conclusion that learning about one’s HIV positive status increases the likelihood of purchasing condoms by a statistically significant margin.</p>
+<p>The coefficient of <strong>got</strong> in the regression and the calculated value for the LATE estimate are the same. The 2SLS regression estimates a p-value of 0.039 for <strong>got</strong>. Therefore, we can conclude that learning about one’s HIV-positive status increases the likelihood of purchasing condoms by a statistically significant margin.</p>
 
 
 </section></section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
