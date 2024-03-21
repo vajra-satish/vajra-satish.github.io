@@ -51,7 +51,7 @@ The str () function in R provides the structure of the dataset. However, we will
 ```{r, warning = FALSE}
 library(haven)
 # import the .dta file
-data <- read_dta("C:/Impact Evaluation/Regression Analysis/Data/Thornton HIV Testing Data.dta")
+data <- read_dta("C:/Data analysis/Thornton data/Data/Thornton HIV Testing Data.dta")
 # List of variables
 names(data)
 # dimensions of the dataset
@@ -65,8 +65,8 @@ There are 44 variables and 4,820 observations.
 Use the cd command to import the dataset. The describe command provides a list of variables with their types and labels. 
 
 ```{stata, engine.path="C:/Stata15/Stata-64.exe"}
-cd "C://Impact Evaluation"
-use "Regression Analysis\Data\Thornton HIV Testing Data.dta", clear 
+cd "C://Data analysis"
+use "Thornton data/Data/Thornton HIV Testing Data.dta", clear  
 describe
 ```
 
@@ -92,8 +92,8 @@ data |> filter(!is.na(tinc))|> # remove NA
 ##### Execution in Stata
 
 ```{stata, engine.path="C:/Stata15/Stata-64.exe"}
-cd "C://Impact Evaluation"
-use "Regression Analysis\Data\Thornton HIV Testing Data.dta", clear
+cd "C://Data analysis"
+use "Thornton data/Data/Thornton HIV Testing Data.dta", clear 
 tabulate tinc
 ```
 
@@ -117,8 +117,8 @@ summary(reg)
 ##### Execution in Stata
 
 ```{stata, engine.path="C:/Stata15/Stata-64.exe"}
-cd "C://Impact Evaluation"
-use "Regression Analysis\Data\Thornton HIV Testing Data.dta", clear
+cd "C://Data analysis"
+use "Thornton data/Data/Thornton HIV Testing Data.dta", clear 
 drop if missing(tinc) | missing(got)
 generate treatment = cond(tinc>0, 1, 0)
 label define treatment 0 "Control" 1 "Treatment"
@@ -146,8 +146,8 @@ bptest(reg, studentize = FALSE)
 We use the **estat hettest** command in Stata to test ko heteroskedasticity. 
 
 ```{stata, engine.path="C:/Stata15/Stata-64.exe"}
-cd "C://Impact Evaluation"
-use "Regression Analysis\Data\Thornton HIV Testing Data.dta", clear
+cd "C://Data analysis"
+use "Thornton data/Data/Thornton HIV Testing Data.dta", clear 
 drop if missing(tinc) | missing(got)
 generate treatment = cond(tinc>0, 1, 0)
 label define treatment 0 "Control" 1 "Treatment"
@@ -176,8 +176,8 @@ coeftest(reg, vcov = vcovHC(reg, type = "HC1"))
 To run a regression with robust standard errors, we run the **regress** command with the **robust** option.
 
 ```{stata, engine.path="C:/Stata15/Stata-64.exe"}
-cd "C://Impact Evaluation"
-use "Regression Analysis\Data\Thornton HIV Testing Data.dta", clear
+cd "C://Data analysis"
+use "Thornton data/Data/Thornton HIV Testing Data.dta", clear 
 drop if missing(tinc) | missing(got)
 generate treatment = cond(tinc>0, 1, 0)
 label define treatment 0 "Control" 1 "Treatment"
