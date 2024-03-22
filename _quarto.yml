@@ -9,7 +9,7 @@ website:
     center: |
       [Contact Satish Bajracharya](mailto:vajrasatis@gmail.com)
     left: |
-      Made with [Posit Quarto](https://quarto.org/)
+      Made with [Posit Quarto](https://quarto.org/) in R
     right: |
       [Github Code Repo](https://github.com/vajra-satish/vajra-satish.github.io)
     background: "#2c3e50"
